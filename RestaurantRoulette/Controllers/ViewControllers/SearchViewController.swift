@@ -12,12 +12,18 @@ class SearchViewController: UIViewController {
 
     // MARK: - Outlets
     @IBOutlet weak var keywordTextField: UITextField!
+    @IBOutlet weak var pricePickerView: UIPickerView!
+    @IBOutlet weak var radiusPickerView: UIPickerView!
+    @IBOutlet weak var currentLocationSwitch: UISwitch!
     @IBOutlet weak var locationTextField: UITextField!
-    
-    
+    @IBOutlet weak var openNowSwitch: UISwitch!
     @IBOutlet weak var searchButton: UIButton!
     
     // MARK: - Properties
+    var price: String?
+    var locationRadius: Int?
+    var prices = ["$", "$$", "$$$", "$$$$", "$$$$$"]
+    var radiusLimit = Array(0...24)
     
     // MARK: - LifeCycle Methods
     override func viewDidLoad() {
@@ -26,10 +32,16 @@ class SearchViewController: UIViewController {
     }
     
     // MARK: - Actions
+    @IBAction func searchButtonTapped(_ sender: UIButton) {
+    }
+    
+    @IBAction func bookmarksButtonTapped(_ sender: UIButton) {
+    }
     
     // MARK: - Methods
     func setupViews() {
         setupTextFields()
+        setupPickerViews()
         setupSearchButton()
         // TODO: - Add code that sets the switches to the correct setting.
     }
@@ -53,4 +65,50 @@ class SearchViewController: UIViewController {
         
     }
 
+}
+
+extension SearchViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+   
+    func setupPickerViews() {
+        pricePickerView.delegate = self
+        radiusPickerView.delegate = self
+        pricePickerView.dataSource = self
+        radiusPickerView.dataSource = self
+    }
+    
+    // MARK: - UIPickerViewDelegate Methods
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if pickerView.tag == 0 {
+            return prices[row]
+        } else if pickerView.tag == 1 {
+            var radiusAsString = String(radiusLimit[row])
+            radiusAsString.append(" mi")
+            return radiusAsString
+        }
+        return ""
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView.tag == 0 {
+            price = prices[pickerView.selectedRow(inComponent: 0)]
+        } else if pickerView.tag == 1 {
+            let miles = radiusLimit[pickerView.selectedRow(inComponent: 0)]
+            locationRadius = MetersUnitConverter.convertMilesToMetersAsInt(from: Double(miles))
+        }
+    }
+    
+    // MARK: - UIPickerViewDataSource Methods
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if pickerView.tag == 0 {
+            return prices.count
+        } else if pickerView.tag == 1 {
+            return radiusLimit.count
+        }
+        return 0
+    }
+    
 }

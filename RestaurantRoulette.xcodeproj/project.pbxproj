@@ -21,6 +21,8 @@
 		B67CD57E214F10A6005F755A /* RestaurantRouletteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67CD57D214F10A6005F755A /* RestaurantRouletteTests.swift */; };
 		B67CD589214F10A6005F755A /* RestaurantRouletteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67CD588214F10A6005F755A /* RestaurantRouletteUITests.swift */; };
 		B67CD59A214F11A5005F755A /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B67CD599214F11A5005F755A /* CloudKit.framework */; };
+		B6E8A61E21503338003EB2E8 /* MetersUnitConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E8A61D21503338003EB2E8 /* MetersUnitConverter.swift */; };
+		B6E8A620215037AE003EB2E8 /* FavoritesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E8A61F215037AE003EB2E8 /* FavoritesListViewController.swift */; };
 		D3FB8787E9E5FFF466F179D5 /* Pods_RestaurantRoulette.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E590FE1F8F15C69C0B40CB8 /* Pods_RestaurantRoulette.framework */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +67,8 @@
 		B67CD58A214F10A6005F755A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B67CD597214F11A2005F755A /* RestaurantRoulette.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RestaurantRoulette.entitlements; sourceTree = "<group>"; };
 		B67CD599214F11A5005F755A /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		B6E8A61D21503338003EB2E8 /* MetersUnitConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetersUnitConverter.swift; sourceTree = "<group>"; };
+		B6E8A61F215037AE003EB2E8 /* FavoritesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListViewController.swift; sourceTree = "<group>"; };
 		D15932CD02930B445B58711B /* Pods-RestaurantRoulette.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RestaurantRoulette.release.xcconfig"; path = "Pods/Target Support Files/Pods-RestaurantRoulette/Pods-RestaurantRoulette.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,6 +113,7 @@
 		B61FDAA1214F11EA00B536AD /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				B6E8A61C21503329003EB2E8 /* UnitConversion */,
 				B61FDAAF214F129400B536AD /* CloudKit */,
 				B61FDAAE214F129200B536AD /* CoreData */,
 				B61FDAB4214F12D000B536AD /* CoreLocation */,
@@ -147,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				B61FDAAB214F123F00B536AD /* SearchViewController.swift */,
+				B6E8A61F215037AE003EB2E8 /* FavoritesListViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -266,6 +272,14 @@
 			children = (
 			);
 			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		B6E8A61C21503329003EB2E8 /* UnitConversion */ = {
+			isa = PBXGroup;
+			children = (
+				B6E8A61D21503338003EB2E8 /* MetersUnitConverter.swift */,
+			);
+			path = UnitConversion;
 			sourceTree = "<group>";
 		};
 		D25EC569CC83737144A1C37F /* Pods */ = {
@@ -479,7 +493,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6E8A620215037AE003EB2E8 /* FavoritesListViewController.swift in Sources */,
 				B61FDAB3214F12B000B536AD /* CoreDataManager.swift in Sources */,
+				B6E8A61E21503338003EB2E8 /* MetersUnitConverter.swift in Sources */,
 				B61FDAA6214F121700B536AD /* Restaurant.swift in Sources */,
 				B67CD569214F10A1005F755A /* AppDelegate.swift in Sources */,
 				B61FDAAC214F123F00B536AD /* SearchViewController.swift in Sources */,
