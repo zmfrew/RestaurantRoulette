@@ -15,7 +15,7 @@
 		B61FDAB6214F12E300B536AD /* CoreLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61FDAB5214F12E300B536AD /* CoreLocationManager.swift */; };
 		B61FDAB8214F12EA00B536AD /* MapKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61FDAB7214F12EA00B536AD /* MapKitManager.swift */; };
 		B67CD569214F10A1005F755A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67CD568214F10A1005F755A /* AppDelegate.swift */; };
-		B67CD56E214F10A1005F755A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B67CD56C214F10A1005F755A /* Main.storyboard */; };
+		B67CD56E214F10A1005F755A /* SearchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B67CD56C214F10A1005F755A /* SearchScreen.storyboard */; };
 		B67CD570214F10A6005F755A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B67CD56F214F10A6005F755A /* Assets.xcassets */; };
 		B67CD573214F10A6005F755A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B67CD571214F10A6005F755A /* LaunchScreen.storyboard */; };
 		B67CD57E214F10A6005F755A /* RestaurantRouletteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67CD57D214F10A6005F755A /* RestaurantRouletteTests.swift */; };
@@ -53,7 +53,7 @@
 		B61FDAB7214F12EA00B536AD /* MapKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitManager.swift; sourceTree = "<group>"; };
 		B67CD565214F10A1005F755A /* RestaurantRoulette.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RestaurantRoulette.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B67CD568214F10A1005F755A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B67CD56D214F10A1005F755A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B67CD56D214F10A1005F755A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SearchScreen.storyboard; sourceTree = "<group>"; };
 		B67CD56F214F10A6005F755A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B67CD572214F10A6005F755A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B67CD574214F10A6005F755A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -129,8 +129,8 @@
 		B61FDAA3214F11F400B536AD /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B67CD56C214F10A1005F755A /* Main.storyboard */,
-				B67CD571214F10A6005F755A /* LaunchScreen.storyboard */,
+				B6E8A61B215008C2003EB2E8 /* CustomViews */,
+				B6E8A61A215008B7003EB2E8 /* Storyboards */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -250,6 +250,22 @@
 				9E590FE1F8F15C69C0B40CB8 /* Pods_RestaurantRoulette.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B6E8A61A215008B7003EB2E8 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				B67CD56C214F10A1005F755A /* SearchScreen.storyboard */,
+				B67CD571214F10A6005F755A /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		B6E8A61B215008C2003EB2E8 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 		D25EC569CC83737144A1C37F /* Pods */ = {
@@ -378,7 +394,7 @@
 			files = (
 				B67CD573214F10A6005F755A /* LaunchScreen.storyboard in Resources */,
 				B67CD570214F10A6005F755A /* Assets.xcassets in Resources */,
-				B67CD56E214F10A1005F755A /* Main.storyboard in Resources */,
+				B67CD56E214F10A1005F755A /* SearchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,12 +522,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		B67CD56C214F10A1005F755A /* Main.storyboard */ = {
+		B67CD56C214F10A1005F755A /* SearchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				B67CD56D214F10A1005F755A /* Base */,
 			);
-			name = Main.storyboard;
+			name = SearchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 		B67CD571214F10A6005F755A /* LaunchScreen.storyboard */ = {
