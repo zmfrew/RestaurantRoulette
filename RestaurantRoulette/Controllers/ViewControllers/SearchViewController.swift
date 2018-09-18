@@ -39,7 +39,7 @@ class SearchViewController: UIViewController {
     @IBAction func bookmarksButtonTapped(_ sender: UIButton) {
     }
     
-    @IBAction func unwindToSearch(unwindSegue: UIStoryboardSegue) {
+    @IBAction func unwindToSearchFromList(unwindSegue: UIStoryboardSegue) {
         perform(#selector(pushToFavoritesVC), with: nil, afterDelay: 0.0)
     }
     

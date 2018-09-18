@@ -24,15 +24,22 @@ class FavoritesListViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func shareButtonTapped(_ sender: UIBarButtonItem) {
-        // TODO: - Insert CloudKit saving and sharing functionality.
+    @IBAction func unwindToSearchFromDetail(unwindSegue: UIStoryboardSegue) {
+        self.dismiss(animated: true, completion: nil)
     }
-    
+
     // MARK: - Methods
 
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if segue.identifier == "toFavoriteDetail" {
+            guard let destinationVC = segue.destination as? FavoriteDetailViewController,
+                let indexPath = tableView.indexPathForSelectedRow else { return }
+            
+            let restaurant = RestaurantController.shared.restaurants[indexPath.row]
+            destinationVC.title = restaurant.name
+            destinationVC.restaurant = restaurant
+        }
     }
     
 }

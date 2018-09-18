@@ -15,13 +15,21 @@ class Restaurant {
     var rating: Int
     var image: UIImage
     var isFavorite: Bool
+    var latitude: Double
+    var longitude: Double
+    var phoneNumber: String
+    var categories: [String]
     
     // MARK: - Intializers
-    init(name: String, rating: Int, image: UIImage, isFavorite: Bool) {
+    init(name: String, rating: Int, image: UIImage, isFavorite: Bool, latitude: Double, longitude: Double, phoneNumber: String, categories: [String]) {
         self.name = name
         self.rating = rating
         self.image = image
         self.isFavorite = isFavorite
+        self.latitude = latitude
+        self.longitude = longitude
+        self.phoneNumber = phoneNumber
+        self.categories = categories
     }
 
 }

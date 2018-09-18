@@ -28,7 +28,7 @@ class RestaurantsListViewController: UIViewController {
         
     }
     
-    @IBAction func unwindToSearch(unwindSegue: UIStoryboardSegue) {
+    @IBAction func unwindToSearchFromList(unwindSegue: UIStoryboardSegue) {
         self.dismiss(animated: true, completion: nil)
     }
     
