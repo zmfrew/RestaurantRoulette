@@ -27,7 +27,7 @@ class FavoritesListViewController: UIViewController {
     @IBAction func unwindToSearchFromDetail(unwindSegue: UIStoryboardSegue) {
         perform(#selector(dismissToSearchVC), with: nil, afterDelay: 0.0)
     }
-
+    
     // MARK: - Methods
     @objc func dismissToSearchVC() {
         self.dismiss(animated: true, completion: nil)
@@ -47,6 +47,7 @@ class FavoritesListViewController: UIViewController {
     
 }
 
+// MARK: - UITableViewDelegate & UITableViewDataSource Conformance
 extension FavoritesListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func setupTableView() {

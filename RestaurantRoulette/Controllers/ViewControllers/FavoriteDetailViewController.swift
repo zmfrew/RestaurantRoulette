@@ -46,13 +46,6 @@ class FavoriteDetailViewController: UIViewController {
     @IBAction func searchButtonTapped(_ sender: UIButton) {
         self.navigationController?.popToRootViewController(animated: true)
     }
-
-    @IBAction func mapViewButtonTapped(_ sender: UIButton) {
-    
-    }
-    
-    @IBAction func unwindToSearchFromDetail(unwindSegue: UIStoryboardSegue) {
-    }
     
     // MARK: - Methods
     private func updateViews() {
@@ -124,14 +117,15 @@ class FavoriteDetailViewController: UIViewController {
         }
     }
     
-    /*
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "fromFavoriteToMap" {
+            guard let destinationVC = segue.destination as? MapViewController,
+                let restaurant = restaurant else { return }
+            
+            destinationVC.restaurant = restaurant
+        }
+        
     }
-    */
 
 }

@@ -40,6 +40,7 @@ class RestaurantsListViewController: UIViewController {
     
 }
 
+// MARK: - UITableViewDelegate & UITableViewDataSource Conformance
 extension RestaurantsListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func setupTableView() {
