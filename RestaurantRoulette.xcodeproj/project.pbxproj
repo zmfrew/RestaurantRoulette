@@ -21,6 +21,8 @@
 		B67CD57E214F10A6005F755A /* RestaurantRouletteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67CD57D214F10A6005F755A /* RestaurantRouletteTests.swift */; };
 		B67CD589214F10A6005F755A /* RestaurantRouletteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67CD588214F10A6005F755A /* RestaurantRouletteUITests.swift */; };
 		B67CD59A214F11A5005F755A /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B67CD599214F11A5005F755A /* CloudKit.framework */; };
+		B69F7335215157EA00F8956F /* FavoriteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69F7334215157EA00F8956F /* FavoriteDetailViewController.swift */; };
+		B69F7338215185E600F8956F /* PhoneNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69F7337215185E600F8956F /* PhoneNumberFormatter.swift */; };
 		B6C934B521504A8B003CE920 /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C934B421504A8B003CE920 /* RestaurantTableViewCell.swift */; };
 		B6C934B72150551E003CE920 /* MockRestaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C934B62150551E003CE920 /* MockRestaurant.swift */; };
 		B6C934B9215055F9003CE920 /* MockRestaurantController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C934B8215055F9003CE920 /* MockRestaurantController.swift */; };
@@ -71,6 +73,8 @@
 		B67CD58A214F10A6005F755A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B67CD597214F11A2005F755A /* RestaurantRoulette.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RestaurantRoulette.entitlements; sourceTree = "<group>"; };
 		B67CD599214F11A5005F755A /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		B69F7334215157EA00F8956F /* FavoriteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDetailViewController.swift; sourceTree = "<group>"; };
+		B69F7337215185E600F8956F /* PhoneNumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberFormatter.swift; sourceTree = "<group>"; };
 		B6C934B421504A8B003CE920 /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
 		B6C934B62150551E003CE920 /* MockRestaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRestaurant.swift; sourceTree = "<group>"; };
 		B6C934B8215055F9003CE920 /* MockRestaurantController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRestaurantController.swift; sourceTree = "<group>"; };
@@ -121,6 +125,7 @@
 		B61FDAA1214F11EA00B536AD /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				B69F7336215185DA00F8956F /* Formatters */,
 				B6E8A61C21503329003EB2E8 /* UnitConversion */,
 				B61FDAAF214F129400B536AD /* CloudKit */,
 				B61FDAAE214F129200B536AD /* CoreData */,
@@ -163,6 +168,7 @@
 				B61FDAAB214F123F00B536AD /* SearchViewController.swift */,
 				B6E8A61F215037AE003EB2E8 /* FavoritesListViewController.swift */,
 				B6C934BA21506594003CE920 /* RestaurantsListViewController.swift */,
+				B69F7334215157EA00F8956F /* FavoriteDetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -267,6 +273,14 @@
 				9E590FE1F8F15C69C0B40CB8 /* Pods_RestaurantRoulette.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B69F7336215185DA00F8956F /* Formatters */ = {
+			isa = PBXGroup;
+			children = (
+				B69F7337215185E600F8956F /* PhoneNumberFormatter.swift */,
+			);
+			path = Formatters;
 			sourceTree = "<group>";
 		};
 		B6E8A61A215008B7003EB2E8 /* Storyboards */ = {
@@ -507,6 +521,7 @@
 			files = (
 				B6E8A620215037AE003EB2E8 /* FavoritesListViewController.swift in Sources */,
 				B6C934B9215055F9003CE920 /* MockRestaurantController.swift in Sources */,
+				B69F7335215157EA00F8956F /* FavoriteDetailViewController.swift in Sources */,
 				B61FDAB3214F12B000B536AD /* CoreDataManager.swift in Sources */,
 				B6E8A61E21503338003EB2E8 /* MetersUnitConverter.swift in Sources */,
 				B61FDAA6214F121700B536AD /* Restaurant.swift in Sources */,
@@ -516,6 +531,7 @@
 				B61FDAAA214F123100B536AD /* RestaurantController.swift in Sources */,
 				B61FDAB6214F12E300B536AD /* CoreLocationManager.swift in Sources */,
 				B61FDAB1214F12A500B536AD /* CloudKitManager.swift in Sources */,
+				B69F7338215185E600F8956F /* PhoneNumberFormatter.swift in Sources */,
 				B61FDAB8214F12EA00B536AD /* MapKitManager.swift in Sources */,
 				B6C934B72150551E003CE920 /* MockRestaurant.swift in Sources */,
 				B6C934B521504A8B003CE920 /* RestaurantTableViewCell.swift in Sources */,
