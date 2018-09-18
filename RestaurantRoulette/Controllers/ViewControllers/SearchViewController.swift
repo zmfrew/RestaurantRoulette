@@ -44,7 +44,6 @@ class SearchViewController: UIViewController {
     }
     
     @objc func pushToFavoritesVC() {
-//        let favoritesVC = (self.storyboard?.instantiateViewController(withIdentifier: "FavoritesListViewController"))!
         self.performSegue(withIdentifier: "toFavoritesView", sender: self)
     }
     

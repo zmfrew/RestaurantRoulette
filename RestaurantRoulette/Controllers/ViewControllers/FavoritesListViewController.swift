@@ -25,10 +25,13 @@ class FavoritesListViewController: UIViewController {
     }
     
     @IBAction func unwindToSearchFromDetail(unwindSegue: UIStoryboardSegue) {
-        self.dismiss(animated: true, completion: nil)
+        perform(#selector(dismissToSearchVC), with: nil, afterDelay: 0.0)
     }
 
     // MARK: - Methods
+    @objc func dismissToSearchVC() {
+        self.dismiss(animated: true, completion: nil)
+    }
 
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
