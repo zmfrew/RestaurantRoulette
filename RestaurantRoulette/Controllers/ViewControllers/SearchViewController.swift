@@ -40,7 +40,11 @@ class SearchViewController: UIViewController {
     }
     
     @IBAction func unwindToSearch(unwindSegue: UIStoryboardSegue) {
-        self.dismiss(animated: true, completion: nil)
+        perform(#selector(pushToFavoritesVC), with: nil, afterDelay: 0.0)
+    }
+    
+    @objc func pushToFavoritesVC() {
+//        let favoritesVC = (self.storyboard?.instantiateViewController(withIdentifier: "FavoritesListViewController"))!
         self.performSegue(withIdentifier: "toFavoritesView", sender: self)
     }
     
@@ -77,9 +81,11 @@ extension SearchViewController: UIPickerViewDelegate, UIPickerViewDataSource {
    
     func setupPickerViews() {
         pricePickerView.delegate = self
-        radiusPickerView.delegate = self
         pricePickerView.dataSource = self
+        pricePickerView.tintColor = UIColor(red: 115/255.0, green: 113/255.0, blue: 115/255.0, alpha: 100)
+        radiusPickerView.delegate = self
         radiusPickerView.dataSource = self
+        radiusPickerView.tintColor = UIColor(red: 115/255.0, green: 113/255.0, blue: 115/255.0, alpha: 100)
     }
     
     // MARK: - UIPickerViewDelegate Methods

@@ -24,6 +24,10 @@ class FavoritesListViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func shareButtonTapped(_ sender: UIBarButtonItem) {
+        // TODO: - Insert CloudKit saving and sharing functionality.
+    }
+    
     // MARK: - Methods
 
     // MARK: - Navigation

@@ -201,7 +201,7 @@
         <!--Favorites-->
         <scene sceneID="sBY-zb-ApR">
             <objects>
-                <viewController id="KOO-v6-bzV" customClass="FavoritesListViewController" customModule="RestaurantRoulette" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FavoritesListViewController" id="KOO-v6-bzV" customClass="FavoritesListViewController" customModule="RestaurantRoulette" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VBF-M0-rAC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -400,7 +400,11 @@
                         <viewLayoutGuide key="safeArea" id="SXq-y7-Lf4"/>
                     </view>
                     <navigationItem key="navigationItem" title="Favorites" largeTitleDisplayMode="always" id="YEl-aT-dJy">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="eHt-Eb-6Af"/>
+                        <barButtonItem key="rightBarButtonItem" image="share" id="eHt-Eb-6Af">
+                            <connections>
+                                <action selector="shareButtonTapped:" destination="KOO-v6-bzV" id="7TH-Qu-7Fg"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="0BG-Pj-c4Y" id="t1k-8V-jhD"/>
@@ -696,6 +700,7 @@
         <image name="randomize" width="60" height="60"/>
         <image name="searchBlue" width="23" height="25"/>
         <image name="searchGray" width="23" height="25"/>
+        <image name="share" width="20" height="27"/>
         <image name="starBlue" width="28" height="26"/>
         <image name="starOrange" width="28" height="26"/>
     </resources>
