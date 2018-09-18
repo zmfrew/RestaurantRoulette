@@ -33,9 +33,19 @@ class SearchViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func searchButtonTapped(_ sender: UIButton) {
+        // TODO: - Insert network request logic
     }
     
     @IBAction func bookmarksButtonTapped(_ sender: UIButton) {
+    }
+    
+    @IBAction func unwindToSearch(unwindSegue: UIStoryboardSegue) {
+        perform(#selector(pushToFavoritesVC), with: nil, afterDelay: 0.0)
+    }
+    
+    @objc func pushToFavoritesVC() {
+//        let favoritesVC = (self.storyboard?.instantiateViewController(withIdentifier: "FavoritesListViewController"))!
+        self.performSegue(withIdentifier: "toFavoritesView", sender: self)
     }
     
     // MARK: - Methods
@@ -48,11 +58,11 @@ class SearchViewController: UIViewController {
     
     func setupTextFields() {
         keywordTextField.layer.borderColor = UIColor(red: 151/255.0, green: 151/255.0, blue: 151/255.0, alpha: 100).cgColor
-        keywordTextField.layer.borderWidth = 1
+        keywordTextField.layer.borderWidth = 0.5
         keywordTextField.layer.cornerRadius = 8
         
         locationTextField.layer.borderColor = UIColor(red: 151/255.0, green: 151/255.0, blue: 151/255.0, alpha: 100).cgColor
-        locationTextField.layer.borderWidth = 1
+        locationTextField.layer.borderWidth = 0.5
         locationTextField.layer.cornerRadius = 8
     }
     
@@ -64,16 +74,18 @@ class SearchViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
     }
-
+    
 }
 
 extension SearchViewController: UIPickerViewDelegate, UIPickerViewDataSource {
    
     func setupPickerViews() {
         pricePickerView.delegate = self
-        radiusPickerView.delegate = self
         pricePickerView.dataSource = self
+        pricePickerView.tintColor = UIColor(red: 115/255.0, green: 113/255.0, blue: 115/255.0, alpha: 100)
+        radiusPickerView.delegate = self
         radiusPickerView.dataSource = self
+        radiusPickerView.tintColor = UIColor(red: 115/255.0, green: 113/255.0, blue: 115/255.0, alpha: 100)
     }
     
     // MARK: - UIPickerViewDelegate Methods

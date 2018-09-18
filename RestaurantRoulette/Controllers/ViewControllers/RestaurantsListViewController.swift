@@ -1,5 +1,5 @@
 //
-//  FavoritesListViewController.swift
+//  RestaurantsListViewController.swift
 //  RestaurantRoulette
 //
 //  Created by Zachary Frew on 9/17/18.
@@ -8,36 +8,39 @@
 
 import UIKit
 
-class FavoritesListViewController: UIViewController {
+class RestaurantsListViewController: UIViewController {
 
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
-        
+    
     // MARK: - LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
     }
-
+    
     // MARK: - Actions
     @IBAction func searchButtonTapped(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func shareButtonTapped(_ sender: UIBarButtonItem) {
-        // TODO: - Insert CloudKit saving and sharing functionality.
+    @IBAction func randomizeButtonTapped(_ sender: UIButton) {
+        
+    }
+    
+    @IBAction func unwindToSearch(unwindSegue: UIStoryboardSegue) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Methods
-
+    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
     }
     
 }
 
-extension FavoritesListViewController: UITableViewDelegate, UITableViewDataSource {
+extension RestaurantsListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func setupTableView() {
         tableView.delegate = self
@@ -50,7 +53,7 @@ extension FavoritesListViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell", for: indexPath) as? FavoriteTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "restaurantCell", for: indexPath) as? FavoriteTableViewCell else { return UITableViewCell() }
         let restaurant = RestaurantController.shared.restaurants[indexPath.row]
         cell.restaurant = restaurant
         return cell
