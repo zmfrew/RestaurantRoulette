@@ -71,6 +71,9 @@ class SearchViewController: UIViewController {
             } else if status != .authorizedWhenInUse && status != .authorizedAlways {
                 presentLocationAlert(title: "Your location services are disabled for this application.", message: "Please go to settings and enable location services to better locate restaurants!", enableSettingsLink: true)
             }
+            locationManager.stopUpdatingLocation()
+            currentLatitude = nil
+            currentLongitude = nil
         }
     }
     
