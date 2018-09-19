@@ -50,6 +50,9 @@
                                                                 <color key="tintColor" red="0.45098039220000002" green="0.4431372549" blue="0.45098039220000002" alpha="1" colorSpace="calibratedRGB"/>
                                                             </pickerView>
                                                         </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="53" id="gq4-DA-zsh"/>
+                                                        </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="fff-OM-X80">
                                                         <rect key="frame" x="0.0" y="153" width="311" height="53"/>
@@ -66,6 +69,9 @@
                                                                 <color key="tintColor" red="0.45098039220000002" green="0.4431372549" blue="0.45098039220000002" alpha="1" colorSpace="calibratedRGB"/>
                                                             </pickerView>
                                                         </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="53" id="JRG-cm-m4K"/>
+                                                        </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="zRx-oh-VNz">
                                                         <rect key="frame" x="0.0" y="238" width="311" height="36"/>
@@ -80,6 +86,9 @@
                                                                 <rect key="frame" x="262" y="0.0" width="51" height="36"/>
                                                             </switch>
                                                         </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="36" id="D5L-k4-A8b"/>
+                                                        </constraints>
                                                     </stackView>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Search for food by location" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eXf-fl-rSm">
                                                         <rect key="frame" x="0.0" y="306" width="311" height="36"/>
@@ -100,6 +109,9 @@
                                                                 <rect key="frame" x="262" y="0.0" width="51" height="36"/>
                                                             </switch>
                                                         </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="36" id="oEZ-hB-HzM"/>
+                                                        </constraints>
                                                     </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sxw-26-ctd">
                                                         <rect key="frame" x="0.0" y="442" width="311" height="36"/>
@@ -122,42 +134,53 @@
                                                     <constraint firstItem="fff-OM-X80" firstAttribute="height" secondItem="Kbv-iq-3aM" secondAttribute="height" id="bRt-gl-UeK"/>
                                                 </constraints>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="cWL-o4-MGl">
-                                                <rect key="frame" x="32" y="574" width="311" height="32"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VY3-fQ-fYN">
+                                                <rect key="frame" x="0.0" y="606" width="375" height="32"/>
                                                 <subviews>
-                                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MZY-3g-lNA" userLabel="search">
-                                                        <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="cWL-o4-MGl">
+                                                        <rect key="frame" x="32" y="0.0" width="311" height="32"/>
+                                                        <subviews>
+                                                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MZY-3g-lNA" userLabel="search">
+                                                                <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="32" id="Rjp-1N-ax5"/>
+                                                                </constraints>
+                                                                <state key="normal" backgroundImage="searchGray"/>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pct-Ot-VcU" userLabel="bookmarks">
+                                                                <rect key="frame" x="279" y="0.0" width="32" height="32"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="32" id="Njx-mD-eYQ"/>
+                                                                </constraints>
+                                                                <state key="normal" backgroundImage="bookmarksBlue"/>
+                                                                <connections>
+                                                                    <action selector="bookmarksButtonTapped:" destination="Q1G-nB-Coi" eventType="touchUpInside" id="ZAK-T9-KbQ"/>
+                                                                    <segue destination="qhm-VP-qi3" kind="presentation" identifier="toFavoritesView" id="OoG-Hk-Nsj"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="32" id="Rjp-1N-ax5"/>
+                                                            <constraint firstAttribute="height" constant="32" id="nUB-ed-Q0A"/>
                                                         </constraints>
-                                                        <state key="normal" backgroundImage="searchGray"/>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pct-Ot-VcU" userLabel="bookmarks">
-                                                        <rect key="frame" x="279" y="0.0" width="32" height="32"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="32" id="Njx-mD-eYQ"/>
-                                                        </constraints>
-                                                        <state key="normal" backgroundImage="bookmarksBlue"/>
-                                                        <connections>
-                                                            <action selector="bookmarksButtonTapped:" destination="Q1G-nB-Coi" eventType="touchUpInside" id="ZAK-T9-KbQ"/>
-                                                            <segue destination="qhm-VP-qi3" kind="presentation" identifier="toFavoritesView" id="OoG-Hk-Nsj"/>
-                                                        </connections>
-                                                    </button>
+                                                    </stackView>
                                                 </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="32" id="nUB-ed-Q0A"/>
+                                                    <constraint firstAttribute="height" constant="32" id="QFn-5D-85R"/>
+                                                    <constraint firstItem="cWL-o4-MGl" firstAttribute="leading" secondItem="VY3-fQ-fYN" secondAttribute="leading" constant="32" id="d8Y-eD-R4j"/>
+                                                    <constraint firstAttribute="trailing" secondItem="cWL-o4-MGl" secondAttribute="trailing" constant="32" id="faV-nY-Rco"/>
+                                                    <constraint firstItem="cWL-o4-MGl" firstAttribute="top" secondItem="VY3-fQ-fYN" secondAttribute="top" id="iTY-3m-MNo"/>
                                                 </constraints>
-                                            </stackView>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="VY3-fQ-fYN" firstAttribute="leading" secondItem="ybi-ZT-Uu7" secondAttribute="leading" id="KRL-Ih-Hao"/>
+                                            <constraint firstItem="VY3-fQ-fYN" firstAttribute="top" secondItem="AeM-aa-Aza" secondAttribute="bottom" constant="64" id="LJX-JB-mbA"/>
                                             <constraint firstItem="AeM-aa-Aza" firstAttribute="leading" secondItem="ybi-ZT-Uu7" secondAttribute="leading" constant="32" id="Qfr-Hv-dx9"/>
                                             <constraint firstItem="AeM-aa-Aza" firstAttribute="top" secondItem="ybi-ZT-Uu7" secondAttribute="top" constant="64" id="ZBm-PZ-MbC"/>
-                                            <constraint firstItem="cWL-o4-MGl" firstAttribute="centerX" secondItem="ybi-ZT-Uu7" secondAttribute="centerX" id="cZb-nc-Ont"/>
+                                            <constraint firstAttribute="trailing" secondItem="VY3-fQ-fYN" secondAttribute="trailing" id="dMT-8q-e5t"/>
                                             <constraint firstAttribute="trailing" secondItem="AeM-aa-Aza" secondAttribute="trailing" constant="32" id="dzC-Oy-Lsg"/>
-                                            <constraint firstAttribute="bottom" secondItem="cWL-o4-MGl" secondAttribute="bottom" constant="32" id="hGR-Y8-mr7"/>
-                                            <constraint firstItem="cWL-o4-MGl" firstAttribute="top" secondItem="AeM-aa-Aza" secondAttribute="bottom" constant="32" id="ixz-7m-GGa"/>
-                                            <constraint firstItem="cWL-o4-MGl" firstAttribute="width" secondItem="AeM-aa-Aza" secondAttribute="width" id="mGF-qP-1OF"/>
                                             <constraint firstAttribute="height" constant="638" id="udU-LK-cRa"/>
                                         </constraints>
                                     </view>
