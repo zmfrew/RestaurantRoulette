@@ -1,5 +1,5 @@
 //
-//  RandomRestaurantMapViewController.swift
+//  MapViewController.swift
 //  RestaurantRoulette
 //
 //  Created by Zachary Frew on 9/18/18.
@@ -8,13 +8,14 @@
 
 import UIKit
 import MapKit
-import CDYelpFusionKit
 
-class RandomRestaurantMapViewController: UIViewController {
+class FavoriteMapViewController: UIViewController {
 
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var favoritesButton: UIButton!
     
     // MARK: - Properties
     var restaurant: Restaurant?
@@ -22,23 +23,32 @@ class RandomRestaurantMapViewController: UIViewController {
     // MARK: - LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Perform animation with roulette wheel.
         setupTableView()
         setupMapView()
     }
     
-    // MARK: - Actions
-    @IBAction func unwindToSearchFromMap(unwindSegue: UIStoryboardSegue) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        ButtonAnimationManager.moveButtonsOffScreen(leftButton: searchButton, centerButton: nil, rightButton: favoritesButton)
     }
     
-    @IBAction func unwindToSearchFromMapToBookmarks(unwindSegue: UIStoryboardSegue) {
+    override func viewDidAppear(_ animated: Bool) {
+        ButtonAnimationManager.animateButtonOntoScreen(leftButton: searchButton, centerButton: nil, rightButton: favoritesButton)
+    }
+    
+    // MARK: - Actions
+    @IBAction func searchButtonTapped(_ sender: UIButton) {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    @IBAction func bookmarksButtonTapped(_ sender: UIButton) {
         self.navigationController?.popToRootViewController(animated: true)
     }
     
 }
 
 // MARK: - UITableViewDelegate & UITableViewDataSource Conformance
-extension RandomRestaurantMapViewController: UITableViewDelegate, UITableViewDataSource {
+extension FavoriteMapViewController: UITableViewDelegate, UITableViewDataSource {
     
     func setupTableView() {
         tableView.delegate = self
@@ -51,7 +61,8 @@ extension RandomRestaurantMapViewController: UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "randomMapCell", for: indexPath) as? RestaurantTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteMapCell", for: indexPath) as? RestaurantTableViewCell else { return UITableViewCell() }
+        guard let restaurant = restaurant else { return UITableViewCell() }
         
         cell.restaurant = restaurant
         return cell
@@ -60,7 +71,7 @@ extension RandomRestaurantMapViewController: UITableViewDelegate, UITableViewDat
 }
 
 // MARK: - MKMapViewDelegate Conformance
-extension RandomRestaurantMapViewController: MKMapViewDelegate {
+extension FavoriteMapViewController: MKMapViewDelegate {
     
     func setupMapView() {
         mapView.delegate = self
@@ -76,7 +87,7 @@ extension RandomRestaurantMapViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        guard let annotation = annotation as? Restaurant else { return nil } // FIXME: - Change to CDYelpBusiness
+        guard let annotation = annotation as? Restaurant else { return nil }
         
         let identifier = "marker"
         var view: MKMarkerAnnotationView
@@ -98,7 +109,7 @@ extension RandomRestaurantMapViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        let location = view.annotation as! Restaurant// FIXME: - Change to CDYelpBusiness
+        let location = view.annotation as! Restaurant
         let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
         location.mapItem().openInMaps(launchOptions: launchOptions)
     }
