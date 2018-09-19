@@ -26,7 +26,6 @@ class BusinessTableViewCell: UITableViewCell {
     var business: CDYelpBusiness? {
         didSet {
             DispatchQueue.main.async {
-                self.updateCell()
             }
         }
     }

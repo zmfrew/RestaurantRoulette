@@ -20,20 +20,25 @@ class RestaurantsListViewController: UIViewController {
     var searchTerm: String?
     var price: String?
     var locationRadius: Int?
-    var locationDescription: String?
-    var currentLongitude: Double?
     var currentLatitude: Double?
+    var currentLongitude: Double?
+    var locationDescription: String?
     var openNow: Bool?
     
     // MARK: - LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        DispatchQueue.main.async {
+            self.searchForBusinessesBy(searchTerm: self.searchTerm, location: self.locationDescription, latitude: self.currentLatitude, longitude: self.currentLongitude, locationRadius: self.locationRadius, price: self.price, openNow: self.openNow)
+        }
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        searchForBusinessesBy(searchTerm: searchTerm, location: locationDescription, latitude: currentLatitude, longitude: currentLongitude, locationRadius: locationRadius, price: price, openNow: openNow)
+        
     }
     
     // MARK: - Actions
@@ -51,7 +56,6 @@ class RestaurantsListViewController: UIViewController {
     // MARK: - Methods
     func searchForBusinessesBy(searchTerm: String?, location: String?, latitude: Double?, longitude: Double?, locationRadius: Int?, price: String?, openNow: Bool?) {
         let priceTiers = CDYelpFusionKitManager.shared.setPriceTierForSearch(price)
-        
         
         CDYelpFusionKitManager.shared.apiClient.searchBusinesses(byTerm: searchTerm, location: location, latitude: latitude, longitude: longitude, radius: locationRadius, categories: nil, locale: nil, limit: 50, offset: nil, sortBy: CDYelpBusinessSortType.bestMatch, priceTiers: priceTiers, openNow: openNow, openAt: nil, attributes: nil) { (response) in
             if let response = response, let businesses = response.businesses {
@@ -112,7 +116,7 @@ extension RestaurantsListViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "restaurantCell", for: indexPath) as? BusinessTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "businessCell", for: indexPath) as? BusinessTableViewCell else { return UITableViewCell() }
         
         let business = businesses[indexPath.row]
         cell.business = business
