@@ -872,6 +872,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Location" id="n69-QF-eyp"/>
                     <connections>
+                        <outlet property="mapView" destination="Uj9-MO-ro5" id="ppo-od-pQw"/>
                         <outlet property="tableView" destination="ZTg-3p-gvg" id="vn4-Nk-l1p"/>
                     </connections>
                 </viewController>

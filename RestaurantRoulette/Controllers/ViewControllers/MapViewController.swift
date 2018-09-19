@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import MapKit
 
 class MapViewController: UIViewController {
 
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var mapView: MKMapView!
     
     // MARK: - Properties
     var restaurant: Restaurant?
@@ -20,6 +22,7 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        setupMapView()
     }
     
     // MARK: - Actions
@@ -52,6 +55,52 @@ extension MapViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.restaurant = restaurant
         return cell
+    }
+    
+}
+
+// MARK: - MKMapViewDelegate Conformance
+extension MapViewController: MKMapViewDelegate {
+    
+    func setupMapView() {
+        mapView.delegate = self
+        
+        guard let restaurant = restaurant else { return }
+        
+        let center = CLLocationCoordinate2D(latitude: restaurant.latitude, longitude: restaurant.longitude)
+        let span = MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03)
+        let region = MKCoordinateRegion(center: center, span: span)
+        mapView.setRegion(region, animated: true)
+        
+        mapView.addAnnotation(restaurant)
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard let annotation = annotation as? Restaurant else { return nil }
+        
+        let identifier = "marker"
+        var view: MKMarkerAnnotationView
+        
+        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView {
+            dequeuedView.annotation = annotation
+            view = dequeuedView
+        } else {
+            view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            view.canShowCallout = true
+            view.calloutOffset = CGPoint(x: -5, y: 5)
+            let mapsButton = UIButton(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 30, height: 30)))
+            mapsButton.setBackgroundImage(UIImage(named: "car"), for: UIControlState())
+            mapsButton.setTitle("Driving Directions", for: UIControlState())
+            view.rightCalloutAccessoryView = mapsButton
+        }
+        
+        return view
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        let location = view.annotation as! Restaurant
+        let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
+        location.mapItem().openInMaps(launchOptions: launchOptions)
     }
     
 }
