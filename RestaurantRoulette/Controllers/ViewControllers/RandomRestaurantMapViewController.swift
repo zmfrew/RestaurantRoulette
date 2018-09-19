@@ -17,7 +17,7 @@ class RandomRestaurantMapViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     
     // MARK: - Properties
-    var restaurant: Restaurant?
+    var business: CDYelpBusiness?
     
     // MARK: - LifeCycle Methods
     override func viewDidLoad() {
@@ -51,9 +51,9 @@ extension RandomRestaurantMapViewController: UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "randomMapCell", for: indexPath) as? RestaurantTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "randomMapCell", for: indexPath) as? BusinessTableViewCell else { return UITableViewCell() }
         
-        cell.restaurant = restaurant
+        cell.business = business
         return cell
     }
     
@@ -65,18 +65,25 @@ extension RandomRestaurantMapViewController: MKMapViewDelegate {
     func setupMapView() {
         mapView.delegate = self
         
-        guard let restaurant = restaurant else { return }
+        guard let business = business,
+            let latitude = business.coordinates?.latitude,
+            let longitude = business.coordinates?.longitude
+            else {
+                // FIXME: - Query additional location service to get location and add to model.
+                print("❌No location data found❌")
+                return
+        }
         
-        let center = CLLocationCoordinate2D(latitude: restaurant.latitude, longitude: restaurant.longitude)
+        let center = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         let span = MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03)
         let region = MKCoordinateRegion(center: center, span: span)
         mapView.setRegion(region, animated: true)
         
-        mapView.addAnnotation(restaurant)
+        mapView.addAnnotation(business)
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        guard let annotation = annotation as? Restaurant else { return nil } // FIXME: - Change to CDYelpBusiness
+        guard let annotation = annotation as? CDYelpBusiness else { return nil }
         
         let identifier = "marker"
         var view: MKMarkerAnnotationView
@@ -98,7 +105,7 @@ extension RandomRestaurantMapViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        let location = view.annotation as! Restaurant// FIXME: - Change to CDYelpBusiness
+        let location = view.annotation as! CDYelpBusiness
         let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
         location.mapItem().openInMaps(launchOptions: launchOptions)
     }

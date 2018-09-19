@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import CoreLocation
 
 class SearchViewController: UIViewController {
 
     // MARK: - Outlets
-    @IBOutlet weak var keywordTextField: UITextField!
+    @IBOutlet weak var searchTermTextField: UITextField!
     @IBOutlet weak var pricePickerView: UIPickerView!
     @IBOutlet weak var radiusPickerView: UIPickerView!
     @IBOutlet weak var currentLocationSwitch: UISwitch!
@@ -20,10 +21,18 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var searchButton: UIButton!
     
     // MARK: - Properties
-    var price: String?
-    var locationRadius: Int?
     var prices = ["$", "$$", "$$$", "$$$$", "$$$$$"]
     var radiusLimit = Array(0...24)
+    let locationManager = LocationManager.shared
+    
+    var searchTerm: String?
+    var price: String?
+    var locationRadius: Int?
+    var currentLocation: Bool?
+    var currentLatitude: Double?
+    var currentLongitude: Double?
+    var locationDescription: String?
+    var openNow: Bool?
     
     // MARK: - LifeCycle Methods
     override func viewDidLoad() {
@@ -31,12 +40,35 @@ class SearchViewController: UIViewController {
         setupViews()
     }
     
-    // MARK: - Actions
-    @IBAction func searchButtonTapped(_ sender: UIButton) {
-        // TODO: - Insert network request logic
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.locationManager.requestWhenInUseAuthorization()
     }
     
-    @IBAction func bookmarksButtonTapped(_ sender: UIButton) {
+    // MARK: - Actions
+    @IBAction func currentLocationSwitchDidToggle(_ sender: UISwitch) {
+        if sender.isOn {
+            let status = CLLocationManager.authorizationStatus()
+            if status == .notDetermined {
+                locationManager.requestWhenInUseAuthorization()
+            } else if status != .authorizedWhenInUse && status != .authorizedAlways {
+                presentLocationAlert(title: "Your location services are disabled for this application.", message: "Please go to settings and enable location services to better locate restaurants!")
+            }
+        } else {
+            locationManager.stopUpdatingLocation()
+        }
+    }
+    
+    @IBAction func openNowSwitchDidToggle(_ sender: UISwitch) {
+        openNow = sender.isOn ? true : false
+    }
+    
+    @IBAction func searchButtonTapped(_ sender: UIButton) {
+        if ((currentLongitude == nil || currentLatitude == nil) && locationDescription == nil) {
+            presentLocationAlert(title: "We can't find any restaurants around you!", message: "Please go to settings and enable locations services or enter a location.")
+        } else {
+            resetLocalProperties()
+        }
     }
     
     @IBAction func unwindToSearchFromList(unwindSegue: UIStoryboardSegue) {
@@ -45,10 +77,6 @@ class SearchViewController: UIViewController {
     
     @IBAction func unwindToSearchFromMapToBookmarks(unwindSegue: UIStoryboardSegue) {
         perform(#selector(pushToFavoritesVC), with: nil, afterDelay: 0.0)
-    }
-    
-    @objc func pushToFavoritesVC() {
-        self.performSegue(withIdentifier: "toFavoritesView", sender: self)
     }
     
     // MARK: - Methods
@@ -60,9 +88,9 @@ class SearchViewController: UIViewController {
     }
     
     func setupTextFields() {
-        keywordTextField.layer.borderColor = UIColor(red: 151/255.0, green: 151/255.0, blue: 151/255.0, alpha: 100).cgColor
-        keywordTextField.layer.borderWidth = 0.5
-        keywordTextField.layer.cornerRadius = 8
+        searchTermTextField.layer.borderColor = UIColor(red: 151/255.0, green: 151/255.0, blue: 151/255.0, alpha: 100).cgColor
+        searchTermTextField.layer.borderWidth = 0.5
+        searchTermTextField.layer.cornerRadius = 8
         
         locationTextField.layer.borderColor = UIColor(red: 151/255.0, green: 151/255.0, blue: 151/255.0, alpha: 100).cgColor
         locationTextField.layer.borderWidth = 0.5
@@ -73,9 +101,63 @@ class SearchViewController: UIViewController {
         searchButton.layer.cornerRadius = 8
     }
     
-    // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    @objc func pushToFavoritesVC() {
+        self.performSegue(withIdentifier: "toFavoritesView", sender: self)
+    }
+    
+    func presentLocationAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let enableAction = UIAlertAction(title: "Go to Settings", style: .default) { (_) in
+            if !CLLocationManager.locationServicesEnabled() {
+                if let appSettings = URL(string: UIApplicationOpenSettingsURLString) {
+                    UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
+                }
+            }
+        }
         
+        let dismissAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(enableAction)
+        alert.addAction(dismissAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    private func resetLocalProperties() {
+        searchTerm = nil
+        price = nil
+        locationRadius = nil
+        currentLocation = nil
+        currentLongitude = nil
+        currentLatitude = nil
+        locationDescription = nil
+        openNow = nil
+        searchTermTextField.text = ""
+        locationTextField.text = ""
+    }
+    
+    // MARK: - Navigation
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "toRestaurantList" {
+            if ((currentLongitude == nil || currentLatitude == nil) && locationDescription == nil) {
+                return false
+            }
+            return true
+        } else {
+            return true
+        }
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toRestaurantList" {
+            guard let destinationVC = segue.destination as? RestaurantsListViewController else { return }
+            
+            destinationVC.searchTerm = searchTerm
+            destinationVC.price = price
+            destinationVC.locationRadius = locationRadius
+            destinationVC.locationDescription = locationDescription
+            destinationVC.currentLongitude = currentLongitude
+            destinationVC.currentLatitude = currentLatitude
+            destinationVC.openNow = openNow
+        }
     }
     
 }

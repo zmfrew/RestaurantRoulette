@@ -84,6 +84,9 @@
                                                             </label>
                                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P0b-Tw-U89">
                                                                 <rect key="frame" x="262" y="0.0" width="51" height="36"/>
+                                                                <connections>
+                                                                    <action selector="currentLocationSwitchDidToggle:" destination="Q1G-nB-Coi" eventType="valueChanged" id="XT4-vO-DwE"/>
+                                                                </connections>
                                                             </switch>
                                                         </subviews>
                                                         <constraints>
@@ -107,6 +110,9 @@
                                                             </label>
                                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cIq-Xc-QMA">
                                                                 <rect key="frame" x="262" y="0.0" width="51" height="36"/>
+                                                                <connections>
+                                                                    <action selector="openNowSwitchDidToggle:" destination="Q1G-nB-Coi" eventType="valueChanged" id="gDF-Gg-jJI"/>
+                                                                </connections>
                                                             </switch>
                                                         </subviews>
                                                         <constraints>
@@ -121,7 +127,7 @@
                                                         </state>
                                                         <connections>
                                                             <action selector="searchButtonTapped:" destination="Q1G-nB-Coi" eventType="touchUpInside" id="fFn-ER-TfP"/>
-                                                            <segue destination="Qal-3g-Nmv" kind="presentation" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="3a4-Nv-0M5"/>
+                                                            <segue destination="Qal-3g-Nmv" kind="presentation" identifier="toRestaurantList" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="3a4-Nv-0M5"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -154,7 +160,6 @@
                                                                 </constraints>
                                                                 <state key="normal" backgroundImage="bookmarksBlue"/>
                                                                 <connections>
-                                                                    <action selector="bookmarksButtonTapped:" destination="Q1G-nB-Coi" eventType="touchUpInside" id="ZAK-T9-KbQ"/>
                                                                     <segue destination="qhm-VP-qi3" kind="presentation" identifier="toFavoritesView" id="OoG-Hk-Nsj"/>
                                                                 </connections>
                                                             </button>
@@ -207,12 +212,12 @@
                     <size key="freeformSize" width="375" height="638"/>
                     <connections>
                         <outlet property="currentLocationSwitch" destination="P0b-Tw-U89" id="9WW-bP-0R4"/>
-                        <outlet property="keywordTextField" destination="DXk-EM-q8g" id="YY9-bT-J4V"/>
                         <outlet property="locationTextField" destination="eXf-fl-rSm" id="hq0-qz-Ybf"/>
                         <outlet property="openNowSwitch" destination="cIq-Xc-QMA" id="qNh-Fu-3tw"/>
                         <outlet property="pricePickerView" destination="jq2-RP-wcS" id="fm0-rq-Px8"/>
                         <outlet property="radiusPickerView" destination="Uae-sS-t9W" id="MtQ-r8-h7p"/>
                         <outlet property="searchButton" destination="Sxw-26-ctd" id="uWD-os-FNW"/>
+                        <outlet property="searchTermTextField" destination="DXk-EM-q8g" id="YY9-bT-J4V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZuA-7d-1y0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -271,7 +276,7 @@
                                 <rect key="frame" x="0.0" y="140" width="375" height="576"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="favoriteCell" rowHeight="93" id="vPG-Hp-QZg" customClass="RestaurantTableViewCell" customModule="RestaurantRoulette" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="favoriteCell" rowHeight="93" id="vPG-Hp-QZg" customClass="RestaurantTableViewCell" customModule="RestaurantRoulette" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="93"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vPG-Hp-QZg" id="1rB-cC-kwi">
@@ -696,7 +701,7 @@
                                     <constraint firstAttribute="height" constant="93" id="BCU-gx-nKD"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="favoriteMapCell" rowHeight="93" id="KyF-Uh-7ud" customClass="RestaurantTableViewCell" customModule="RestaurantRoulette" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="favoriteMapCell" rowHeight="93" id="KyF-Uh-7ud" customClass="RestaurantTableViewCell" customModule="RestaurantRoulette" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="93"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KyF-Uh-7ud" id="nsx-gd-01x">
@@ -1023,7 +1028,7 @@
                                 <rect key="frame" x="0.0" y="140" width="375" height="559"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="restaurantCell" rowHeight="93" id="qQl-0h-D1I" customClass="RestaurantTableViewCell" customModule="RestaurantRoulette" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="businessCell" rowHeight="93" id="qQl-0h-D1I" customClass="BusinessTableViewCell" customModule="RestaurantRoulette" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="93"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qQl-0h-D1I" id="aFx-oh-5m5">
@@ -1115,7 +1120,7 @@
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="40" id="clE-cm-oos"/>
                                                                             </constraints>
-                                                                            <state key="normal" backgroundImage="starBlue"/>
+                                                                            <state key="normal" backgroundImage="starGray"/>
                                                                         </button>
                                                                     </subviews>
                                                                     <color key="backgroundColor" red="0.95294117649999999" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -1147,15 +1152,15 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="favoriteCellView" destination="Kgl-dm-EjM" id="ffq-Tq-rN8"/>
-                                            <outlet property="nameLabel" destination="TSC-z6-fcc" id="u9C-2J-S7K"/>
-                                            <outlet property="noRatingAvailableLabel" destination="f4g-qe-t60" id="ukp-7q-Aaz"/>
-                                            <outlet property="ratingStarFive" destination="JW1-PE-dHg" id="KlW-3n-X5M"/>
-                                            <outlet property="ratingStarFour" destination="Xbi-PW-5GI" id="YFQ-Hf-VIE"/>
-                                            <outlet property="ratingStarOne" destination="LGN-YD-mkU" id="Twu-PB-hsN"/>
-                                            <outlet property="ratingStarThree" destination="4AA-Ya-imT" id="Xwa-Kz-6HT"/>
-                                            <outlet property="ratingStarTwo" destination="NOO-aZ-kXe" id="HDw-vZ-vTE"/>
-                                            <outlet property="restaurantImageView" destination="a0M-jt-yuL" id="EJ0-jl-1HH"/>
+                                            <outlet property="businessCellView" destination="Kgl-dm-EjM" id="lGy-jj-QlI"/>
+                                            <outlet property="businessImageView" destination="a0M-jt-yuL" id="7Ds-To-dwo"/>
+                                            <outlet property="nameLabel" destination="TSC-z6-fcc" id="CY7-17-3wA"/>
+                                            <outlet property="noRatingAvailableLabel" destination="Zng-9G-fXS" id="Km0-Ni-Sck"/>
+                                            <outlet property="ratingStarFive" destination="JW1-PE-dHg" id="N7d-4i-Z79"/>
+                                            <outlet property="ratingStarFour" destination="Xbi-PW-5GI" id="tmL-9A-hMD"/>
+                                            <outlet property="ratingStarOne" destination="LGN-YD-mkU" id="EZM-zk-DeG"/>
+                                            <outlet property="ratingStarThree" destination="4AA-Ya-imT" id="P68-rm-USq"/>
+                                            <outlet property="ratingStarTwo" destination="NOO-aZ-kXe" id="FIT-TG-Tus"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1197,7 +1202,7 @@
                                     <constraint firstAttribute="height" constant="93" id="LrM-85-TAz"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="randomMapCell" rowHeight="93" id="e3E-dO-gKO" customClass="RestaurantTableViewCell" customModule="RestaurantRoulette" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="randomMapCell" rowHeight="93" id="e3E-dO-gKO" customClass="BusinessTableViewCell" customModule="RestaurantRoulette" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="93"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="e3E-dO-gKO" id="EHU-SH-nlp">
@@ -1284,11 +1289,12 @@
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qif-UR-QhA">
                                                                     <rect key="frame" x="283" y="0.0" width="60" height="105.33333333333333"/>
                                                                     <subviews>
-                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sJW-OW-Zh2">
+                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sJW-OW-Zh2">
                                                                             <rect key="frame" x="10" y="12.333333333333329" width="40" height="81"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="40" id="iVW-6q-ZdQ"/>
                                                                             </constraints>
+                                                                            <state key="normal" image="starGray"/>
                                                                         </button>
                                                                     </subviews>
                                                                     <color key="backgroundColor" red="0.95294117649999999" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -1412,6 +1418,7 @@
         <image name="searchGray" width="23" height="25"/>
         <image name="share" width="20" height="27"/>
         <image name="starBlue" width="28" height="26"/>
+        <image name="starGray" width="28" height="26"/>
         <image name="starOrange" width="28" height="26"/>
     </resources>
 </document>
