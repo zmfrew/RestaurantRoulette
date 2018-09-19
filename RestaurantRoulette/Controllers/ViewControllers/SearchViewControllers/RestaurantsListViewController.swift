@@ -13,6 +13,9 @@ class RestaurantsListViewController: UIViewController {
 
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var randomButton: UIButton!
+    @IBOutlet weak var favoritesButton: UIButton!
     
     // MARK: - Properties
     var randomBusiness: CDYelpBusiness? // TODO: - Convert from CDYelpBusiness to randomRestaurant
@@ -30,15 +33,21 @@ class RestaurantsListViewController: UIViewController {
         super.viewDidLoad()
         setupTableView()
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        randomButton.isHidden = true
         DispatchQueue.main.async {
             self.searchForBusinessesBy(searchTerm: self.searchTerm, location: self.locationDescription, latitude: self.currentLatitude, longitude: self.currentLongitude, locationRadius: self.locationRadius, price: self.price, openNow: self.openNow)
         }
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        randomButton.isHidden = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        ButtonAnimationManager.moveButtonsOffScreen(leftButton: searchButton, centerButton: randomButton, rightButton: favoritesButton)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        ButtonAnimationManager.animateButtonOntoScreen(leftButton: searchButton, centerButton: randomButton, rightButton: favoritesButton)
     }
     
     // MARK: - Actions

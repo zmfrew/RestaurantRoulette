@@ -15,6 +15,8 @@ class RandomRestaurantMapViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var favoritesButton: UIButton!
     
     // MARK: - Properties
     var business: CDYelpBusiness?
@@ -25,6 +27,15 @@ class RandomRestaurantMapViewController: UIViewController {
         // Perform animation with roulette wheel.
         setupTableView()
         setupMapView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        ButtonAnimationManager.moveButtonsOffScreen(leftButton: searchButton, centerButton: nil, rightButton: favoritesButton)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        ButtonAnimationManager.animateButtonOntoScreen(leftButton: searchButton, centerButton: nil, rightButton: favoritesButton)
     }
     
     // MARK: - Actions

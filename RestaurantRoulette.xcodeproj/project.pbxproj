@@ -16,6 +16,7 @@
 		B61FDAB8214F12EA00B536AD /* MapKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61FDAB7214F12EA00B536AD /* MapKitManager.swift */; };
 		B6733FC52152BC780008F997 /* CDYelpFusionKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6733FC42152BC780008F997 /* CDYelpFusionKitManager.swift */; };
 		B6733FD02152C8940008F997 /* BusinessTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6733FCF2152C8940008F997 /* BusinessTableViewCell.swift */; };
+		B6733FD52152E8530008F997 /* ButtonAnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6733FD42152E8530008F997 /* ButtonAnimationManager.swift */; };
 		B67CD569214F10A1005F755A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67CD568214F10A1005F755A /* AppDelegate.swift */; };
 		B67CD56E214F10A1005F755A /* SearchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B67CD56C214F10A1005F755A /* SearchScreen.storyboard */; };
 		B67CD570214F10A6005F755A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B67CD56F214F10A6005F755A /* Assets.xcassets */; };
@@ -67,6 +68,7 @@
 		B61FDAB7214F12EA00B536AD /* MapKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitManager.swift; sourceTree = "<group>"; };
 		B6733FC42152BC780008F997 /* CDYelpFusionKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDYelpFusionKitManager.swift; sourceTree = "<group>"; };
 		B6733FCF2152C8940008F997 /* BusinessTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessTableViewCell.swift; sourceTree = "<group>"; };
+		B6733FD42152E8530008F997 /* ButtonAnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonAnimationManager.swift; sourceTree = "<group>"; };
 		B67CD565214F10A1005F755A /* RestaurantRoulette.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RestaurantRoulette.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B67CD568214F10A1005F755A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B67CD56D214F10A1005F755A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SearchScreen.storyboard; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 		B61FDAA1214F11EA00B536AD /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				B6733FD32152E8460008F997 /* ButtonAnimationManager */,
 				B6733FC92152C4260008F997 /* CDYelpFusionKitManager */,
 				B61FDAAF214F129400B536AD /* CloudKit */,
 				B61FDAAE214F129200B536AD /* CoreData */,
@@ -177,13 +180,8 @@
 		B61FDAA7214F121B00B536AD /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				B61FDAAB214F123F00B536AD /* SearchViewController.swift */,
-				B6E8A61F215037AE003EB2E8 /* FavoritesListViewController.swift */,
-				B6C934BA21506594003CE920 /* RestaurantsListViewController.swift */,
-				B69F7334215157EA00F8956F /* FavoriteDetailViewController.swift */,
-				B69F733B2151BCB600F8956F /* RouletteAnimationViewController.swift */,
-				B69F733D2151C00400F8956F /* FavoriteMapViewController.swift */,
-				B69F733F2151E0E900F8956F /* RandomRestaurantMapViewController.swift */,
+				B6733FD22152E6210008F997 /* FavoritesViewControllers */,
+				B6733FD12152E6140008F997 /* SearchViewControllers */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -235,6 +233,35 @@
 				B6733FC42152BC780008F997 /* CDYelpFusionKitManager.swift */,
 			);
 			path = CDYelpFusionKitManager;
+			sourceTree = "<group>";
+		};
+		B6733FD12152E6140008F997 /* SearchViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B61FDAAB214F123F00B536AD /* SearchViewController.swift */,
+				B6C934BA21506594003CE920 /* RestaurantsListViewController.swift */,
+				B69F733F2151E0E900F8956F /* RandomRestaurantMapViewController.swift */,
+				B69F733B2151BCB600F8956F /* RouletteAnimationViewController.swift */,
+			);
+			path = SearchViewControllers;
+			sourceTree = "<group>";
+		};
+		B6733FD22152E6210008F997 /* FavoritesViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B6E8A61F215037AE003EB2E8 /* FavoritesListViewController.swift */,
+				B69F7334215157EA00F8956F /* FavoriteDetailViewController.swift */,
+				B69F733D2151C00400F8956F /* FavoriteMapViewController.swift */,
+			);
+			path = FavoritesViewControllers;
+			sourceTree = "<group>";
+		};
+		B6733FD32152E8460008F997 /* ButtonAnimationManager */ = {
+			isa = PBXGroup;
+			children = (
+				B6733FD42152E8530008F997 /* ButtonAnimationManager.swift */,
+			);
+			path = ButtonAnimationManager;
 			sourceTree = "<group>";
 		};
 		B67CD55C214F10A0005F755A = {
@@ -559,6 +586,7 @@
 				B6733FC52152BC780008F997 /* CDYelpFusionKitManager.swift in Sources */,
 				B61FDAB1214F12A500B536AD /* CloudKitManager.swift in Sources */,
 				B69F7338215185E600F8956F /* PhoneNumberFormatter.swift in Sources */,
+				B6733FD52152E8530008F997 /* ButtonAnimationManager.swift in Sources */,
 				B69F73422151E2CE00F8956F /* CDYelpBusiness+MKAnnotation.swift in Sources */,
 				B69F733E2151C00400F8956F /* FavoriteMapViewController.swift in Sources */,
 				B61FDAB8214F12EA00B536AD /* MapKitManager.swift in Sources */,

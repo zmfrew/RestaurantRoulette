@@ -18,7 +18,9 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var currentLocationSwitch: UISwitch!
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var openNowSwitch: UISwitch!
+    @IBOutlet weak var querySearchButton: UIButton!
     @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var favoritesButton: UIButton!
     
     // MARK: - Properties
     var prices = ["$", "$$", "$$$", "$$$$", "$$$$$"]
@@ -46,6 +48,8 @@ class SearchViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         resetLocalProperties()
+        viewDidLayoutSubviews()
+        reloadInputViews()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -74,7 +78,7 @@ class SearchViewController: UIViewController {
         openNow = sender.isOn ? true : false
     }
     
-    @IBAction func searchButtonTapped(_ sender: UIButton) {
+    @IBAction func querySearchButtonTapped(_ sender: UIButton) {
         let status = CLLocationManager.authorizationStatus()
         if ((currentLatitude == nil || currentLongitude == nil) && locationDescription == nil) {
             if status != .authorizedWhenInUse && status != .authorizedAlways {
@@ -115,7 +119,7 @@ class SearchViewController: UIViewController {
     }
     
     func setupSearchButton() {
-        searchButton.layer.cornerRadius = 8
+        querySearchButton.layer.cornerRadius = 8
     }
     
     func checkLocationAndUpdate() {
@@ -125,6 +129,9 @@ class SearchViewController: UIViewController {
             locationManager.requestLocation()
             currentLatitude = locationManager.location?.coordinate.latitude
             currentLongitude = locationManager.location?.coordinate.longitude
+        } else {
+            currentLatitude = nil
+            currentLongitude = nil
         }
     }
     
@@ -160,10 +167,10 @@ class SearchViewController: UIViewController {
         locationDescription = nil
         openNow = nil
         searchTermTextField.text = ""
+        searchTermTextField.placeholder = "Search for food by keyword"
         locationTextField.text = ""
+        locationTextField.placeholder = "Enter your location"
         locationManager.stopUpdatingLocation()
-        currentLocationSwitch.setOn(false, animated: false)
-        openNowSwitch.setOn(false, animated: false)
     }
     
     // MARK: - Navigation
