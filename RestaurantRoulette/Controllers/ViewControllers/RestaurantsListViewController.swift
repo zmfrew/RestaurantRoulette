@@ -22,21 +22,17 @@ class RestaurantsListViewController: UIViewController {
         setupTableView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        selectRandomRestaurant()
+    }
+    
     // MARK: - Actions
     @IBAction func searchButtonTapped(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func randomizeButtonTapped(_ sender: UIButton) {
-        let randomIndex = Int(arc4random_uniform(UInt32(RestaurantController.shared.restaurants.count)))
-        randomRestaurant = RestaurantController.shared.restaurants[randomIndex]
-    }
-    
     @IBAction func unwindToSearchFromList(unwindSegue: UIStoryboardSegue) {
-    }
-    
-    @IBAction func unwindToSearchFromMapToBookmarks(unwindSegue: UIStoryboardSegue) {
-        perform(#selector(dismissToSearchVC), with: nil, afterDelay: 0.0)
     }
     
     @IBAction func unwindToSearchFromMap(unwindSegue: UIStoryboardSegue) {
@@ -48,6 +44,11 @@ class RestaurantsListViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    func selectRandomRestaurant() {
+        let randomIndex = Int(arc4random_uniform(UInt32(RestaurantController.shared.restaurants.count)))
+        randomRestaurant = RestaurantController.shared.restaurants[randomIndex]
+    }
+    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toRandomRestaurantMap" {
@@ -55,6 +56,7 @@ class RestaurantsListViewController: UIViewController {
                 let randomRestaurant = randomRestaurant else { return }
             
             destinationVC.title = randomRestaurant.name
+            destinationVC.navigationController?.navigationBar.prefersLargeTitles = true
             destinationVC.restaurant = randomRestaurant
         }
     }
@@ -75,7 +77,7 @@ extension RestaurantsListViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "restaurantCell", for: indexPath) as? FavoriteTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "restaurantCell", for: indexPath) as? RestaurantTableViewCell else { return UITableViewCell() }
         let restaurant = RestaurantController.shared.restaurants[indexPath.row]
         cell.restaurant = restaurant
         return cell

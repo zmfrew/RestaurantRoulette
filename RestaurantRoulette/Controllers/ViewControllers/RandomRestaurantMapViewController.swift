@@ -28,21 +28,11 @@ class RandomRestaurantMapViewController: UIViewController {
     }
     
     // MARK: - Actions
-    @IBAction func searchButtonTapped(_ sender: UIButton) {
-//        self.navigationController?.popToRootViewController(animated: true)
-    }
-    
-    @IBAction func bookmarksButtonTapped(_ sender: UIButton) {
-//        self.navigationController?.popToRootViewController(animated: true)
-    }
-    
-    @IBAction func unwindToSearchFromMapToBookmarks(unwindSegue: UIStoryboardSegue) {
-    }
-    
     @IBAction func unwindToSearchFromMap(unwindSegue: UIStoryboardSegue) {
     }
     
-    @IBAction func unwindToSearchFromList(unwindSegue: UIStoryboardSegue) {
+    @IBAction func unwindToSearchFromMapToBookmarks(unwindSegue: UIStoryboardSegue) {
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
 }
@@ -61,8 +51,7 @@ extension RandomRestaurantMapViewController: UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "randomMapCell", for: indexPath) as? FavoriteTableViewCell else { return UITableViewCell() }
-        guard let restaurant = restaurant else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "randomMapCell", for: indexPath) as? RestaurantTableViewCell else { return UITableViewCell() }
         
         cell.restaurant = restaurant
         return cell
@@ -87,7 +76,7 @@ extension RandomRestaurantMapViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        guard let annotation = annotation as? CDYelpBusiness else { return nil }
+        guard let annotation = annotation as? Restaurant else { return nil } // FIXME: - Change to CDYelpBusiness
         
         let identifier = "marker"
         var view: MKMarkerAnnotationView
@@ -109,7 +98,7 @@ extension RandomRestaurantMapViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        let location = view.annotation as! CDYelpBusiness
+        let location = view.annotation as! Restaurant// FIXME: - Change to CDYelpBusiness
         let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
         location.mapItem().openInMaps(launchOptions: launchOptions)
     }

@@ -1,5 +1,5 @@
 //
-//  FavoriteTableViewCell.swift
+//  RestaurantTableViewCell.swift
 //  RestaurantRoulette
 //
 //  Created by Zachary Frew on 9/17/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FavoriteTableViewCell: UITableViewCell {
+class RestaurantTableViewCell: UITableViewCell {
 
     // MARK: - Outlets
     @IBOutlet weak var favoriteCellView: UIView!
