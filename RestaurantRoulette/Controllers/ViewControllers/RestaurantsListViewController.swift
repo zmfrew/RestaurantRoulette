@@ -13,6 +13,9 @@ class RestaurantsListViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
     
+    // MARK: - Properties
+    var randomRestaurant: Restaurant?
+    
     // MARK: - LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,17 +28,35 @@ class RestaurantsListViewController: UIViewController {
     }
     
     @IBAction func randomizeButtonTapped(_ sender: UIButton) {
-        
+        let randomIndex = Int(arc4random_uniform(UInt32(RestaurantController.shared.restaurants.count)))
+        randomRestaurant = RestaurantController.shared.restaurants[randomIndex]
     }
     
     @IBAction func unwindToSearchFromList(unwindSegue: UIStoryboardSegue) {
-        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func unwindToSearchFromMapToBookmarks(unwindSegue: UIStoryboardSegue) {
+        perform(#selector(dismissToSearchVC), with: nil, afterDelay: 0.0)
+    }
+    
+    @IBAction func unwindToSearchFromMap(unwindSegue: UIStoryboardSegue) {
+        perform(#selector(dismissToSearchVC), with: nil, afterDelay: 0.0)
     }
     
     // MARK: - Methods
+    @objc func dismissToSearchVC() {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toRandomRestaurantMap" {
+            guard let destinationVC = segue.destination as? RandomRestaurantMapViewController,
+                let randomRestaurant = randomRestaurant else { return }
+            
+            destinationVC.title = randomRestaurant.name
+            destinationVC.restaurant = randomRestaurant
+        }
     }
     
 }

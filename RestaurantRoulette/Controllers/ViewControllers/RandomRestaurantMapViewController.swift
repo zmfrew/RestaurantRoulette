@@ -1,5 +1,5 @@
 //
-//  MapViewController.swift
+//  RandomRestaurantMapViewController.swift
 //  RestaurantRoulette
 //
 //  Created by Zachary Frew on 9/18/18.
@@ -8,8 +8,9 @@
 
 import UIKit
 import MapKit
+import CDYelpFusionKit
 
-class MapViewController: UIViewController {
+class RandomRestaurantMapViewController: UIViewController {
 
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
@@ -21,23 +22,33 @@ class MapViewController: UIViewController {
     // MARK: - LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Perform animation with roulette wheel.
         setupTableView()
         setupMapView()
     }
     
     // MARK: - Actions
     @IBAction func searchButtonTapped(_ sender: UIButton) {
-        self.navigationController?.popToRootViewController(animated: true)
+//        self.navigationController?.popToRootViewController(animated: true)
     }
     
     @IBAction func bookmarksButtonTapped(_ sender: UIButton) {
-        self.navigationController?.popToRootViewController(animated: true)
+//        self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    @IBAction func unwindToSearchFromMapToBookmarks(unwindSegue: UIStoryboardSegue) {
+    }
+    
+    @IBAction func unwindToSearchFromMap(unwindSegue: UIStoryboardSegue) {
+    }
+    
+    @IBAction func unwindToSearchFromList(unwindSegue: UIStoryboardSegue) {
     }
     
 }
 
 // MARK: - UITableViewDelegate & UITableViewDataSource Conformance
-extension MapViewController: UITableViewDelegate, UITableViewDataSource {
+extension RandomRestaurantMapViewController: UITableViewDelegate, UITableViewDataSource {
     
     func setupTableView() {
         tableView.delegate = self
@@ -50,7 +61,7 @@ extension MapViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteMapCell", for: indexPath) as? FavoriteTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "randomMapCell", for: indexPath) as? FavoriteTableViewCell else { return UITableViewCell() }
         guard let restaurant = restaurant else { return UITableViewCell() }
         
         cell.restaurant = restaurant
@@ -60,7 +71,7 @@ extension MapViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 // MARK: - MKMapViewDelegate Conformance
-extension MapViewController: MKMapViewDelegate {
+extension RandomRestaurantMapViewController: MKMapViewDelegate {
     
     func setupMapView() {
         mapView.delegate = self
@@ -76,7 +87,7 @@ extension MapViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        guard let annotation = annotation as? Restaurant else { return nil }
+        guard let annotation = annotation as? CDYelpBusiness else { return nil }
         
         let identifier = "marker"
         var view: MKMarkerAnnotationView
@@ -98,7 +109,7 @@ extension MapViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        let location = view.annotation as! Restaurant
+        let location = view.annotation as! CDYelpBusiness
         let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
         location.mapItem().openInMaps(launchOptions: launchOptions)
     }
