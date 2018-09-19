@@ -28,7 +28,9 @@ class SearchViewController: UIViewController {
     var searchTerm: String?
     var price: String?
     var locationRadius: Int?
-    var currentLocation: Bool?
+    var currentLocation: Bool {
+        return currentLocationSwitch.isOn ? true : false
+    }
     var currentLatitude: Double?
     var currentLongitude: Double?
     var locationDescription: String?
@@ -38,24 +40,33 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        checkLocationAndUpdate()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        resetLocalProperties()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.locationManager.requestWhenInUseAuthorization()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.locationManager.requestWhenInUseAuthorization()
+        }
     }
     
     // MARK: - Actions
     @IBAction func currentLocationSwitchDidToggle(_ sender: UISwitch) {
-        if sender.isOn {
+        if currentLocation {
+            locationManager.startUpdatingLocation()
+            locationManager.requestLocation()
+        } else {
             let status = CLLocationManager.authorizationStatus()
             if status == .notDetermined {
                 locationManager.requestWhenInUseAuthorization()
             } else if status != .authorizedWhenInUse && status != .authorizedAlways {
-                presentLocationAlert(title: "Your location services are disabled for this application.", message: "Please go to settings and enable location services to better locate restaurants!")
+                presentLocationAlert(title: "Your location services are disabled for this application.", message: "Please go to settings and enable location services to better locate restaurants!", enableSettingsLink: true)
             }
-        } else {
-            locationManager.stopUpdatingLocation()
         }
     }
     
@@ -64,10 +75,15 @@ class SearchViewController: UIViewController {
     }
     
     @IBAction func searchButtonTapped(_ sender: UIButton) {
-        if ((currentLongitude == nil || currentLatitude == nil) && locationDescription == nil) {
-            presentLocationAlert(title: "We can't find any restaurants around you!", message: "Please go to settings and enable locations services or enter a location.")
-        } else {
-            resetLocalProperties()
+        let status = CLLocationManager.authorizationStatus()
+        if ((currentLatitude == nil || currentLongitude == nil) && locationDescription == nil) {
+            if status != .authorizedWhenInUse && status != .authorizedAlways {
+                presentLocationAlert(title: "We can't find any restaurants around you!", message: "Please go to settings and enable locations services or enter a location.", enableSettingsLink: true)
+            } else if status == .denied {
+                presentLocationAlert(title: "We can't find any restaurants around you!", message: "Please enter a location.", enableSettingsLink: false)
+            } else {
+                presentLocationAlert(title: "We can't find any restaurants around you!", message: "Please try again.", enableSettingsLink: false)
+            }
         }
     }
     
@@ -84,7 +100,8 @@ class SearchViewController: UIViewController {
         setupTextFields()
         setupPickerViews()
         setupSearchButton()
-        // TODO: - Add code that sets the switches to the correct setting.
+        setupLocationManager()
+        setupTextField()
     }
     
     func setupTextFields() {
@@ -101,22 +118,35 @@ class SearchViewController: UIViewController {
         searchButton.layer.cornerRadius = 8
     }
     
+    func checkLocationAndUpdate() {
+        let status = CLLocationManager.authorizationStatus()
+        if currentLocation && (status == .authorizedWhenInUse || status == .authorizedAlways) {
+            locationManager.startUpdatingLocation()
+            locationManager.requestLocation()
+            currentLatitude = locationManager.location?.coordinate.latitude
+            currentLongitude = locationManager.location?.coordinate.longitude
+        }
+    }
+    
     @objc func pushToFavoritesVC() {
         self.performSegue(withIdentifier: "toFavoritesView", sender: self)
     }
     
-    func presentLocationAlert(title: String, message: String) {
+    func presentLocationAlert(title: String, message: String, enableSettingsLink: Bool) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let enableAction = UIAlertAction(title: "Go to Settings", style: .default) { (_) in
-            if !CLLocationManager.locationServicesEnabled() {
-                if let appSettings = URL(string: UIApplicationOpenSettingsURLString) {
-                    UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
+        
+        if enableSettingsLink {
+            let enableAction = UIAlertAction(title: "Go to Settings", style: .default) { (_) in
+                if !CLLocationManager.locationServicesEnabled() {
+                    if let appSettings = URL(string: UIApplicationOpenSettingsURLString) {
+                        UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
+                    }
                 }
             }
+            alert.addAction(enableAction)
         }
         
         let dismissAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        alert.addAction(enableAction)
         alert.addAction(dismissAction)
         present(alert, animated: true, completion: nil)
     }
@@ -125,19 +155,21 @@ class SearchViewController: UIViewController {
         searchTerm = nil
         price = nil
         locationRadius = nil
-        currentLocation = nil
-        currentLongitude = nil
         currentLatitude = nil
+        currentLongitude = nil
         locationDescription = nil
         openNow = nil
         searchTermTextField.text = ""
         locationTextField.text = ""
+        locationManager.stopUpdatingLocation()
+        currentLocationSwitch.setOn(false, animated: false)
+        openNowSwitch.setOn(false, animated: false)
     }
     
     // MARK: - Navigation
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == "toRestaurantList" {
-            if ((currentLongitude == nil || currentLatitude == nil) && locationDescription == nil) {
+            if ((currentLatitude == nil || currentLongitude == nil) && locationDescription == nil) {
                 return false
             }
             return true
@@ -148,20 +180,70 @@ class SearchViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toRestaurantList" {
-            guard let destinationVC = segue.destination as? RestaurantsListViewController else { return }
+            guard let navigationVC = segue.destination as? UINavigationController,
+                let destinationVC = navigationVC.viewControllers.first as? RestaurantsListViewController
+                else { print("THIS FAILED");return }
+
             
             destinationVC.searchTerm = searchTerm
             destinationVC.price = price
             destinationVC.locationRadius = locationRadius
             destinationVC.locationDescription = locationDescription
-            destinationVC.currentLongitude = currentLongitude
             destinationVC.currentLatitude = currentLatitude
+            destinationVC.currentLongitude = currentLongitude
             destinationVC.openNow = openNow
         }
     }
     
 }
 
+// MARK: - CLLocationManagerDelegate Conformance
+extension SearchViewController: CLLocationManagerDelegate {
+    
+    func setupLocationManager() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.activityType = .other
+        locationManager.distanceFilter = 10
+        locationManager.pausesLocationUpdatesAutomatically = true
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first {
+            currentLatitude = location.coordinate.latitude
+            currentLongitude = location.coordinate.longitude
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("LocationManager failed with error: \(error.localizedDescription).")
+    }
+    
+}
+
+// MARK: - UITextFieldDelegate
+extension SearchViewController: UITextFieldDelegate {
+    
+    func setupTextField() {
+        searchTermTextField.delegate = self
+        locationTextField.delegate = self
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == searchTermTextField {
+            guard let searchTerm = searchTermTextField.text, !searchTerm.isEmpty else { return }
+            self.searchTerm = searchTerm
+        } else if textField == locationTextField {
+            guard let locationDescription = locationTextField.text, !locationDescription.isEmpty else { return }
+            self.locationDescription = locationDescription
+        }
+        self.resignFirstResponder()
+    }
+    
+}
+
+
+// MARK: - UIPickerViewDelegate & UIPickerViewDataSource Conformance
 extension SearchViewController: UIPickerViewDelegate, UIPickerViewDataSource {
    
     func setupPickerViews() {
