@@ -23,6 +23,9 @@ class FavoriteDetailViewController: UIViewController {
     @IBOutlet weak var categoryTwoLabel: UILabel!
     @IBOutlet weak var categoryThreeLabel: UILabel!
     @IBOutlet weak var phoneNumberLabel: UILabel!
+    @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var locationButton: UIButton!
+    @IBOutlet weak var favoritesButton: UIButton!
     
     // MARK: - Properties
     var restaurant: Restaurant? {
@@ -34,8 +37,13 @@ class FavoriteDetailViewController: UIViewController {
     }
     
     // MARK: - LifeCycle Methods
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        ButtonAnimationManager.moveButtonsOffScreen(leftButton: searchButton, centerButton: locationButton, rightButton: favoritesButton)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        ButtonAnimationManager.animateButtonOntoScreen(leftButton: searchButton, centerButton: locationButton, rightButton: favoritesButton)
     }
 
     // MARK: - Actions

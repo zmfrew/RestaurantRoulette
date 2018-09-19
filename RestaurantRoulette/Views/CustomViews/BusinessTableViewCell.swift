@@ -26,6 +26,8 @@ class BusinessTableViewCell: UITableViewCell {
     var business: CDYelpBusiness? {
         didSet {
             DispatchQueue.main.async {
+                self.updateCell()
+                self.updateImage()
             }
         }
     }
@@ -37,13 +39,19 @@ class BusinessTableViewCell: UITableViewCell {
         
         guard let business = business else { return }
         
-        guard let imageURL = business.imageUrl,
+        // FIXME: - Insert a new default image with the App Icon
+        businessImageView.image = UIImage(named: "mockShannons")
+        nameLabel.text = business.name
+        hideStarsIfNecessary(Int(business.rating ?? 0))
+    }
+    
+    private func updateImage() {
+        guard let business = business,
+            let imageURL = business.imageUrl,
             let imageData = try? Data(contentsOf: imageURL)
             else { return }
         
         businessImageView.image = UIImage(data: imageData) ?? UIImage(named: "mockShannons")
-        nameLabel.text = business.name
-        hideStarsIfNecessary(Int(business.rating ?? 0))
     }
     
     private func hideStarsIfNecessary(_ rating: Int) {

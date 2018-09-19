@@ -93,7 +93,7 @@
                                                             <constraint firstAttribute="height" constant="36" id="D5L-k4-A8b"/>
                                                         </constraints>
                                                     </stackView>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eXf-fl-rSm">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your location" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eXf-fl-rSm">
                                                         <rect key="frame" x="0.0" y="306" width="311" height="36"/>
                                                         <color key="textColor" red="0.45098039220000002" green="0.4431372549" blue="0.45098039220000002" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -126,7 +126,7 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="searchButtonTapped:" destination="Q1G-nB-Coi" eventType="touchUpInside" id="fFn-ER-TfP"/>
+                                                            <action selector="querySearchButtonTapped:" destination="Q1G-nB-Coi" eventType="touchUpInside" id="fFn-ER-TfP"/>
                                                             <segue destination="Qal-3g-Nmv" kind="presentation" identifier="toRestaurantList" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="3a4-Nv-0M5"/>
                                                         </connections>
                                                     </button>
@@ -212,11 +212,13 @@
                     <size key="freeformSize" width="375" height="638"/>
                     <connections>
                         <outlet property="currentLocationSwitch" destination="P0b-Tw-U89" id="9WW-bP-0R4"/>
+                        <outlet property="favoritesButton" destination="pct-Ot-VcU" id="IZt-nr-jdI"/>
                         <outlet property="locationTextField" destination="eXf-fl-rSm" id="hq0-qz-Ybf"/>
                         <outlet property="openNowSwitch" destination="cIq-Xc-QMA" id="qNh-Fu-3tw"/>
                         <outlet property="pricePickerView" destination="jq2-RP-wcS" id="fm0-rq-Px8"/>
+                        <outlet property="querySearchButton" destination="Sxw-26-ctd" id="uWD-os-FNW"/>
                         <outlet property="radiusPickerView" destination="Uae-sS-t9W" id="MtQ-r8-h7p"/>
-                        <outlet property="searchButton" destination="Sxw-26-ctd" id="uWD-os-FNW"/>
+                        <outlet property="searchButton" destination="MZY-3g-lNA" id="WYu-LW-kxO"/>
                         <outlet property="searchTermTextField" destination="DXk-EM-q8g" id="YY9-bT-J4V"/>
                     </connections>
                 </viewController>
@@ -429,6 +431,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Favorites" largeTitleDisplayMode="always" id="YEl-aT-dJy"/>
                     <connections>
+                        <outlet property="favoritesButton" destination="Twi-cH-Ilq" id="5A1-c6-dfN"/>
+                        <outlet property="searchButton" destination="i8c-hl-bVt" id="0Yw-Ta-Y94"/>
                         <outlet property="tableView" destination="0BG-Pj-c4Y" id="t1k-8V-jhD"/>
                     </connections>
                 </viewController>
@@ -648,6 +652,8 @@
                         <outlet property="categoryOneLabel" destination="LYO-EC-uZS" id="Vkt-mV-w3c"/>
                         <outlet property="categoryThreeLabel" destination="gmZ-Gq-kk0" id="1EY-bE-fRu"/>
                         <outlet property="categoryTwoLabel" destination="VQG-uA-ONe" id="qdS-HJ-IRa"/>
+                        <outlet property="favoritesButton" destination="HEe-rl-Mn8" id="jDh-ql-CgO"/>
+                        <outlet property="locationButton" destination="ytX-lF-M0h" id="mcb-2z-X7L"/>
                         <outlet property="noCaterogiesAvailableLabel" destination="NP2-HV-Ig2" id="lgH-6a-ruT"/>
                         <outlet property="noRatingAvailableLabel" destination="7Vv-1o-yW7" id="85n-Sg-X2j"/>
                         <outlet property="phoneNumberLabel" destination="HrK-ue-j7O" id="8MZ-v5-EXw"/>
@@ -657,6 +663,7 @@
                         <outlet property="ratingStarThree" destination="fsz-0r-gSe" id="4F1-rl-aUC"/>
                         <outlet property="ratingStarTwo" destination="xSD-M5-PUH" id="ndx-ca-GK2"/>
                         <outlet property="restaurantImageView" destination="wp5-b3-f8o" id="VYe-Ep-IQC"/>
+                        <outlet property="searchButton" destination="yta-Zt-3XW" id="Ajv-mj-PVy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gyW-Ls-pcz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -900,7 +907,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Location" id="n69-QF-eyp"/>
                     <connections>
+                        <outlet property="favoritesButton" destination="zsR-es-bnK" id="J0z-1y-xoB"/>
                         <outlet property="mapView" destination="Uj9-MO-ro5" id="ppo-od-pQw"/>
+                        <outlet property="searchButton" destination="Seu-2T-xXw" id="hBT-Js-2ZD"/>
                         <outlet property="tableView" destination="ZTg-3p-gvg" id="vn4-Nk-l1p"/>
                     </connections>
                 </viewController>
@@ -1180,6 +1189,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Restaurants" largeTitleDisplayMode="always" id="KH8-Id-7OE"/>
                     <connections>
+                        <outlet property="favoritesButton" destination="HvZ-tK-Su8" id="Aic-Tu-l6V"/>
+                        <outlet property="randomButton" destination="bvA-lI-Qm8" id="Ba6-au-YAx"/>
+                        <outlet property="searchButton" destination="sF8-0R-bsV" id="LX8-ZW-NHh"/>
                         <outlet property="tableView" destination="Npc-RX-27W" id="kbY-Jo-Xik"/>
                     </connections>
                 </viewController>
@@ -1398,7 +1410,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="NeA-TG-bqq"/>
                     <connections>
+                        <outlet property="favoritesButton" destination="e03-gf-1YT" id="lme-0c-YfG"/>
                         <outlet property="mapView" destination="0KR-2C-ktX" id="gPN-yH-ubV"/>
+                        <outlet property="searchButton" destination="lRZ-co-KK5" id="Z5j-nm-CIV"/>
                         <outlet property="tableView" destination="qqs-7c-hyC" id="j1v-n4-ilc"/>
                     </connections>
                 </viewController>
