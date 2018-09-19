@@ -248,7 +248,7 @@
                                 <rect key="frame" x="0.0" y="140" width="375" height="576"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="favoriteCell" rowHeight="93" id="vPG-Hp-QZg" customClass="FavoriteTableViewCell" customModule="RestaurantRoulette" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="favoriteCell" rowHeight="93" id="vPG-Hp-QZg" customClass="RestaurantTableViewCell" customModule="RestaurantRoulette" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="93"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vPG-Hp-QZg" id="1rB-cC-kwi">
@@ -673,7 +673,7 @@
                                     <constraint firstAttribute="height" constant="93" id="BCU-gx-nKD"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="favoriteMapCell" rowHeight="93" id="KyF-Uh-7ud" customClass="FavoriteTableViewCell" customModule="RestaurantRoulette" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="favoriteMapCell" rowHeight="93" id="KyF-Uh-7ud" customClass="RestaurantTableViewCell" customModule="RestaurantRoulette" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="93"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KyF-Uh-7ud" id="nsx-gd-01x">
@@ -968,7 +968,6 @@
                                                 </constraints>
                                                 <state key="normal" backgroundImage="randomize"/>
                                                 <connections>
-                                                    <action selector="randomizeButtonTapped:" destination="0eM-gM-emR" eventType="touchUpInside" id="neV-Wn-h1O"/>
                                                     <segue destination="Qi5-H6-4sZ" kind="show" identifier="toRandomRestaurantMap" id="N1r-te-75A"/>
                                                 </connections>
                                             </button>
@@ -1001,7 +1000,7 @@
                                 <rect key="frame" x="0.0" y="140" width="375" height="559"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="restaurantCell" rowHeight="93" id="qQl-0h-D1I" customClass="FavoriteTableViewCell" customModule="RestaurantRoulette" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="restaurantCell" rowHeight="93" id="qQl-0h-D1I" customClass="RestaurantTableViewCell" customModule="RestaurantRoulette" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="93"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qQl-0h-D1I" id="aFx-oh-5m5">
@@ -1168,14 +1167,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="93" estimatedRowHeight="93" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qqs-7c-hyC">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qqs-7c-hyC">
                                 <rect key="frame" x="0.0" y="88" width="375" height="93"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="93" id="LrM-85-TAz"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="randomMapCell" rowHeight="93" id="e3E-dO-gKO" customClass="FavoriteTableViewCell" customModule="RestaurantRoulette" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="randomMapCell" rowHeight="93" id="e3E-dO-gKO" customClass="RestaurantTableViewCell" customModule="RestaurantRoulette" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="93"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="e3E-dO-gKO" id="EHU-SH-nlp">
@@ -1188,7 +1187,7 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="YTD-TB-DGS">
                                                             <rect key="frame" x="8" y="8" width="343" height="105.33333333333333"/>
                                                             <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mockWings" translatesAutoresizingMaskIntoConstraints="NO" id="4n3-5G-ior">
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4n3-5G-ior">
                                                                     <rect key="frame" x="0.0" y="0.0" width="112" height="105.33333333333333"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" secondItem="4n3-5G-ior" secondAttribute="height" multiplier="16:15" id="BVe-qM-KRa"/>
@@ -1198,17 +1197,17 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="rRH-ve-wfP">
                                                                     <rect key="frame" x="128" y="0.0" width="139" height="105.33333333333333"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="LETSPUTINALONGNAMESPECIFICALLYTOTESTHTIS" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFH-ZO-Fz7">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="139" height="84.333333333333329"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFH-ZO-Fz7">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="139" height="0.0"/>
                                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="AB6-Zu-6Gl">
-                                                                            <rect key="frame" x="0.0" y="92.333333333333329" width="139" height="13"/>
+                                                                            <rect key="frame" x="0.0" y="8.3333333333333286" width="139" height="97"/>
                                                                             <subviews>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Rating" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DIy-aQ-S75">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="13"/>
+                                                                                    <rect key="frame" x="0.0" y="40" width="50" height="17"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="886-cX-ymB"/>
                                                                                     </constraints>
@@ -1217,7 +1216,7 @@
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="dwE-Ao-6Ba">
-                                                                                    <rect key="frame" x="58" y="0.0" width="81" height="13"/>
+                                                                                    <rect key="frame" x="58" y="42" width="81" height="13"/>
                                                                                     <subviews>
                                                                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xlq-QL-dHM">
                                                                                             <rect key="frame" x="0.0" y="0.0" width="0.0" height="13"/>
@@ -1267,7 +1266,6 @@
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="40" id="iVW-6q-ZdQ"/>
                                                                             </constraints>
-                                                                            <state key="normal" backgroundImage="starBlue"/>
                                                                         </button>
                                                                     </subviews>
                                                                     <color key="backgroundColor" red="0.95294117649999999" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -1329,7 +1327,6 @@
                                                 </constraints>
                                                 <state key="normal" backgroundImage="searchBlue"/>
                                                 <connections>
-                                                    <action selector="searchButtonTapped:" destination="Qi5-H6-4sZ" eventType="touchUpInside" id="62Z-Ly-qbU"/>
                                                     <segue destination="4YN-4X-E04" kind="unwind" identifier="unwindToSearchFromMap" unwindAction="unwindToSearchFromMapWithUnwindSegue:" id="KpY-nf-SbS"/>
                                                 </connections>
                                             </button>

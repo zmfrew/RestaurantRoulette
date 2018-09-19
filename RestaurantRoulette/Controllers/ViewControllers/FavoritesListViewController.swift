@@ -61,7 +61,7 @@ extension FavoritesListViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell", for: indexPath) as? FavoriteTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell", for: indexPath) as? RestaurantTableViewCell else { return UITableViewCell() }
         let restaurant = RestaurantController.shared.restaurants[indexPath.row]
         cell.restaurant = restaurant
         return cell
