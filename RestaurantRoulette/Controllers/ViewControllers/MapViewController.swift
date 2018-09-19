@@ -88,7 +88,7 @@ extension MapViewController: MKMapViewDelegate {
             view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             view.canShowCallout = true
             view.calloutOffset = CGPoint(x: -5, y: 5)
-            let mapsButton = UIButton(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 30, height: 30)))
+            let mapsButton = UIButton(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 50, height: 50)))
             mapsButton.setBackgroundImage(UIImage(named: "car"), for: UIControlState())
             mapsButton.setTitle("Driving Directions", for: UIControlState())
             view.rightCalloutAccessoryView = mapsButton
