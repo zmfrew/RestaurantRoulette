@@ -120,7 +120,7 @@ class FavoriteDetailViewController: UIViewController {
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "fromFavoriteToMap" {
-            guard let destinationVC = segue.destination as? MapViewController,
+            guard let destinationVC = segue.destination as? FavoriteMapViewController,
                 let restaurant = restaurant else { return }
             
             destinationVC.restaurant = restaurant

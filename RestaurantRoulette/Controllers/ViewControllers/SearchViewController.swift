@@ -43,6 +43,10 @@ class SearchViewController: UIViewController {
         perform(#selector(pushToFavoritesVC), with: nil, afterDelay: 0.0)
     }
     
+    @IBAction func unwindToSearchFromMapToBookmarks(unwindSegue: UIStoryboardSegue) {
+        perform(#selector(pushToFavoritesVC), with: nil, afterDelay: 0.0)
+    }
+    
     @objc func pushToFavoritesVC() {
         self.performSegue(withIdentifier: "toFavoritesView", sender: self)
     }

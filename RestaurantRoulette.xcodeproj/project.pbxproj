@@ -24,7 +24,9 @@
 		B69F7335215157EA00F8956F /* FavoriteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69F7334215157EA00F8956F /* FavoriteDetailViewController.swift */; };
 		B69F7338215185E600F8956F /* PhoneNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69F7337215185E600F8956F /* PhoneNumberFormatter.swift */; };
 		B69F733C2151BCB600F8956F /* RouletteAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69F733B2151BCB600F8956F /* RouletteAnimationViewController.swift */; };
-		B69F733E2151C00400F8956F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69F733D2151C00400F8956F /* MapViewController.swift */; };
+		B69F733E2151C00400F8956F /* FavoriteMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69F733D2151C00400F8956F /* FavoriteMapViewController.swift */; };
+		B69F73402151E0E900F8956F /* RandomRestaurantMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69F733F2151E0E900F8956F /* RandomRestaurantMapViewController.swift */; };
+		B69F73422151E2CE00F8956F /* CDYelpBusiness+MKAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69F73412151E2CE00F8956F /* CDYelpBusiness+MKAnnotation.swift */; };
 		B6C934B521504A8B003CE920 /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C934B421504A8B003CE920 /* RestaurantTableViewCell.swift */; };
 		B6C934B72150551E003CE920 /* MockRestaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C934B62150551E003CE920 /* MockRestaurant.swift */; };
 		B6C934B9215055F9003CE920 /* MockRestaurantController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C934B8215055F9003CE920 /* MockRestaurantController.swift */; };
@@ -78,7 +80,9 @@
 		B69F7334215157EA00F8956F /* FavoriteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDetailViewController.swift; sourceTree = "<group>"; };
 		B69F7337215185E600F8956F /* PhoneNumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberFormatter.swift; sourceTree = "<group>"; };
 		B69F733B2151BCB600F8956F /* RouletteAnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteAnimationViewController.swift; sourceTree = "<group>"; };
-		B69F733D2151C00400F8956F /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		B69F733D2151C00400F8956F /* FavoriteMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMapViewController.swift; sourceTree = "<group>"; };
+		B69F733F2151E0E900F8956F /* RandomRestaurantMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomRestaurantMapViewController.swift; sourceTree = "<group>"; };
+		B69F73412151E2CE00F8956F /* CDYelpBusiness+MKAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDYelpBusiness+MKAnnotation.swift"; sourceTree = "<group>"; };
 		B6C934B421504A8B003CE920 /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
 		B6C934B62150551E003CE920 /* MockRestaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRestaurant.swift; sourceTree = "<group>"; };
 		B6C934B8215055F9003CE920 /* MockRestaurantController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRestaurantController.swift; sourceTree = "<group>"; };
@@ -162,6 +166,7 @@
 			children = (
 				B61FDAA5214F121700B536AD /* Restaurant.swift */,
 				B6C934B62150551E003CE920 /* MockRestaurant.swift */,
+				B69F73412151E2CE00F8956F /* CDYelpBusiness+MKAnnotation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -174,7 +179,8 @@
 				B6C934BA21506594003CE920 /* RestaurantsListViewController.swift */,
 				B69F7334215157EA00F8956F /* FavoriteDetailViewController.swift */,
 				B69F733B2151BCB600F8956F /* RouletteAnimationViewController.swift */,
-				B69F733D2151C00400F8956F /* MapViewController.swift */,
+				B69F733D2151C00400F8956F /* FavoriteMapViewController.swift */,
+				B69F733F2151E0E900F8956F /* RandomRestaurantMapViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -538,10 +544,12 @@
 				B61FDAB6214F12E300B536AD /* CoreLocationManager.swift in Sources */,
 				B61FDAB1214F12A500B536AD /* CloudKitManager.swift in Sources */,
 				B69F7338215185E600F8956F /* PhoneNumberFormatter.swift in Sources */,
-				B69F733E2151C00400F8956F /* MapViewController.swift in Sources */,
+				B69F73422151E2CE00F8956F /* CDYelpBusiness+MKAnnotation.swift in Sources */,
+				B69F733E2151C00400F8956F /* FavoriteMapViewController.swift in Sources */,
 				B61FDAB8214F12EA00B536AD /* MapKitManager.swift in Sources */,
 				B6C934B72150551E003CE920 /* MockRestaurant.swift in Sources */,
 				B6C934B521504A8B003CE920 /* RestaurantTableViewCell.swift in Sources */,
+				B69F73402151E0E900F8956F /* RandomRestaurantMapViewController.swift in Sources */,
 				B69F733C2151BCB600F8956F /* RouletteAnimationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
