@@ -38,11 +38,13 @@ class BusinessTableViewCell: UITableViewCell {
     @IBAction func favoriteButtonTapped(_ sender: UIButton) {
         guard let business = business else { return }
         
-        if let restaurant = restaurant {
-            setFavoriteButtonBackground(restaurant)
+        if RestaurantController.shared.isBusinessAFavorite(business: business) {
+            guard let restaurant = restaurant else { return }
+            RestaurantController.shared.delete(restaurant)
+            setFavoriteButtonBackground()
         } else {
             self.restaurant = RestaurantController.shared.addRestaurantFrom(business: business)
-            setFavoriteButtonBackground(restaurant!)
+            setFavoriteButtonBackground()
         }
     }
     
@@ -57,9 +59,7 @@ class BusinessTableViewCell: UITableViewCell {
         businessImageView.image = UIImage(named: "mockShannons")
         nameLabel.text = business.name
         hideStarsIfNecessary(Int(business.rating ?? 0))
-        if let restaurant = restaurant {
-            setFavoriteButtonBackground(restaurant)            
-        }
+        setFavoriteButtonBackground()
     }
     
     private func updateImage() {
@@ -106,8 +106,8 @@ class BusinessTableViewCell: UITableViewCell {
         }
     }
     
-    func setFavoriteButtonBackground(_ restaurant: Restaurant) {
-        let imageName = restaurant.isFavorite ? "starBlue" : "starGray"
+    func setFavoriteButtonBackground() {
+        let imageName = RestaurantController.shared.isBusinessAFavorite(business: business) ? "starBlue" : "starGray"
         let image = UIImage(named: imageName)
         favoriteStarButton.setBackgroundImage(image, for: UIControlState())
     }

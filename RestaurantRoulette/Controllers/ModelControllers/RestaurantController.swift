@@ -67,4 +67,21 @@ class RestaurantController {
         }
     }
     
+    func isBusinessAFavorite(business: CDYelpBusiness?) -> Bool {
+        guard let business = business else { return false }
+        guard let restaurants = fetchedResultsController.fetchedObjects else { return false }
+        
+        for restaurant in restaurants {
+            if isBusinessARestaurant(business: business, restaurant: restaurant) {
+                return true
+            }
+        }
+        
+        return false
+    }
+    
+    private func isBusinessARestaurant(business: CDYelpBusiness, restaurant: Restaurant) -> Bool {
+        return business.name == restaurant.name && business.rating?.description == restaurant.rating && business.phone == restaurant.phoneNumber
+    }
+    
 }
