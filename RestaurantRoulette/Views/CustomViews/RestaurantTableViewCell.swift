@@ -20,6 +20,7 @@ class RestaurantTableViewCell: UITableViewCell {
     @IBOutlet weak var ratingStarThree: UIImageView!
     @IBOutlet weak var ratingStarFour: UIImageView!
     @IBOutlet weak var ratingStarFive: UIImageView!
+    @IBOutlet weak var favoriteStarButton: UIButton!
     
     // MARK: - Properties
     var restaurant: Restaurant? {
@@ -30,15 +31,31 @@ class RestaurantTableViewCell: UITableViewCell {
         }
     }
     
+    // MARK: - Actions
+    @IBAction func favoriteButtonTapped(_ sender: UIButton) {
+        guard let restaurant = restaurant else { return }
+        RestaurantController.shared.delete(restaurant)
+        self.restaurant = nil
+    }
+    
     // MARK: - Methods
     private func updateCell() {
         favoriteCellView.layer.cornerRadius = 16
         restaurantImageView.layer.cornerRadius = restaurantImageView.layer.frame.height / 2
     
         guard let restaurant = restaurant else { return }
+        guard let imageURLAsString = restaurant.imageURLAsString,
+            let imageURL = URL(string: imageURLAsString),
+            let imageData = try? Data(contentsOf: imageURL)
+            else {
+                print("Error occurred creating images.")
+                return
+        }
+        
         nameLabel.text = restaurant.name
-        restaurantImageView.image = restaurant.image
-        hideStarsIfNecessary(restaurant.rating)
+        restaurantImageView.image = UIImage(data: imageData) ?? UIImage(named: "mockShannons")
+        hideStarsIfNecessary(Int(restaurant.rating?.count ?? 0) + 1)
+        setFavoriteButtonBackground(restaurant)
     }
     
     private func hideStarsIfNecessary(_ rating: Int) {
@@ -74,6 +91,12 @@ class RestaurantTableViewCell: UITableViewCell {
             noRatingAvailableLabel.isHidden = false
             noRatingAvailableLabel.text = "No rating available."
         }
+    }
+    
+    func setFavoriteButtonBackground(_ restaurant: Restaurant) {
+        let imageName = restaurant.isFavorite ? "starBlue" : "starGray"
+        let image = UIImage(named: imageName)
+        favoriteStarButton.setBackgroundImage(image, for: UIControlState())
     }
     
 }

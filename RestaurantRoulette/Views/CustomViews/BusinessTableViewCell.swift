@@ -21,14 +21,42 @@ class BusinessTableViewCell: UITableViewCell {
     @IBOutlet weak var ratingStarThree: UIImageView!
     @IBOutlet weak var ratingStarFour: UIImageView!
     @IBOutlet weak var ratingStarFive: UIImageView!
+    @IBOutlet weak var favoriteStarButton: UIButton!
     
     // MARK: - Properties
+    var restaurant: Restaurant?
     var business: CDYelpBusiness? {
         didSet {
             DispatchQueue.main.async {
                 self.updateCell()
                 self.updateImage()
             }
+        }
+    }
+    var indexPath: IndexPath?
+    
+    // MARK: - Actions
+    @IBAction func favoriteButtonTapped(_ sender: UIButton) {
+        guard let business = business else { return }
+        
+        // If the restaurant exists and the button is tapped, it will delete it from the DataSource and update accordingly.
+        // First, check if the business is in favorites. If it is and we just created it from this cell without navigating from a different view, we can delete it directly. However, if we go to a different view, we must obtain which restaurant corresponds to the cell's business and delete it.
+        if RestaurantController.shared.isBusinessAFavorite(business: business) {
+            guard let restaurant = restaurant else {
+                
+                if let restaurant = RestaurantController.shared.getRestaurantCorrespondingToBusinees(business: business) {
+                    RestaurantController.shared.delete(restaurant)
+                }
+                
+                favoriteStarButton.setBackgroundImage(UIImage(named: "starGray"), for: UIControlState())
+                return
+            }
+            
+            RestaurantController.shared.delete(restaurant)
+            favoriteStarButton.setBackgroundImage(UIImage(named: "starGray"), for: UIControlState())
+        } else {
+            self.restaurant = RestaurantController.shared.addRestaurantFrom(business: business)
+            favoriteStarButton.setBackgroundImage(UIImage(named: "starBlue"), for: UIControlState())
         }
     }
     
@@ -43,6 +71,7 @@ class BusinessTableViewCell: UITableViewCell {
         businessImageView.image = UIImage(named: "mockShannons")
         nameLabel.text = business.name
         hideStarsIfNecessary(Int(business.rating ?? 0))
+        setFavoriteButtonBackground()
     }
     
     private func updateImage() {
@@ -87,6 +116,12 @@ class BusinessTableViewCell: UITableViewCell {
             noRatingAvailableLabel.isHidden = false
             noRatingAvailableLabel.text = "No rating available."
         }
+    }
+    
+    func setFavoriteButtonBackground() {
+        let imageName = RestaurantController.shared.isBusinessAFavorite(business: business) ? "starBlue" : "starGray"
+        let image = UIImage(named: imageName)
+        favoriteStarButton.setBackgroundImage(image, for: UIControlState())
     }
     
 }

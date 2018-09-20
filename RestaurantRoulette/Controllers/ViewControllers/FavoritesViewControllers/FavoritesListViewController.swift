@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class FavoritesListViewController: UIViewController {
 
@@ -14,7 +15,9 @@ class FavoritesListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var favoritesButton: UIButton!
-        
+    @IBOutlet weak var noFavoritesLabelView: UIView!
+    @IBOutlet weak var noFavoritesLabel: UILabel!
+    
     // MARK: - LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +53,7 @@ class FavoritesListViewController: UIViewController {
             guard let destinationVC = segue.destination as? FavoriteDetailViewController,
                 let indexPath = tableView.indexPathForSelectedRow else { return }
             
-            let restaurant = RestaurantController.shared.restaurants[indexPath.row]
+            let restaurant = RestaurantController.shared.fetchedResultsController.object(at: indexPath)
             destinationVC.title = restaurant.name
             destinationVC.restaurant = restaurant
         }
@@ -65,17 +68,58 @@ extension FavoritesListViewController: UITableViewDelegate, UITableViewDataSourc
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
+        RestaurantController.shared.fetchedResultsController.delegate = self
+        // Add this here to ensure the most recent fetchedResultsController exists.
+        RestaurantController.shared.fetchAllRestaurants()
+        checkForFavorites()
+    }
+    
+    func checkForFavorites() {
+        if RestaurantController.shared.fetchedResultsController.fetchedObjects?.count == 0 {
+            noFavoritesLabelView.isHidden = false
+            noFavoritesLabel.isHidden = false
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return RestaurantController.shared.restaurants.count
+        return RestaurantController.shared.fetchedResultsController.fetchedObjects?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell", for: indexPath) as? RestaurantTableViewCell else { return UITableViewCell() }
-        let restaurant = RestaurantController.shared.restaurants[indexPath.row]
+        let restaurant = RestaurantController.shared.fetchedResultsController.object(at: indexPath)
         cell.restaurant = restaurant
         return cell
+    }
+    
+}
+
+// MARK: - NSFetchedResultsControllerDelegate Conformance
+extension FavoritesListViewController: NSFetchedResultsControllerDelegate {
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .delete:
+            guard let indexPath = indexPath else { return }
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        case .insert:
+            guard let newIndexPath = newIndexPath else { return }
+            tableView.insertRows(at: [newIndexPath], with: .automatic)
+        case .move:
+            guard let indexPath = indexPath, let newIndexPath = newIndexPath else { return }
+            tableView.moveRow(at: indexPath, to: newIndexPath)
+        case .update:
+            guard let indexPath = indexPath else { return }
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+        }
     }
     
 }

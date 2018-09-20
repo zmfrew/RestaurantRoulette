@@ -43,6 +43,8 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         checkLocationAndUpdate()
+        // Fetch favorites here to allow for comparing in the RestaurantsList & update the star color if the restaurant is already a favorite.
+        RestaurantController.shared.fetchAllRestaurants()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -165,8 +167,6 @@ class SearchViewController: UIViewController {
         searchTerm = nil
         price = nil
         locationRadius = nil
-        currentLatitude = nil
-        currentLongitude = nil
         locationDescription = nil
         openNow = nil
         searchTermTextField.text = ""
