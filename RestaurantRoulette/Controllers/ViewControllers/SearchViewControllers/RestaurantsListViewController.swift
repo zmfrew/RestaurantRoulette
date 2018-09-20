@@ -66,7 +66,7 @@ class RestaurantsListViewController: UIViewController {
     func searchForBusinessesBy(searchTerm: String?, location: String?, latitude: Double?, longitude: Double?, locationRadius: Int?, price: String?, openNow: Bool?) {
         let priceTiers = CDYelpFusionKitManager.shared.setPriceTierForSearch(price)
         
-        CDYelpFusionKitManager.shared.apiClient.searchBusinesses(byTerm: searchTerm, location: location, latitude: latitude, longitude: longitude, radius: locationRadius, categories: nil, locale: nil, limit: 50, offset: nil, sortBy: CDYelpBusinessSortType.bestMatch, priceTiers: priceTiers, openNow: openNow, openAt: nil, attributes: nil) { (response) in
+        CDYelpFusionKitManager.shared.apiClient.searchBusinesses(byTerm: searchTerm, location: location, latitude: latitude, longitude: longitude, radius: locationRadius, categories: nil, locale: nil, limit: 25, offset: nil, sortBy: CDYelpBusinessSortType.bestMatch, priceTiers: priceTiers, openNow: openNow, openAt: nil, attributes: nil) { (response) in
             if let response = response, let businesses = response.businesses {
                 self.businesses = businesses
                 self.tableView.reloadData()
@@ -128,7 +128,9 @@ extension RestaurantsListViewController: UITableViewDelegate, UITableViewDataSou
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "businessCell", for: indexPath) as? BusinessTableViewCell else { return UITableViewCell() }
         
         let business = businesses[indexPath.row]
+        cell.selectionStyle = .none
         cell.business = business
+        cell.indexPath = indexPath
         return cell
     }
     

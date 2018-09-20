@@ -26,11 +26,11 @@ class RandomRestaurantMapViewController: UIViewController {
         super.viewDidLoad()
         // Perform animation with roulette wheel.
         setupTableView()
-        setupMapView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setupMapView()
         ButtonAnimationManager.moveButtonsOffScreen(leftButton: searchButton, centerButton: nil, rightButton: favoritesButton)
     }
     
@@ -63,7 +63,7 @@ extension RandomRestaurantMapViewController: UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "randomMapCell", for: indexPath) as? BusinessTableViewCell else { return UITableViewCell() }
-        
+        cell.selectionStyle = .none
         cell.business = business
         return cell
     }
@@ -76,21 +76,39 @@ extension RandomRestaurantMapViewController: MKMapViewDelegate {
     func setupMapView() {
         mapView.delegate = self
         
-        guard let business = business,
-            let latitude = business.coordinates?.latitude,
-            let longitude = business.coordinates?.longitude
-            else {
-                // FIXME: - Query additional location service to get location and add to model.
-                print("❌No location data found❌")
-                return
+        guard let business = business else { return }
+        
+        if let latitude = business.coordinates?.latitude,
+            let longitude = business.coordinates?.longitude {
+            
+            let center = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+            let span = MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03)
+            let region = MKCoordinateRegion(center: center, span: span)
+            mapView.setRegion(region, animated: true)
+            
+            mapView.addAnnotation(business)
+        } else {
+            
+            var coordinate: CLLocationCoordinate2D?
+            // FIXME: - Use location retrieved from MapKit to initialize in my favorites object.
+            let request = MKLocalSearchRequest()
+            request.naturalLanguageQuery = business.name
+            request.region = mapView.region
+            let search = MKLocalSearch(request: request)
+            search.start { (response, error) in
+                if let error = error {
+                    print("Error occurred with MKLocalSearch: \(error.localizedDescription).")
+                    return
+                }
+                
+                guard let response = response else { return }
+                // Set the business' coordinate = to this.
+                self.business?.coordinates?.latitude = response.mapItems.first?.placemark.coordinate.latitude
+                self.business?.coordinates?.longitude = response.mapItems.first?.placemark.coordinate.longitude
+            }
+            return
         }
         
-        let center = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        let span = MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03)
-        let region = MKCoordinateRegion(center: center, span: span)
-        mapView.setRegion(region, animated: true)
-        
-        mapView.addAnnotation(business)
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {

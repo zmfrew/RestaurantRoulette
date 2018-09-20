@@ -33,15 +33,27 @@ class BusinessTableViewCell: UITableViewCell {
             }
         }
     }
+    var indexPath: IndexPath?
     
     // MARK: - Actions
     @IBAction func favoriteButtonTapped(_ sender: UIButton) {
         guard let business = business else { return }
         
+        // If the restaurant exists and the button is tapped, it will delete it from the DataSource and update accordingly.
+        // First, check if the business is in favorites. If it is and we just created it from this cell without navigating from a different view, we can delete it directly. However, if we go to a different view, we must obtain which restaurant corresponds to the cell's business and delete it.
         if RestaurantController.shared.isBusinessAFavorite(business: business) {
-            guard let restaurant = restaurant else { return }
+            guard let restaurant = restaurant else {
+                
+                if let restaurant = RestaurantController.shared.getRestaurantCorrespondingToBusinees(business: business) {
+                    RestaurantController.shared.delete(restaurant)
+                }
+                
+                favoriteStarButton.setBackgroundImage(UIImage(named: "starGray"), for: UIControlState())
+                return
+            }
+            
             RestaurantController.shared.delete(restaurant)
-            setFavoriteButtonBackground()
+            favoriteStarButton.setBackgroundImage(UIImage(named: "starGray"), for: UIControlState())
         } else {
             self.restaurant = RestaurantController.shared.addRestaurantFrom(business: business)
             setFavoriteButtonBackground()

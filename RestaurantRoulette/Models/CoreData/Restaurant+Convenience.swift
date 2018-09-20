@@ -16,6 +16,7 @@ extension Restaurant: MKAnnotation {
     
     convenience init(name: String, imageURLAsString: String?, rating: String?, categories: String?, phoneNumber: String?, latitude: Double?, longitude: Double?, isFavorite: Bool = true, timestamp: Date = Date(), context: NSManagedObjectContext = CoreDataStack.context) {
         self.init(context: context)
+        self.title = name
         self.name = name
         self.imageURLAsString = imageURLAsString
         self.rating = rating
