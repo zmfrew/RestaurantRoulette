@@ -423,7 +423,7 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AKe-gR-oOe">
                                 <rect key="frame" x="0.0" y="379" width="375" height="54.333333333333314"/>
                                 <subviews>
-                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You don't have any favorites! Search for restaurants and add them to your favorites." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uxy-Im-ey9">
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You don't have any favorites yet Search for restaurants and add them to your favorites!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uxy-Im-ey9">
                                         <rect key="frame" x="16" y="8" width="343" height="38.333333333333336"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" red="0.45098039220000002" green="0.4431372549" blue="0.45098039220000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -702,27 +702,194 @@
         <!--Roulette Animation View Controller-->
         <scene sceneID="XVA-la-oYO">
             <objects>
-                <viewController id="VNr-Cr-D4j" customClass="RouletteAnimationViewController" customModule="RestaurantRoulette" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RouletteAnimationViewController" id="VNr-Cr-D4j" customClass="RouletteAnimationViewController" customModule="RestaurantRoulette" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cUl-F9-rRh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8et-DG-zC8">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8et-DG-zC8">
                                 <rect key="frame" x="87.666666666666686" y="306" width="200" height="200"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ycp-Vx-DvE">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="zHS-JN-cLZ">
+                                                <rect key="frame" x="0.0" y="0.0" width="66.666666666666671" height="200"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rGP-r4-Qzl">
+                                                        <rect key="frame" x="0.0" y="0.0" width="66.666666666666671" height="66.666666666666671"/>
+                                                        <color key="backgroundColor" red="0.29803921568627451" green="0.85098039215686272" blue="0.39215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <viewLayoutGuide key="safeArea" id="il8-u7-9cQ"/>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zAK-fj-Ajn">
+                                                        <rect key="frame" x="0.0" y="66.666666666666686" width="66.666666666666671" height="66.666666666666686"/>
+                                                        <color key="backgroundColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <viewLayoutGuide key="safeArea" id="YeX-Ht-FTh"/>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OgT-Ba-gMl">
+                                                        <rect key="frame" x="0.0" y="133.33333333333331" width="66.666666666666671" height="66.666666666666686"/>
+                                                        <color key="backgroundColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <viewLayoutGuide key="safeArea" id="Cm1-Vi-f9X"/>
+                                                    </view>
+                                                </subviews>
+                                                <viewLayoutGuide key="safeArea" id="WsM-TF-UbP"/>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="erQ-7J-9sY">
+                                                <rect key="frame" x="66.666666666666657" y="0.0" width="66.666666666666657" height="200"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aOO-Th-XyO">
+                                                        <rect key="frame" x="0.0" y="0.0" width="66.666666666666671" height="66.666666666666671"/>
+                                                        <color key="backgroundColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <viewLayoutGuide key="safeArea" id="K0e-16-9bb"/>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fVd-hS-d4h">
+                                                        <rect key="frame" x="0.0" y="66.666666666666686" width="66.666666666666671" height="66.666666666666686"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <viewLayoutGuide key="safeArea" id="Jd3-6c-i8i"/>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Si-SQ-ACn">
+                                                        <rect key="frame" x="0.0" y="133.33333333333331" width="66.666666666666671" height="66.666666666666686"/>
+                                                        <color key="backgroundColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <viewLayoutGuide key="safeArea" id="S42-gV-KgI"/>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="D7o-SS-JpM">
+                                                <rect key="frame" x="133.33333333333331" y="0.0" width="66.666666666666686" height="200"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mgR-9Q-Oft">
+                                                        <rect key="frame" x="0.0" y="0.0" width="66.666666666666671" height="66.666666666666671"/>
+                                                        <color key="backgroundColor" red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <viewLayoutGuide key="safeArea" id="1QS-ZP-zD2"/>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3D6-OH-GRN">
+                                                        <rect key="frame" x="0.0" y="66.666666666666686" width="66.666666666666671" height="66.666666666666686"/>
+                                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <viewLayoutGuide key="safeArea" id="7yw-aH-xus"/>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ci1-6L-bfW">
+                                                        <rect key="frame" x="0.0" y="133.33333333333331" width="66.666666666666671" height="66.666666666666686"/>
+                                                        <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <viewLayoutGuide key="safeArea" id="voN-hS-Q7f"/>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="ycp-Vx-DvE" firstAttribute="leading" secondItem="8et-DG-zC8" secondAttribute="leading" id="36m-8O-d77"/>
+                                    <constraint firstAttribute="bottom" secondItem="ycp-Vx-DvE" secondAttribute="bottom" id="4iW-s8-A44"/>
                                     <constraint firstAttribute="height" constant="200" id="71X-XC-nOp"/>
+                                    <constraint firstAttribute="trailing" secondItem="ycp-Vx-DvE" secondAttribute="trailing" id="HHr-iM-DdK"/>
+                                    <constraint firstItem="ycp-Vx-DvE" firstAttribute="width" secondItem="8et-DG-zC8" secondAttribute="width" id="J4b-Pa-Bed"/>
+                                    <constraint firstItem="ycp-Vx-DvE" firstAttribute="top" secondItem="8et-DG-zC8" secondAttribute="top" id="LRI-wg-5z5"/>
+                                    <constraint firstItem="ycp-Vx-DvE" firstAttribute="height" secondItem="8et-DG-zC8" secondAttribute="height" id="gzI-rq-KJS"/>
                                     <constraint firstAttribute="width" constant="200" id="jfQ-lB-wVo"/>
                                 </constraints>
                             </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="90" translatesAutoresizingMaskIntoConstraints="NO" id="eTf-pe-g39">
+                                <rect key="frame" x="102" y="230" width="171" height="40"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chicken" translatesAutoresizingMaskIntoConstraints="NO" id="iZZ-jx-EFj">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="PIG-vK-3Fz"/>
+                                            <constraint firstAttribute="height" constant="40" id="oDE-Xh-1mJ"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="donut" translatesAutoresizingMaskIntoConstraints="NO" id="G4J-7p-5pb">
+                                        <rect key="frame" x="131" y="0.0" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="ZmQ-4p-uQf"/>
+                                            <constraint firstAttribute="width" constant="40" id="oqG-ax-fUR"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="90" translatesAutoresizingMaskIntoConstraints="NO" id="bB4-qe-iMj">
+                                <rect key="frame" x="24" y="306" width="40" height="200"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="burger" translatesAutoresizingMaskIntoConstraints="NO" id="aVt-R2-Rhd">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="PDt-kY-Qoe"/>
+                                            <constraint firstAttribute="height" constant="40" id="pUQ-uO-scy"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="taco" translatesAutoresizingMaskIntoConstraints="NO" id="GEc-49-TUz">
+                                        <rect key="frame" x="0.0" y="160" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="84Q-Wj-e3Y"/>
+                                            <constraint firstAttribute="width" constant="40" id="CQS-6U-lde"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="90" translatesAutoresizingMaskIntoConstraints="NO" id="t6q-zE-oiE">
+                                <rect key="frame" x="102" y="542" width="171" height="40"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sandwich" translatesAutoresizingMaskIntoConstraints="NO" id="igg-43-nh6">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="Ekv-fA-T2I"/>
+                                            <constraint firstAttribute="height" constant="40" id="v3p-MW-pHI"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pizza" translatesAutoresizingMaskIntoConstraints="NO" id="bGt-YX-bW5">
+                                        <rect key="frame" x="131" y="0.0" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="PRH-wm-6Ib"/>
+                                            <constraint firstAttribute="width" constant="40" id="lqg-BD-7qi"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="90" translatesAutoresizingMaskIntoConstraints="NO" id="73S-xY-mRf">
+                                <rect key="frame" x="311" y="306" width="40" height="200"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fries" translatesAutoresizingMaskIntoConstraints="NO" id="ZNU-lV-Ok7">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="5Dr-qS-tjb"/>
+                                            <constraint firstAttribute="height" constant="40" id="sjS-Mm-gCg"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hotdog" translatesAutoresizingMaskIntoConstraints="NO" id="Kr2-hW-QhP">
+                                        <rect key="frame" x="0.0" y="160" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="BY8-mh-pGO"/>
+                                            <constraint firstAttribute="width" constant="40" id="Jh2-QV-aBd"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="bB4-qe-iMj" firstAttribute="leading" secondItem="Tti-LG-l5B" secondAttribute="leading" constant="24" id="01a-9r-Ugq"/>
                             <constraint firstItem="8et-DG-zC8" firstAttribute="centerX" secondItem="cUl-F9-rRh" secondAttribute="centerX" id="1QT-y7-HPg"/>
                             <constraint firstItem="8et-DG-zC8" firstAttribute="centerY" secondItem="cUl-F9-rRh" secondAttribute="centerY" id="1Vb-U2-efO"/>
+                            <constraint firstItem="t6q-zE-oiE" firstAttribute="leading" secondItem="Tti-LG-l5B" secondAttribute="leading" constant="102" id="8h7-8P-ze8"/>
+                            <constraint firstItem="eTf-pe-g39" firstAttribute="centerX" secondItem="cUl-F9-rRh" secondAttribute="centerX" id="CQ9-8o-ptz"/>
+                            <constraint firstItem="bB4-qe-iMj" firstAttribute="height" secondItem="8et-DG-zC8" secondAttribute="height" id="Hmo-5A-JVR"/>
+                            <constraint firstItem="eTf-pe-g39" firstAttribute="leading" secondItem="Tti-LG-l5B" secondAttribute="leading" constant="102" id="O1k-bg-Ih2"/>
+                            <constraint firstItem="bB4-qe-iMj" firstAttribute="centerY" secondItem="cUl-F9-rRh" secondAttribute="centerY" id="aT8-aj-kGy"/>
+                            <constraint firstItem="t6q-zE-oiE" firstAttribute="top" secondItem="8et-DG-zC8" secondAttribute="bottom" constant="36" id="b5R-qp-UIr"/>
+                            <constraint firstItem="Tti-LG-l5B" firstAttribute="trailing" secondItem="t6q-zE-oiE" secondAttribute="trailing" constant="102" id="ebc-w3-8Iq"/>
+                            <constraint firstItem="73S-xY-mRf" firstAttribute="centerY" secondItem="cUl-F9-rRh" secondAttribute="centerY" id="g3B-6J-qye"/>
+                            <constraint firstItem="Tti-LG-l5B" firstAttribute="trailing" secondItem="eTf-pe-g39" secondAttribute="trailing" constant="102" id="lAC-Xz-X4q"/>
+                            <constraint firstItem="t6q-zE-oiE" firstAttribute="centerX" secondItem="cUl-F9-rRh" secondAttribute="centerX" id="ldg-5W-XON"/>
+                            <constraint firstItem="73S-xY-mRf" firstAttribute="height" secondItem="8et-DG-zC8" secondAttribute="height" id="nWq-Cb-HFI"/>
+                            <constraint firstItem="8et-DG-zC8" firstAttribute="top" secondItem="eTf-pe-g39" secondAttribute="bottom" constant="36" id="opg-W2-yt2"/>
+                            <constraint firstItem="Tti-LG-l5B" firstAttribute="trailing" secondItem="73S-xY-mRf" secondAttribute="trailing" constant="24" id="yYZ-uX-oD7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Tti-LG-l5B"/>
                     </view>
+                    <connections>
+                        <outlet property="rouletteCircle" destination="8et-DG-zC8" id="CI0-OQ-OTf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EqD-dk-WRh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1468,13 +1635,21 @@
     <resources>
         <image name="bookmarksBlue" width="28" height="24"/>
         <image name="bookmarksGray" width="28" height="24"/>
+        <image name="burger" width="595" height="595"/>
+        <image name="chicken" width="599" height="599"/>
+        <image name="donut" width="563" height="563"/>
+        <image name="fries" width="614" height="614"/>
+        <image name="hotdog" width="576" height="576"/>
         <image name="locationPinColor" width="578" height="578"/>
+        <image name="pizza" width="560" height="560"/>
         <image name="randomize" width="60" height="60"/>
+        <image name="sandwich" width="587" height="587"/>
         <image name="searchBlue" width="23" height="25"/>
         <image name="searchGray" width="23" height="25"/>
         <image name="share" width="20" height="27"/>
         <image name="starBlue" width="28" height="26"/>
         <image name="starGray" width="28" height="26"/>
         <image name="starOrange" width="28" height="26"/>
+        <image name="taco" width="604" height="604"/>
     </resources>
 </document>
