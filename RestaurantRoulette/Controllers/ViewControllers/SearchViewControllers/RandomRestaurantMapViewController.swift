@@ -89,8 +89,6 @@ extension RandomRestaurantMapViewController: MKMapViewDelegate {
             mapView.addAnnotation(business)
         } else {
             
-            var coordinate: CLLocationCoordinate2D?
-            // FIXME: - Use location retrieved from MapKit to initialize in my favorites object.
             let request = MKLocalSearchRequest()
             request.naturalLanguageQuery = business.name
             request.region = mapView.region
