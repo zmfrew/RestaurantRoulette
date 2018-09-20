@@ -22,7 +22,7 @@ class RestaurantTableViewCell: UITableViewCell {
     @IBOutlet weak var ratingStarFive: UIImageView!
     
     // MARK: - Properties
-    var restaurant: MockRestaurant? {
+    var restaurant: Restaurant? {
         didSet {
             DispatchQueue.main.async {
                 self.updateCell()
@@ -36,9 +36,17 @@ class RestaurantTableViewCell: UITableViewCell {
         restaurantImageView.layer.cornerRadius = restaurantImageView.layer.frame.height / 2
     
         guard let restaurant = restaurant else { return }
+        guard let imageURLAsString = restaurant.imageURLAsString,
+            let imageURL = URL(string: imageURLAsString),
+            let imageData = try? Data(contentsOf: imageURL)
+            else {
+                print("Error occurred creating images.")
+                return
+        }
+        
         nameLabel.text = restaurant.name
-        restaurantImageView.image = restaurant.image
-        hideStarsIfNecessary(restaurant.rating)
+        restaurantImageView.image = UIImage(data: imageData) ?? UIImage(named: "mockShannons")
+        hideStarsIfNecessary(restaurant.rating?.count ?? 0)
     }
     
     private func hideStarsIfNecessary(_ rating: Int) {

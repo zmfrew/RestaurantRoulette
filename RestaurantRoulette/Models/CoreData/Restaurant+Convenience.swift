@@ -8,10 +8,11 @@
 
 import MapKit
 import CoreData
+import Contacts
 import Foundation
 
 // Extension to initialize  CoreData properties.
-extension Restaurant {
+extension Restaurant: MKAnnotation {
     
     convenience init(name: String, imageURLAsString: String?, rating: String?, categories: String?, phoneNumber: String?, latitude: Double?, longitude: Double?, isFavorite: Bool = true, timestamp: Date = Date(), context: NSManagedObjectContext = CoreDataStack.context) {
         self.init(context: context)
@@ -29,6 +30,20 @@ extension Restaurant {
         self.longitude = longitude
         self.isFavorite = isFavorite
         self.timestamp = timestamp
+    }
+    
+    // Property must be public to satisfy MKAnnotation protocol
+    public var coordinate: CLLocationCoordinate2D {
+        return CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
+    }
+    
+    // MARK: - Methods
+    func mapItem() -> MKMapItem {
+        let addressDict = [CNPostalAddressStreetKey: self.name]
+        let placemark = MKPlacemark(coordinate: coordinate, addressDictionary: addressDict)
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.name = self.name
+        return mapItem
     }
     
 }

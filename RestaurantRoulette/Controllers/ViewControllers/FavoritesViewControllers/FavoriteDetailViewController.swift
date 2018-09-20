@@ -28,7 +28,7 @@ class FavoriteDetailViewController: UIViewController {
     @IBOutlet weak var favoritesButton: UIButton!
     
     // MARK: - Properties
-    var restaurant: MockRestaurant? {
+    var restaurant: Restaurant? {
         didSet {
             DispatchQueue.main.async {
                 self.updateViews()
@@ -58,11 +58,21 @@ class FavoriteDetailViewController: UIViewController {
     // MARK: - Methods
     private func updateViews() {
         guard let restaurant = restaurant else { return }
+        guard let imageURLAsString = restaurant.imageURLAsString,
+            let imageURL = URL(string: imageURLAsString),
+            let imageData = try? Data(contentsOf: imageURL)
+            else {
+                print("Error occurred creating images.")
+                return
+            }
+        // FIXME: - Update default image to show in favorites.
+        restaurantImageView.image = UIImage(data: imageData) ?? UIImage(named: "mockShannons")
         
-        restaurantImageView.image = restaurant.image
         restaurantImageView.layer.cornerRadius = restaurantImageView.layer.frame.height / 2
-        hideStarsIfNecessary(restaurant.rating)
-        updateCategoryLabels(restaurant.categories)
+        hideStarsIfNecessary(restaurant.rating?.count ?? 0)
+        
+        let categoryLabels = restaurant.categories?.components(separatedBy: " ") ?? ["No categories available."]
+        updateCategoryLabels(categoryLabels)
         phoneNumberLabel.text = PhoneNumberFormatter.formatPhoneNumber(restaurant.phoneNumber)
     }
     
