@@ -20,6 +20,7 @@ class RestaurantTableViewCell: UITableViewCell {
     @IBOutlet weak var ratingStarThree: UIImageView!
     @IBOutlet weak var ratingStarFour: UIImageView!
     @IBOutlet weak var ratingStarFive: UIImageView!
+    @IBOutlet weak var favoriteStarButton: UIButton!
     
     // MARK: - Properties
     var restaurant: Restaurant? {
@@ -28,6 +29,13 @@ class RestaurantTableViewCell: UITableViewCell {
                 self.updateCell()
             }
         }
+    }
+    
+    // MARK: - Actions
+    @IBAction func favoriteButtonTapped(_ sender: UIButton) {
+        guard let restaurant = restaurant else { return }
+        RestaurantController.shared.delete(restaurant)
+        self.restaurant = nil
     }
     
     // MARK: - Methods
@@ -82,6 +90,12 @@ class RestaurantTableViewCell: UITableViewCell {
             noRatingAvailableLabel.isHidden = false
             noRatingAvailableLabel.text = "No rating available."
         }
+    }
+    
+    func setFavoriteButtonBackground(_ restaurant: Restaurant) {
+        let imageName = restaurant.isFavorite ? "starBlue" : "starGray"
+        let image = UIImage(named: imageName)
+        favoriteStarButton.setBackgroundImage(image, for: UIControlState())
     }
     
 }

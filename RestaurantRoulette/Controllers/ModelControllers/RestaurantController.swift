@@ -8,6 +8,7 @@
 
 import CoreData
 import Foundation
+import CDYelpFusionKit
 
 class RestaurantController {
     
@@ -26,6 +27,25 @@ class RestaurantController {
         _ = Restaurant(name: name, imageURLAsString: imageURLAsString, rating: rating, categories: categories, phoneNumber: phoneNumber, latitude: latitude, longitude: longitude)
         // Do not need to create then convert to CKRecord to save to CoreData & CloudKit. Only need to create as a CKRecord, and CoreData will save it automatically.
         CoreDataManager.save()
+    }
+    
+    func addRestaurantFrom(business: CDYelpBusiness) -> Restaurant? {
+        guard let name = business.name else { return nil }
+        
+        guard let imageURLAsString = business.imageUrl?.absoluteString,
+            let rating = business.rating?.description,
+            let yelpCategories = business.categories,
+            let phoneNumber = business.phone,
+            let latitude = business.coordinates?.latitude,
+            let longitude = business.coordinates?.longitude
+            else { return nil }
+        
+        let categories = yelpCategories.map { "\($0.title ?? "")" }.joined(separator: " ")
+        
+        let restaurant = Restaurant(name: name, imageURLAsString: imageURLAsString, rating: rating, categories: categories, phoneNumber: phoneNumber, latitude: latitude, longitude: longitude)
+        CoreDataManager.save()
+        
+        return restaurant
     }
     
     func delete(_ restaurant: Restaurant) {

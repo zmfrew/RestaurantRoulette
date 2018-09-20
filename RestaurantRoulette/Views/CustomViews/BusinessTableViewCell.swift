@@ -21,14 +21,28 @@ class BusinessTableViewCell: UITableViewCell {
     @IBOutlet weak var ratingStarThree: UIImageView!
     @IBOutlet weak var ratingStarFour: UIImageView!
     @IBOutlet weak var ratingStarFive: UIImageView!
+    @IBOutlet weak var favoriteStarButton: UIButton!
     
     // MARK: - Properties
+    var restaurant: Restaurant?
     var business: CDYelpBusiness? {
         didSet {
             DispatchQueue.main.async {
                 self.updateCell()
                 self.updateImage()
             }
+        }
+    }
+    
+    // MARK: - Actions
+    @IBAction func favoriteButtonTapped(_ sender: UIButton) {
+        guard let business = business else { return }
+        
+        if let restaurant = restaurant {
+            setFavoriteButtonBackground(restaurant)
+        } else {
+            self.restaurant = RestaurantController.shared.addRestaurantFrom(business: business)
+            setFavoriteButtonBackground(restaurant!)
         }
     }
     
@@ -43,6 +57,9 @@ class BusinessTableViewCell: UITableViewCell {
         businessImageView.image = UIImage(named: "mockShannons")
         nameLabel.text = business.name
         hideStarsIfNecessary(Int(business.rating ?? 0))
+        if let restaurant = restaurant {
+            setFavoriteButtonBackground(restaurant)            
+        }
     }
     
     private func updateImage() {
@@ -87,6 +104,12 @@ class BusinessTableViewCell: UITableViewCell {
             noRatingAvailableLabel.isHidden = false
             noRatingAvailableLabel.text = "No rating available."
         }
+    }
+    
+    func setFavoriteButtonBackground(_ restaurant: Restaurant) {
+        let imageName = restaurant.isFavorite ? "starBlue" : "starGray"
+        let image = UIImage(named: imageName)
+        favoriteStarButton.setBackgroundImage(image, for: UIControlState())
     }
     
 }

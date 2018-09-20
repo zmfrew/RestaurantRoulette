@@ -15,7 +15,9 @@ class FavoritesListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var favoritesButton: UIButton!
-        
+    @IBOutlet weak var noFavoritesLabelView: UIView!
+    @IBOutlet weak var noFavoritesLabel: UILabel!
+    
     // MARK: - LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +69,14 @@ extension FavoritesListViewController: UITableViewDelegate, UITableViewDataSourc
         tableView.dataSource = self
         tableView.separatorStyle = .none
         RestaurantController.shared.fetchedResultsController.delegate = self
-        RestaurantController.shared.fetchAllRestaurants()
+        checkForFavorites()
+    }
+    
+    func checkForFavorites() {
+        if RestaurantController.shared.fetchedResultsController.fetchedObjects?.count == 0 {
+            noFavoritesLabelView.isHidden = false
+            noFavoritesLabel.isHidden = false
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
