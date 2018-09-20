@@ -21,7 +21,7 @@ class RouletteAnimationViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        rotateAnimation(view: rouletteCircle)
+//        rotateAnimation(view: rouletteCircle)
     }
     
     // MARK: - Methods
