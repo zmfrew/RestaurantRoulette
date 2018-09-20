@@ -83,6 +83,19 @@ extension FavoritesListViewController: UITableViewDelegate, UITableViewDataSourc
     
 }
 
+// MARK: - BusinessTableViewCellDelegate Conformance
+extension FavoritesListViewController: BusinessTableViewCellDelegate {
+    
+    func cellButtonTapped(_ cell: UITableViewCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        
+        let restaurant = RestaurantController.shared.fetchedResultsController.object(at: indexPath)
+        RestaurantController.shared.delete(restaurant)
+        tableView.reloadData()
+    }
+    
+}
+
 // MARK: - NSFetchedResultsControllerDelegate Conformance
 extension FavoritesListViewController: NSFetchedResultsControllerDelegate {
     

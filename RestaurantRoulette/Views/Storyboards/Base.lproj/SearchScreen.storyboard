@@ -1163,6 +1163,7 @@
                                         <connections>
                                             <outlet property="businessCellView" destination="Kgl-dm-EjM" id="lGy-jj-QlI"/>
                                             <outlet property="businessImageView" destination="a0M-jt-yuL" id="7Ds-To-dwo"/>
+                                            <outlet property="favoriteStarButton" destination="8L7-0L-TgV" id="eTd-eU-fW4"/>
                                             <outlet property="nameLabel" destination="TSC-z6-fcc" id="CY7-17-3wA"/>
                                             <outlet property="noRatingAvailableLabel" destination="Zng-9G-fXS" id="Km0-Ni-Sck"/>
                                             <outlet property="ratingStarFive" destination="JW1-PE-dHg" id="N7d-4i-Z79"/>

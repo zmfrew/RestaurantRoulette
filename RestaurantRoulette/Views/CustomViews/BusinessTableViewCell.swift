@@ -9,6 +9,10 @@
 import UIKit
 import CDYelpFusionKit
 
+protocol BusinessTableViewCellDelegate: class {
+    func cellButtonTapped(_ cell: UITableViewCell)
+}
+
 class BusinessTableViewCell: UITableViewCell {
     
     // MARK: - Outlets
@@ -21,8 +25,11 @@ class BusinessTableViewCell: UITableViewCell {
     @IBOutlet weak var ratingStarThree: UIImageView!
     @IBOutlet weak var ratingStarFour: UIImageView!
     @IBOutlet weak var ratingStarFive: UIImageView!
+    @IBOutlet weak var favoriteStarButton: UIButton!
     
     // MARK: - Properties
+    weak var delegate: BusinessTableViewCellDelegate?
+    var restaurant: Restaurant?
     var business: CDYelpBusiness? {
         didSet {
             DispatchQueue.main.async {
@@ -43,6 +50,9 @@ class BusinessTableViewCell: UITableViewCell {
         businessImageView.image = UIImage(named: "mockShannons")
         nameLabel.text = business.name
         hideStarsIfNecessary(Int(business.rating ?? 0))
+        if let restaurant = restaurant {
+            setFavoriteButtonBackground(restaurant)            
+        }
     }
     
     private func updateImage() {
@@ -87,6 +97,12 @@ class BusinessTableViewCell: UITableViewCell {
             noRatingAvailableLabel.isHidden = false
             noRatingAvailableLabel.text = "No rating available."
         }
+    }
+    
+    func setFavoriteButtonBackground(_ restaurant: Restaurant) {
+        let imageName = restaurant.isFavorite ? "starBlue" : "starGray"
+        let image = UIImage(named: imageName)
+        favoriteStarButton.setBackgroundImage(image, for: UIControlState())
     }
     
 }
