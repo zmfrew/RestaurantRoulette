@@ -9,10 +9,6 @@
 import UIKit
 import CDYelpFusionKit
 
-protocol BusinessTableViewCellDelegate: class {
-    func cellButtonTapped(_ cell: UITableViewCell)
-}
-
 class BusinessTableViewCell: UITableViewCell {
     
     // MARK: - Outlets
@@ -28,7 +24,6 @@ class BusinessTableViewCell: UITableViewCell {
     @IBOutlet weak var favoriteStarButton: UIButton!
     
     // MARK: - Properties
-    weak var delegate: BusinessTableViewCellDelegate?
     var restaurant: Restaurant?
     var business: CDYelpBusiness? {
         didSet {
@@ -36,6 +31,18 @@ class BusinessTableViewCell: UITableViewCell {
                 self.updateCell()
                 self.updateImage()
             }
+        }
+    }
+    
+    // MARK: - Actions
+    @IBAction func favoriteButtonTapped(_ sender: UIButton) {
+        guard let business = business else { return }
+        
+        if let restaurant = restaurant {
+            setFavoriteButtonBackground(restaurant)
+        } else {
+            self.restaurant = RestaurantController.shared.addRestaurantFrom(business: business)
+            setFavoriteButtonBackground(restaurant!)
         }
     }
     

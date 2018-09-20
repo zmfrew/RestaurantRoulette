@@ -133,18 +133,3 @@ extension RestaurantsListViewController: UITableViewDelegate, UITableViewDataSou
     }
     
 }
-
-// MARK: - BusinessTableViewCellDelegate Conformance
-extension RestaurantsListViewController: BusinessTableViewCellDelegate {
-    
-    func cellButtonTapped(_ cell: UITableViewCell) {
-        guard let cell = cell as? BusinessTableViewCell else { return }
-        guard let indexPath = tableView.indexPath(for: cell) else { return }
-        guard let business = cell.business else { return }
-        let categories = business.categories.map { "\($0)" }
-        
-        RestaurantController.shared.addRestaurant(name: business.name ?? "Restaurant", imageURLAsString: business.imageUrl?.absoluteString, rating: business.rating?.description, categories: categories, phoneNumber: business.phone, latitude: business.coordinate.latitude, longitude: business.coordinate.longitude)
-        tableView.reloadData()
-    }
-    
-}
