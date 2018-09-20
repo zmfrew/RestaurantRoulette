@@ -22,7 +22,7 @@ class RestaurantTableViewCell: UITableViewCell {
     @IBOutlet weak var ratingStarFive: UIImageView!
     
     // MARK: - Properties
-    var restaurant: Restaurant? {
+    var restaurant: MockRestaurant? {
         didSet {
             DispatchQueue.main.async {
                 self.updateCell()

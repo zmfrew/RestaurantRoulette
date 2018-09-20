@@ -50,7 +50,7 @@ class FavoritesListViewController: UIViewController {
             guard let destinationVC = segue.destination as? FavoriteDetailViewController,
                 let indexPath = tableView.indexPathForSelectedRow else { return }
             
-            let restaurant = RestaurantController.shared.restaurants[indexPath.row]
+            let restaurant = MockRestaurantController.shared.restaurants[indexPath.row]
             destinationVC.title = restaurant.name
             destinationVC.restaurant = restaurant
         }
@@ -68,12 +68,12 @@ extension FavoritesListViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return RestaurantController.shared.restaurants.count
+        return MockRestaurantController.shared.restaurants.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell", for: indexPath) as? RestaurantTableViewCell else { return UITableViewCell() }
-        let restaurant = RestaurantController.shared.restaurants[indexPath.row]
+        let restaurant = MockRestaurantController.shared.restaurants[indexPath.row]
         cell.restaurant = restaurant
         return cell
     }

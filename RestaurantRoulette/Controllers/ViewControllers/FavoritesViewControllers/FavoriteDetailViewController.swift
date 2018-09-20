@@ -28,7 +28,7 @@ class FavoriteDetailViewController: UIViewController {
     @IBOutlet weak var favoritesButton: UIButton!
     
     // MARK: - Properties
-    var restaurant: Restaurant? {
+    var restaurant: MockRestaurant? {
         didSet {
             DispatchQueue.main.async {
                 self.updateViews()

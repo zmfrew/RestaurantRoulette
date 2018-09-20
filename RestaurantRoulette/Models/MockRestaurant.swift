@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import Contacts
 
-class Restaurant: NSObject, MKAnnotation {
+class MockRestaurant: NSObject, MKAnnotation {
     
     // MARK: - Properties
     @objc var title: String?
