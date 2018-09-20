@@ -69,6 +69,8 @@ extension FavoritesListViewController: UITableViewDelegate, UITableViewDataSourc
         tableView.dataSource = self
         tableView.separatorStyle = .none
         RestaurantController.shared.fetchedResultsController.delegate = self
+        // Add this here to ensure the most recent fetchedResultsController exists.
+        RestaurantController.shared.fetchAllRestaurants()
         checkForFavorites()
     }
     

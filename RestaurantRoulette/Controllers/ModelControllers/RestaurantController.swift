@@ -84,4 +84,14 @@ class RestaurantController {
         return business.name == restaurant.name && business.rating?.description == restaurant.rating && business.phone == restaurant.phoneNumber
     }
     
+    func getRestaurantCorrespondingToBusinees(business: CDYelpBusiness) -> Restaurant? {
+        guard let restaurants = fetchedResultsController.fetchedObjects else { return nil }
+        for restaurant in restaurants {
+            if isBusinessARestaurant(business: business, restaurant: restaurant) {
+                return restaurant
+            }
+        }
+        return nil
+    }
+    
 }
