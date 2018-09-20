@@ -40,7 +40,7 @@ extension Restaurant: MKAnnotation {
     // MARK: - Methods
     func mapItem() -> MKMapItem {
         let addressDict = [CNPostalAddressStreetKey: self.name]
-        let placemark = MKPlacemark(coordinate: coordinate, addressDictionary: addressDict)
+        let placemark = MKPlacemark(coordinate: coordinate, addressDictionary: addressDict as [String : Any])
         let mapItem = MKMapItem(placemark: placemark)
         mapItem.name = self.name
         return mapItem
