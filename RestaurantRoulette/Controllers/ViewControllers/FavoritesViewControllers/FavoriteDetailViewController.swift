@@ -47,9 +47,6 @@ class FavoriteDetailViewController: UIViewController {
     }
 
     // MARK: - Actions
-    @IBAction func shareButtonTapped(_ sender: UIBarButtonItem) {
-        // TODO: - Save to CloudKit and use CKShare
-    }
     
     @IBAction func searchButtonTapped(_ sender: UIButton) {
         self.navigationController?.popToRootViewController(animated: true)

@@ -120,7 +120,7 @@ class BusinessTableViewCell: UITableViewCell {
     
     func setFavoriteButtonBackground() {
         let imageName = RestaurantController.shared.isBusinessAFavorite(business: business) ? "starBlue" : "starGray"
-        let image = UIImage(named: imageName)
+        let image = UIImage(named: imageName)!
         favoriteStarButton.setBackgroundImage(image, for: UIControlState())
     }
     

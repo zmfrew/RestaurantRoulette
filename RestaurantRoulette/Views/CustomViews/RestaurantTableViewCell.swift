@@ -95,7 +95,7 @@ class RestaurantTableViewCell: UITableViewCell {
     
     func setFavoriteButtonBackground(_ restaurant: Restaurant) {
         let imageName = restaurant.isFavorite ? "starBlue" : "starGray"
-        let image = UIImage(named: imageName)
+        let image = UIImage(named: imageName)!
         favoriteStarButton.setBackgroundImage(image, for: UIControlState())
     }
     
