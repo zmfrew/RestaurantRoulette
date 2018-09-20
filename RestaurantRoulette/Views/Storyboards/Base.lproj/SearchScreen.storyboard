@@ -669,13 +669,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eKm-nW-y3t"/>
                     </view>
-                    <navigationItem key="navigationItem" title="(restaurantname)" id="KQL-5p-AIs">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="share" id="8PX-dD-0Fr">
-                            <connections>
-                                <action selector="shareButtonTapped:" destination="rYd-Y4-RbG" id="R3d-YO-LNP"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="(restaurantname)" id="KQL-5p-AIs"/>
                     <connections>
                         <outlet property="categoryOneLabel" destination="LYO-EC-uZS" id="Vkt-mV-w3c"/>
                         <outlet property="categoryThreeLabel" destination="gmZ-Gq-kk0" id="1EY-bE-fRu"/>
@@ -1646,7 +1640,6 @@
         <image name="sandwich" width="587" height="587"/>
         <image name="searchBlue" width="23" height="25"/>
         <image name="searchGray" width="23" height="25"/>
-        <image name="share" width="20" height="27"/>
         <image name="starBlue" width="28" height="26"/>
         <image name="starGray" width="28" height="26"/>
         <image name="starOrange" width="28" height="26"/>
