@@ -56,7 +56,7 @@ class BusinessTableViewCell: UITableViewCell {
             favoriteStarButton.setBackgroundImage(UIImage(named: "starGray"), for: UIControlState())
         } else {
             self.restaurant = RestaurantController.shared.addRestaurantFrom(business: business)
-            setFavoriteButtonBackground()
+            favoriteStarButton.setBackgroundImage(UIImage(named: "starBlue"), for: UIControlState())
         }
     }
     

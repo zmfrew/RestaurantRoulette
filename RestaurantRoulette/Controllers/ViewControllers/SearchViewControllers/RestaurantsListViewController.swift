@@ -63,9 +63,18 @@ class RestaurantsListViewController: UIViewController {
     }
     
     // MARK: - Methods
+    func presentRouletteAnimationController() {
+        let rouletteAnimationVC = self.storyboard?.instantiateViewController(withIdentifier: "RouletteAnimationViewController") as! UIViewController
+        present(rouletteAnimationVC, animated: true) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
+                self.dismiss(animated: true, completion: nil)
+            })
+        }
+    }
+    
     func searchForBusinessesBy(searchTerm: String?, location: String?, latitude: Double?, longitude: Double?, locationRadius: Int?, price: String?, openNow: Bool?) {
         let priceTiers = CDYelpFusionKitManager.shared.setPriceTierForSearch(price)
-        
+        presentRouletteAnimationController()
         CDYelpFusionKitManager.shared.apiClient.searchBusinesses(byTerm: searchTerm, location: location, latitude: latitude, longitude: longitude, radius: locationRadius, categories: nil, locale: nil, limit: 25, offset: nil, sortBy: CDYelpBusinessSortType.bestMatch, priceTiers: priceTiers, openNow: openNow, openAt: nil, attributes: nil) { (response) in
             if let response = response, let businesses = response.businesses {
                 self.businesses = businesses

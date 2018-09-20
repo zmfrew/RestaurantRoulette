@@ -10,21 +10,33 @@ import UIKit
 
 class RouletteAnimationViewController: UIViewController {
 
+    // MARK: - Outlets
+    @IBOutlet weak var rouletteCircle: UIView!
+    
+    // MARK: - LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupRouletteCircle()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        rotateAnimation(view: rouletteCircle)
     }
-    */
+    
+    // MARK: - Methods
+    func setupRouletteCircle() {
+        rouletteCircle.layer.cornerRadius = rouletteCircle.layer.frame.height / 2
+    }
+    
+    func rotateAnimation(view: UIView ,duration: CFTimeInterval = 2.0) {
+        let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
+        rotateAnimation.fromValue = 0.0
+        rotateAnimation.toValue = CGFloat(.pi * 2.0)
+        rotateAnimation.duration = duration
+        rotateAnimation.repeatCount = Float.greatestFiniteMagnitude;
+        
+        view.layer.add(rotateAnimation, forKey: nil)
+    }
 
 }
