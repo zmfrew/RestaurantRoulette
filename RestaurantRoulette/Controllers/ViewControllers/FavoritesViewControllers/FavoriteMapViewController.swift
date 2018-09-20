@@ -18,7 +18,7 @@ class FavoriteMapViewController: UIViewController {
     @IBOutlet weak var favoritesButton: UIButton!
     
     // MARK: - Properties
-    var restaurant: Restaurant?
+    var restaurant: MockRestaurant?
     
     // MARK: - LifeCycle Methods
     override func viewDidLoad() {
@@ -87,7 +87,7 @@ extension FavoriteMapViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        guard let annotation = annotation as? Restaurant else { return nil }
+        guard let annotation = annotation as? MockRestaurant else { return nil }
         
         let identifier = "marker"
         var view: MKMarkerAnnotationView
@@ -109,7 +109,7 @@ extension FavoriteMapViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        let location = view.annotation as! Restaurant
+        let location = view.annotation as! MockRestaurant
         let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
         location.mapItem().openInMaps(launchOptions: launchOptions)
     }
