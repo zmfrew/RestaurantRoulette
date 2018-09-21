@@ -24,7 +24,6 @@ class RandomRestaurantMapViewController: UIViewController {
     // MARK: - LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Perform animation with roulette wheel.
         setupTableView()
     }
     

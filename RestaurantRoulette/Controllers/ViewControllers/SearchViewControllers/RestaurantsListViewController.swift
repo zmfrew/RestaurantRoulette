@@ -66,7 +66,7 @@ class RestaurantsListViewController: UIViewController {
     func presentRouletteAnimationController() {
         let rouletteAnimationVC = self.storyboard?.instantiateViewController(withIdentifier: "RouletteAnimationViewController") as! UIViewController
         present(rouletteAnimationVC, animated: true) {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.5, execute: {
                 self.dismiss(animated: true, completion: nil)
             })
         }
