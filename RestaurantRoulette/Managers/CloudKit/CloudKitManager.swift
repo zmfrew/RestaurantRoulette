@@ -50,4 +50,25 @@ class CloudKitManager {
         }
     }
     
+    func createShare(with restaurant: Restaurant, completion: @escaping (CKShare?, CKContainer?, Error?) -> Void) {
+        let rootRecord = CKRecord(restaurant: restaurant)
+        let shareRecord = CKShare(rootRecord: rootRecord)
+        let operation = CKModifyRecordsOperation(recordsToSave: [shareRecord, rootRecord], recordIDsToDelete: nil)
+        operation.perRecordCompletionBlock = { (record, error) in
+            if let error = error {
+                print("Error occurred sharing: \(error.localizedDescription)")
+                completion(nil, nil, error)
+            }
+        }
+        operation.modifyRecordsCompletionBlock = { (savedRecords, deletedRecordIDs, error) in
+            if let error = error {
+                print("Error occurred sharing: \(error.localizedDescription)")
+                completion(nil, nil, error)
+            } else {
+                completion(shareRecord, CKContainer.default(), nil)
+            }
+        }
+        CKContainer.default().publicCloudDatabase.add(operation)
+    }
+    
 }

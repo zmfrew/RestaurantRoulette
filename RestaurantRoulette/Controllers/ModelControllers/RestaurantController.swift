@@ -7,7 +7,6 @@
 //
 
 import CoreData
-import CloudKit
 import Foundation
 import CDYelpFusionKit
 
@@ -25,10 +24,7 @@ class RestaurantController {
     
     // MARK: - Methods
     func addRestaurant(name: String, imageURLAsString: String?, rating: String?, categories: String?, phoneNumber: String?, latitude: Double?, longitude: Double?) {
-        // Do not need to create then convert to CKRecord to save to CoreData & CloudKit. Only need to create as a CKRecord, and CoreData will save it automatically.
-        let record = CKRecord(restaurant: Restaurant(name: name, imageURLAsString: imageURLAsString, rating: rating, categories: categories, phoneNumber: phoneNumber, latitude: latitude, longitude: longitude))
-        CloudKitManager.shared.save(ckRecord: record) { (record) in
-        }
+        _ = Restaurant(name: name, imageURLAsString: imageURLAsString, rating: rating, categories: categories, phoneNumber: phoneNumber, latitude: latitude, longitude: longitude)
         CoreDataManager.save()
     }
     
@@ -46,9 +42,6 @@ class RestaurantController {
         let categories = yelpCategories.map { "\($0.title ?? "")" }.joined(separator: " ")
         
         let restaurant = Restaurant(name: name, imageURLAsString: imageURLAsString, rating: rating, categories: categories, phoneNumber: phoneNumber, latitude: latitude, longitude: longitude)
-        let record = CKRecord(restaurant: restaurant)
-        CloudKitManager.shared.save(ckRecord: record) { (_) in
-        }
         CoreDataManager.save()
         
         return restaurant
@@ -56,17 +49,8 @@ class RestaurantController {
     
     func delete(_ restaurant: Restaurant) {
         CoreDataManager.delete(restaurant)
-        // Delete from CloudKit if it exists.
-        CloudKitManager.shared.delete(restaurant: restaurant) { (_) in
-        }
         CoreDataManager.save()
     }
-    
-//    // FIXME: - May be able to delete this function because I'm going to delete objects once they are no longer favorited.
-//    func toggleIsFavorite(restaurant: Restaurant) {
-//        restaurant.isFavorite = !restaurant.isFavorite
-//        CoreDataManager.save() 
-//    }
     
     func fetchAllRestaurants() {
         do {

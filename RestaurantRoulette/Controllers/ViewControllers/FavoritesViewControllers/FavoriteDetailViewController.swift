@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import CloudKit
 
 class FavoriteDetailViewController: UIViewController {
-
+    
     // MARK: - Outlets
     @IBOutlet weak var restaurantImageView: UIImageView!
     @IBOutlet weak var noRatingAvailableLabel: UILabel!
@@ -45,10 +46,58 @@ class FavoriteDetailViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         ButtonAnimationManager.animateButtonOntoScreen(leftButton: searchButton, centerButton: locationButton, rightButton: favoritesButton)
     }
-
+    
     // MARK: - Actions
     @IBAction func shareButtonTapped(_ sender: UIBarButtonItem) {
+        guard let restaurant = restaurant else { return }
+        
+        // Create CloudKit record and save when the shareButton is tapped. Following sharing with another user, the record is deleted to clear out room in the user's iCloud.
+        let record = CKRecord(restaurant: restaurant)
+        
+        // Check if the user is signed into CloudKit. If they are, create the record and share it.
+        CKContainer.default().accountStatus { accountStatus, error in
+            if accountStatus == .noAccount {
+                let alert = UIAlertController(title: "Sign in to iCloud", message: "Sign in to your iCloud account to write records. On the Home screen, launch Settings, tap iCloud, and enter your Apple ID. Turn iCloud Drive on. If you don't have an iCloud account, tap Create a new Apple ID.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                
+                
+                CloudKitManager.shared.save(ckRecord: record) { (restaurant) in
+                    if let restaurant = restaurant {
+                        
+                        let shareContextualAction = UIContextualAction(style: .normal, title: "Share") { (action, view, nil) in
+                            // Create cloud sharing container.
+                            let cloudSharingContainer = UICloudSharingController { (controller, completion: @escaping (CKShare?, CKContainer?, Error?) -> Void) in
+                                
+                                CloudKitManager.shared.createShare(with: restaurant, completion: completion)
+                            }
+                            
+                            if let popover = cloudSharingContainer.popoverPresentationController {
+                                popover.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+                            }
+                            DispatchQueue.main.async {
+                                self.present(cloudSharingContainer, animated: true)
+                            }
+                        }
+                        
+                        shareContextualAction.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+//                        let configuration = UISwipeActionsConfiguration(actions: [shareContextualAction])
+//                        configuration.performsFirstActionWithFullSwipe = false
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 10, execute: {
+                            CloudKitManager.shared.delete(restaurant: restaurant, completion: { (success) in
+                                if success {
+                                    print("Deleted from CloudKit 10 after adding to allow time for CKShare.")
+                                }
+                            })
+                        })
+                    }
+                }
+            }
+        }
     }
+    
     @IBAction func searchButtonTapped(_ sender: UIButton) {
         self.navigationController?.popToRootViewController(animated: true)
     }
@@ -62,7 +111,7 @@ class FavoriteDetailViewController: UIViewController {
             else {
                 print("Error occurred creating images.")
                 return
-            }
+        }
         // FIXME: - Update default image to show in favorites.
         restaurantImageView.image = UIImage(data: imageData) ?? UIImage(named: "mockShannons")
         
@@ -143,5 +192,5 @@ class FavoriteDetailViewController: UIViewController {
         }
         
     }
-
+    
 }
