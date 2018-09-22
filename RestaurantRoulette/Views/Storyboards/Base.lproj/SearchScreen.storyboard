@@ -468,7 +468,7 @@
             </objects>
             <point key="canvasLocation" x="3948" y="-262.3152709359606"/>
         </scene>
-        <!--(restaurantname)-->
+        <!--Favorites-->
         <scene sceneID="Fpr-sb-1Z9">
             <objects>
                 <viewController id="rYd-Y4-RbG" customClass="FavoriteDetailViewController" customModule="RestaurantRoulette" customModuleProvider="target" sceneMemberID="viewController">
@@ -669,10 +669,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eKm-nW-y3t"/>
                     </view>
-                    <navigationItem key="navigationItem" title="(restaurantname)" id="KQL-5p-AIs">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="share" id="T2m-hQ-1vK">
+                    <navigationItem key="navigationItem" title="Favorites" id="fB2-gu-CqE">
+                        <barButtonItem key="rightBarButtonItem" title="shareButton" image="share" id="khu-9y-Z9B">
                             <connections>
-                                <action selector="shareButtonTapped:" destination="rYd-Y4-RbG" id="q3H-rx-avJ"/>
+                                <action selector="shareButtonTapped:" destination="rYd-Y4-RbG" id="y7v-e7-XSZ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
