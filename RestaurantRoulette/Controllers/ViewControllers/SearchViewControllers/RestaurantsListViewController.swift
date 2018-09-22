@@ -34,6 +34,7 @@ class RestaurantsListViewController: UIViewController {
         setupTableView()
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         randomButton.isHidden = true
+        randomBusiness = nil
         DispatchQueue.main.async {
             self.searchForBusinessesBy(searchTerm: self.searchTerm, location: self.locationDescription, latitude: self.currentLatitude, longitude: self.currentLongitude, locationRadius: self.locationRadius, price: self.price, openNow: self.openNow)
         }
@@ -49,7 +50,7 @@ class RestaurantsListViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         ButtonAnimationManager.animateButtonOntoScreen(leftButton: searchButton, centerButton: randomButton, rightButton: favoritesButton)
     }
-    
+
     // MARK: - Actions
     @IBAction func searchButtonTapped(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
