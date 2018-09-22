@@ -57,9 +57,7 @@ class FavoriteDetailViewController: UIViewController {
         // Check if the user is signed into CloudKit. If they are, create the record and share it.
         CKContainer.default().accountStatus { accountStatus, error in
             if accountStatus == .noAccount {
-                let alert = UIAlertController(title: "Sign in to iCloud", message: "Sign in to your iCloud account to write records. On the Home screen, launch Settings, tap iCloud, and enter your Apple ID. Turn iCloud Drive on. If you don't have an iCloud account, tap Create a new Apple ID.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                self.presentNotLoggedInError()
             } else {
                 
                 
@@ -103,6 +101,12 @@ class FavoriteDetailViewController: UIViewController {
     }
     
     // MARK: - Methods
+    func presentNotLoggedInError() {
+        let alert = UIAlertController(title: "Oh no!", message: "You need to be signed in to iCloud to share restaurants. Please sign in and try again!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     private func updateViews() {
         guard let restaurant = restaurant else { return }
         guard let imageURLAsString = restaurant.imageURLAsString,
