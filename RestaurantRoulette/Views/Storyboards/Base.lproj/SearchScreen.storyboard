@@ -669,7 +669,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eKm-nW-y3t"/>
                     </view>
-                    <navigationItem key="navigationItem" title="(restaurantname)" id="KQL-5p-AIs"/>
+                    <navigationItem key="navigationItem" title="(restaurantname)" id="KQL-5p-AIs">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="share" id="T2m-hQ-1vK">
+                            <connections>
+                                <action selector="shareButtonTapped:" destination="rYd-Y4-RbG" id="q3H-rx-avJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="categoryOneLabel" destination="LYO-EC-uZS" id="Vkt-mV-w3c"/>
                         <outlet property="categoryThreeLabel" destination="gmZ-Gq-kk0" id="1EY-bE-fRu"/>
@@ -1628,21 +1634,22 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bookmarksBlue" width="28" height="24"/>
-        <image name="bookmarksGray" width="28" height="24"/>
+        <image name="bookmarksBlue" width="341" height="341"/>
+        <image name="bookmarksGray" width="341" height="341"/>
         <image name="burger" width="595" height="595"/>
         <image name="chicken" width="599" height="599"/>
         <image name="donut" width="563" height="563"/>
         <image name="fries" width="614" height="614"/>
         <image name="hotdog" width="576" height="576"/>
-        <image name="locationPinColor" width="578" height="578"/>
+        <image name="locationPinColor" width="341" height="341"/>
         <image name="pizza" width="560" height="560"/>
-        <image name="randomize" width="60" height="60"/>
+        <image name="randomize" width="341" height="341"/>
         <image name="sandwich" width="587" height="587"/>
-        <image name="searchBlue" width="23" height="25"/>
-        <image name="searchGray" width="23" height="25"/>
-        <image name="starBlue" width="28" height="26"/>
-        <image name="starGray" width="28" height="26"/>
+        <image name="searchBlue" width="341" height="341"/>
+        <image name="searchGray" width="341" height="341"/>
+        <image name="share" width="20" height="27"/>
+        <image name="starBlue" width="341" height="341"/>
+        <image name="starGray" width="341" height="341"/>
         <image name="starOrange" width="28" height="26"/>
         <image name="taco" width="604" height="604"/>
     </resources>
