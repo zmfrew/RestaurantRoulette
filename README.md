@@ -21,7 +21,7 @@ Restaurant Roulette is an iOS application currently in development that randomly
 
 ## Screenshots
 
-<div display="inline-block">
+<div style="display=inline-block;">
 <img width=50% src="https://user-images.githubusercontent.com/27315950/45912722-494fea00-bde3-11e8-9f6c-71e57c82e11a.jpg"/>
 <img width=50% src="https://user-images.githubusercontent.com/27315950/45912723-494fea00-bde3-11e8-84a4-a09991ffb791.jpg"/>
 
