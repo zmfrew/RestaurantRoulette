@@ -65,7 +65,7 @@ class RestaurantController {
 //    // FIXME: - May be able to delete this function because I'm going to delete objects once they are no longer favorited.
 //    func toggleIsFavorite(restaurant: Restaurant) {
 //        restaurant.isFavorite = !restaurant.isFavorite
-//        CoreDataManager.save()
+//        CoreDataManager.save() 
 //    }
     
     func fetchAllRestaurants() {
