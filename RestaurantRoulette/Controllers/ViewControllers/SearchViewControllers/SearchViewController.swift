@@ -41,7 +41,6 @@ class SearchViewController: UIViewController {
     // MARK: - LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        presentRouletteAnimationController()
         setupViews()
         checkLocationAndUpdate()
         // Fetch favorites here to allow for comparing in the RestaurantsList & update the star color if the restaurant is already a favorite.
@@ -109,15 +108,6 @@ class SearchViewController: UIViewController {
     }
     
     // MARK: - Methods
-    func presentRouletteAnimationController() {
-        let rouletteAnimationVC = self.storyboard?.instantiateViewController(withIdentifier: "InitialLoadAnimationViewController") as! UIViewController
-        present(rouletteAnimationVC, animated: true) {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                self.dismiss(animated: true, completion: nil)
-            })
-        }
-    }
-    
     func setupViews() {
         setupTextFields()
         setupPickerViews()
@@ -186,14 +176,11 @@ class SearchViewController: UIViewController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         if enableSettingsLink {
-            let enableAction = UIAlertAction(title: "Go to Settings", style: .default) { (_) in
-                if !CLLocationManager.locationServicesEnabled() {
-                    if let appSettings = URL(string: UIApplicationOpenSettingsURLString) {
-                        UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
-                    }
+            alert.addAction(UIAlertAction(title: "Go to Settings", style: .default) { (_) in
+                if let appSettings = URL(string: UIApplicationOpenSettingsURLString) {
+                    UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
                 }
-            }
-            alert.addAction(enableAction)
+            })
         }
         
         let dismissAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
