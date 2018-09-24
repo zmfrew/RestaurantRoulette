@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import CloudKit
 
 class FavoriteDetailViewController: UIViewController {
-
+    
     // MARK: - Outlets
     @IBOutlet weak var restaurantImageView: UIImageView!
     @IBOutlet weak var noRatingAvailableLabel: UILabel!
@@ -22,7 +23,7 @@ class FavoriteDetailViewController: UIViewController {
     @IBOutlet weak var categoryOneLabel: UILabel!
     @IBOutlet weak var categoryTwoLabel: UILabel!
     @IBOutlet weak var categoryThreeLabel: UILabel!
-    @IBOutlet weak var phoneNumberLabel: UILabel!
+    @IBOutlet weak var phoneNumberButton: UIButton!
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var locationButton: UIButton!
     @IBOutlet weak var favoritesButton: UIButton!
@@ -45,13 +46,32 @@ class FavoriteDetailViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         ButtonAnimationManager.animateButtonOntoScreen(leftButton: searchButton, centerButton: locationButton, rightButton: favoritesButton)
     }
-
+    
     // MARK: - Actions
     @IBAction func searchButtonTapped(_ sender: UIButton) {
         self.navigationController?.popToRootViewController(animated: true)
     }
     
+    @IBAction func phoneNumberButtonTapped(_ sender: UIButton) {
+        guard let restaurant = restaurant,
+            let phoneNumber = restaurant.phoneNumber else { return }
+        
+        if let url = URL(string: "tel://\(phoneNumber)") {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                print("This phone number doesn't work.")
+            }
+        }
+    }
+    
     // MARK: - Methods
+    func presentNotLoggedInError() {
+        let alert = UIAlertController(title: "Oh no!", message: "You need to be signed in to iCloud to share restaurants. Please sign in and try again!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     private func updateViews() {
         guard let restaurant = restaurant else { return }
         guard let imageURLAsString = restaurant.imageURLAsString,
@@ -60,8 +80,8 @@ class FavoriteDetailViewController: UIViewController {
             else {
                 print("Error occurred creating images.")
                 return
-            }
-        // FIXME: - Update default image to show in favorites.
+        }
+        
         restaurantImageView.image = UIImage(data: imageData) ?? UIImage(named: "mockShannons")
         
         restaurantImageView.layer.cornerRadius = restaurantImageView.layer.frame.height / 2
@@ -69,7 +89,13 @@ class FavoriteDetailViewController: UIViewController {
         
         let categoryLabels = restaurant.categories?.components(separatedBy: " ") ?? ["No categories available."]
         updateCategoryLabels(categoryLabels)
-        phoneNumberLabel.text = PhoneNumberFormatter.formatPhoneNumber(restaurant.phoneNumber)
+    
+        let phoneNumber = PhoneNumberFormatter.formatPhoneNumber(restaurant.phoneNumber)
+        phoneNumberButton.setTitle(phoneNumber, for: UIControlState())
+    
+        let isPhoneNumberButtonEnabled = phoneNumber == "No phone number available" ? false : true
+        phoneNumberButton.isEnabled = isPhoneNumberButtonEnabled
+        phoneNumberButton.tintColor = isPhoneNumberButtonEnabled == true ? UIColor(red: 0/255.0, green: 122/255.0, blue: 255/255.0, alpha: 100) : UIColor(red: 115/255.0, green: 113/255.0, blue: 115/255.0, alpha: 100)
     }
     
     private func hideStarsIfNecessary(_ rating: Int) {
@@ -141,5 +167,6 @@ class FavoriteDetailViewController: UIViewController {
         }
         
     }
-
+    
 }
+

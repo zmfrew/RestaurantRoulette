@@ -82,7 +82,7 @@
                                                                 <color key="textColor" red="0.45098039220000002" green="0.4431372549" blue="0.45098039220000002" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="P0b-Tw-U89">
+                                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P0b-Tw-U89">
                                                                 <rect key="frame" x="262" y="0.0" width="51" height="36"/>
                                                                 <connections>
                                                                     <action selector="currentLocationSwitchDidToggle:" destination="Q1G-nB-Coi" eventType="valueChanged" id="XT4-vO-DwE"/>
@@ -468,7 +468,7 @@
             </objects>
             <point key="canvasLocation" x="3948" y="-262.3152709359606"/>
         </scene>
-        <!--(restaurantname)-->
+        <!--Favorites-->
         <scene sceneID="Fpr-sb-1Z9">
             <objects>
                 <viewController id="rYd-Y4-RbG" customClass="FavoriteDetailViewController" customModule="RestaurantRoulette" customModuleProvider="target" sceneMemberID="viewController">
@@ -589,12 +589,12 @@
                                                         <color key="textColor" red="0.45098039220000002" green="0.4431372549" blue="0.45098039220000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(phoneNum)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HrK-ue-j7O">
+                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9CG-e0-qqS">
                                                         <rect key="frame" x="69.666666666666671" y="0.0" width="193.33333333333331" height="68.333333333333329"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <color key="textColor" red="0.45098039220000002" green="0.4431372549" blue="0.45098039220000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                        <connections>
+                                                            <action selector="phoneNumberButtonTapped:" destination="rYd-Y4-RbG" eventType="touchUpInside" id="rY6-Sy-6cR"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
@@ -669,7 +669,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eKm-nW-y3t"/>
                     </view>
-                    <navigationItem key="navigationItem" title="(restaurantname)" id="KQL-5p-AIs"/>
+                    <navigationItem key="navigationItem" title="Favorites" id="fB2-gu-CqE"/>
                     <connections>
                         <outlet property="categoryOneLabel" destination="LYO-EC-uZS" id="Vkt-mV-w3c"/>
                         <outlet property="categoryThreeLabel" destination="gmZ-Gq-kk0" id="1EY-bE-fRu"/>
@@ -678,7 +678,7 @@
                         <outlet property="locationButton" destination="ytX-lF-M0h" id="mcb-2z-X7L"/>
                         <outlet property="noCaterogiesAvailableLabel" destination="NP2-HV-Ig2" id="lgH-6a-ruT"/>
                         <outlet property="noRatingAvailableLabel" destination="7Vv-1o-yW7" id="85n-Sg-X2j"/>
-                        <outlet property="phoneNumberLabel" destination="HrK-ue-j7O" id="8MZ-v5-EXw"/>
+                        <outlet property="phoneNumberButton" destination="9CG-e0-qqS" id="OOk-7e-WHK"/>
                         <outlet property="ratingStarFive" destination="Z4I-lt-fiv" id="bRF-Xd-by6"/>
                         <outlet property="ratingStarFour" destination="ych-gi-awW" id="vZN-Xm-Exq"/>
                         <outlet property="ratingStarOne" destination="Meq-Fm-V2d" id="xgG-gm-eQ4"/>
@@ -1626,23 +1626,55 @@
             </objects>
             <point key="canvasLocation" x="4716" y="463"/>
         </scene>
+        <!--Initial Load Animation View Controller-->
+        <scene sceneID="Rwy-DP-ktt">
+            <objects>
+                <viewController storyboardIdentifier="InitialLoadAnimationViewController" id="HEL-q2-LqC" customClass="InitialLoadAnimationViewController" customModule="RestaurantRoulette" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mKb-A6-cin">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="LrV-YL-TIw">
+                                <rect key="frame" x="87.666666666666686" y="306" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="e3N-fG-tg0"/>
+                                    <constraint firstAttribute="height" constant="200" id="sMO-Gu-80s"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="LrV-YL-TIw" firstAttribute="centerX" secondItem="mKb-A6-cin" secondAttribute="centerX" id="CIw-Sd-iFV"/>
+                            <constraint firstItem="LrV-YL-TIw" firstAttribute="centerY" secondItem="mKb-A6-cin" secondAttribute="centerY" id="mSh-bv-2Vw"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="VQP-Mv-IUe"/>
+                    </view>
+                    <connections>
+                        <outlet property="iconImageView" destination="LrV-YL-TIw" id="O35-G1-b4Q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cSQ-Wg-rQn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2415" y="867"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="bookmarksBlue" width="28" height="24"/>
-        <image name="bookmarksGray" width="28" height="24"/>
+        <image name="bookmarksBlue" width="341" height="341"/>
+        <image name="bookmarksGray" width="341" height="341"/>
         <image name="burger" width="595" height="595"/>
         <image name="chicken" width="599" height="599"/>
         <image name="donut" width="563" height="563"/>
         <image name="fries" width="614" height="614"/>
         <image name="hotdog" width="576" height="576"/>
-        <image name="locationPinColor" width="578" height="578"/>
+        <image name="icon" width="1024" height="1024"/>
+        <image name="locationPinColor" width="341" height="341"/>
         <image name="pizza" width="560" height="560"/>
-        <image name="randomize" width="60" height="60"/>
+        <image name="randomize" width="341" height="341"/>
         <image name="sandwich" width="587" height="587"/>
-        <image name="searchBlue" width="23" height="25"/>
-        <image name="searchGray" width="23" height="25"/>
-        <image name="starBlue" width="28" height="26"/>
-        <image name="starGray" width="28" height="26"/>
+        <image name="searchBlue" width="341" height="341"/>
+        <image name="searchGray" width="341" height="341"/>
+        <image name="starBlue" width="341" height="341"/>
+        <image name="starGray" width="341" height="341"/>
         <image name="starOrange" width="28" height="26"/>
         <image name="taco" width="604" height="604"/>
     </resources>

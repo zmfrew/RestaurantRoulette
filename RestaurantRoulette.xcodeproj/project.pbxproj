@@ -13,12 +13,14 @@
 		B61FDAB3214F12B000B536AD /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61FDAB2214F12B000B536AD /* CoreDataManager.swift */; };
 		B61FDAB6214F12E300B536AD /* CoreLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61FDAB5214F12E300B536AD /* CoreLocationManager.swift */; };
 		B61FDAB8214F12EA00B536AD /* MapKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61FDAB7214F12EA00B536AD /* MapKitManager.swift */; };
+		B66135372156ECB20000A08E /* Restaurant+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66135352156ECB20000A08E /* Restaurant+CoreDataClass.swift */; };
+		B66135382156ECB20000A08E /* Restaurant+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66135362156ECB20000A08E /* Restaurant+CoreDataProperties.swift */; };
+		B66A15B42159815E00BBD09A /* InitialLoadAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66A15B32159815E00BBD09A /* InitialLoadAnimationViewController.swift */; };
 		B6733FC52152BC780008F997 /* CDYelpFusionKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6733FC42152BC780008F997 /* CDYelpFusionKitManager.swift */; };
 		B6733FD02152C8940008F997 /* BusinessTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6733FCF2152C8940008F997 /* BusinessTableViewCell.swift */; };
 		B6733FD52152E8530008F997 /* ButtonAnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6733FD42152E8530008F997 /* ButtonAnimationManager.swift */; };
 		B6733FD8215318870008F997 /* RestaurantRoulette.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B6733FD6215318870008F997 /* RestaurantRoulette.xcdatamodeld */; };
 		B6733FDD21531A140008F997 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6733FDC21531A140008F997 /* CoreDataStack.swift */; };
-		B6733FDF21531A310008F997 /* Restaurant+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6733FDE21531A300008F997 /* Restaurant+Convenience.swift */; };
 		B67CD569214F10A1005F755A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67CD568214F10A1005F755A /* AppDelegate.swift */; };
 		B67CD56E214F10A1005F755A /* SearchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B67CD56C214F10A1005F755A /* SearchScreen.storyboard */; };
 		B67CD570214F10A6005F755A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B67CD56F214F10A6005F755A /* Assets.xcassets */; };
@@ -26,6 +28,8 @@
 		B67CD57E214F10A6005F755A /* RestaurantRouletteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67CD57D214F10A6005F755A /* RestaurantRouletteTests.swift */; };
 		B67CD589214F10A6005F755A /* RestaurantRouletteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67CD588214F10A6005F755A /* RestaurantRouletteUITests.swift */; };
 		B67CD59A214F11A5005F755A /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B67CD599214F11A5005F755A /* CloudKit.framework */; };
+		B69132352156E7AA009342A8 /* CloudKitSyncable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69132342156E7AA009342A8 /* CloudKitSyncable.swift */; };
+		B69132372156EA4E009342A8 /* CKRecord+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69132362156EA4E009342A8 /* CKRecord+Convenience.swift */; };
 		B69F7335215157EA00F8956F /* FavoriteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69F7334215157EA00F8956F /* FavoriteDetailViewController.swift */; };
 		B69F7338215185E600F8956F /* PhoneNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69F7337215185E600F8956F /* PhoneNumberFormatter.swift */; };
 		B69F733C2151BCB600F8956F /* RouletteAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69F733B2151BCB600F8956F /* RouletteAnimationViewController.swift */; };
@@ -65,12 +69,14 @@
 		B61FDAB2214F12B000B536AD /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		B61FDAB5214F12E300B536AD /* CoreLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreLocationManager.swift; sourceTree = "<group>"; };
 		B61FDAB7214F12EA00B536AD /* MapKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitManager.swift; sourceTree = "<group>"; };
+		B66135352156ECB20000A08E /* Restaurant+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Restaurant+CoreDataClass.swift"; path = "/Users/Zachary/Documents/devmountain/personalproject/RestaurantRoulette/RestaurantRoulette/Models/CoreData/Restaurant+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		B66135362156ECB20000A08E /* Restaurant+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Restaurant+CoreDataProperties.swift"; path = "/Users/Zachary/Documents/devmountain/personalproject/RestaurantRoulette/RestaurantRoulette/Models/CoreData/Restaurant+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		B66A15B32159815E00BBD09A /* InitialLoadAnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialLoadAnimationViewController.swift; sourceTree = "<group>"; };
 		B6733FC42152BC780008F997 /* CDYelpFusionKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDYelpFusionKitManager.swift; sourceTree = "<group>"; };
 		B6733FCF2152C8940008F997 /* BusinessTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessTableViewCell.swift; sourceTree = "<group>"; };
 		B6733FD42152E8530008F997 /* ButtonAnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonAnimationManager.swift; sourceTree = "<group>"; };
 		B6733FD7215318870008F997 /* RestaurantRoulette.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RestaurantRoulette.xcdatamodel; sourceTree = "<group>"; };
 		B6733FDC21531A140008F997 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		B6733FDE21531A300008F997 /* Restaurant+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Restaurant+Convenience.swift"; sourceTree = "<group>"; };
 		B67CD565214F10A1005F755A /* RestaurantRoulette.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RestaurantRoulette.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B67CD568214F10A1005F755A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B67CD56D214F10A1005F755A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SearchScreen.storyboard; sourceTree = "<group>"; };
@@ -85,6 +91,8 @@
 		B67CD58A214F10A6005F755A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B67CD597214F11A2005F755A /* RestaurantRoulette.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RestaurantRoulette.entitlements; sourceTree = "<group>"; };
 		B67CD599214F11A5005F755A /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		B69132342156E7AA009342A8 /* CloudKitSyncable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitSyncable.swift; sourceTree = "<group>"; };
+		B69132362156EA4E009342A8 /* CKRecord+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CKRecord+Convenience.swift"; sourceTree = "<group>"; };
 		B69F7334215157EA00F8956F /* FavoriteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDetailViewController.swift; sourceTree = "<group>"; };
 		B69F7337215185E600F8956F /* PhoneNumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberFormatter.swift; sourceTree = "<group>"; };
 		B69F733B2151BCB600F8956F /* RouletteAnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteAnimationViewController.swift; sourceTree = "<group>"; };
@@ -171,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				B6733FDA215319E10008F997 /* CDYelpBusiness */,
+				B69132332156E79F009342A8 /* CloudKit */,
 				B6733FD9215319CC0008F997 /* CoreData */,
 			);
 			path = Models;
@@ -240,6 +249,7 @@
 				B6C934BA21506594003CE920 /* RestaurantsListViewController.swift */,
 				B69F733F2151E0E900F8956F /* RandomRestaurantMapViewController.swift */,
 				B69F733B2151BCB600F8956F /* RouletteAnimationViewController.swift */,
+				B66A15B32159815E00BBD09A /* InitialLoadAnimationViewController.swift */,
 			);
 			path = SearchViewControllers;
 			sourceTree = "<group>";
@@ -266,8 +276,9 @@
 			isa = PBXGroup;
 			children = (
 				B6733FD6215318870008F997 /* RestaurantRoulette.xcdatamodeld */,
+				B66135352156ECB20000A08E /* Restaurant+CoreDataClass.swift */,
+				B66135362156ECB20000A08E /* Restaurant+CoreDataProperties.swift */,
 				B6733FDC21531A140008F997 /* CoreDataStack.swift */,
-				B6733FDE21531A300008F997 /* Restaurant+Convenience.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -341,6 +352,15 @@
 				9E590FE1F8F15C69C0B40CB8 /* Pods_RestaurantRoulette.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B69132332156E79F009342A8 /* CloudKit */ = {
+			isa = PBXGroup;
+			children = (
+				B69132342156E7AA009342A8 /* CloudKitSyncable.swift */,
+				B69132362156EA4E009342A8 /* CKRecord+Convenience.swift */,
+			);
+			path = CloudKit;
 			sourceTree = "<group>";
 		};
 		B69F7336215185DA00F8956F /* Formatters */ = {
@@ -589,6 +609,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6E8A620215037AE003EB2E8 /* FavoritesListViewController.swift in Sources */,
+				B66A15B42159815E00BBD09A /* InitialLoadAnimationViewController.swift in Sources */,
 				B69F7335215157EA00F8956F /* FavoriteDetailViewController.swift in Sources */,
 				B61FDAB3214F12B000B536AD /* CoreDataManager.swift in Sources */,
 				B6E8A61E21503338003EB2E8 /* MetersUnitConverter.swift in Sources */,
@@ -600,14 +621,17 @@
 				B6733FC52152BC780008F997 /* CDYelpFusionKitManager.swift in Sources */,
 				B61FDAB1214F12A500B536AD /* CloudKitManager.swift in Sources */,
 				B69F7338215185E600F8956F /* PhoneNumberFormatter.swift in Sources */,
+				B66135372156ECB20000A08E /* Restaurant+CoreDataClass.swift in Sources */,
 				B6733FD8215318870008F997 /* RestaurantRoulette.xcdatamodeld in Sources */,
 				B6733FD52152E8530008F997 /* ButtonAnimationManager.swift in Sources */,
+				B69132372156EA4E009342A8 /* CKRecord+Convenience.swift in Sources */,
 				B6733FDD21531A140008F997 /* CoreDataStack.swift in Sources */,
+				B69132352156E7AA009342A8 /* CloudKitSyncable.swift in Sources */,
 				B69F73422151E2CE00F8956F /* CDYelpBusiness+MKAnnotation.swift in Sources */,
-				B6733FDF21531A310008F997 /* Restaurant+Convenience.swift in Sources */,
 				B69F733E2151C00400F8956F /* FavoriteMapViewController.swift in Sources */,
 				B61FDAB8214F12EA00B536AD /* MapKitManager.swift in Sources */,
 				B6C934B521504A8B003CE920 /* RestaurantTableViewCell.swift in Sources */,
+				B66135382156ECB20000A08E /* Restaurant+CoreDataProperties.swift in Sources */,
 				B69F73402151E0E900F8956F /* RandomRestaurantMapViewController.swift in Sources */,
 				B69F733C2151BCB600F8956F /* RouletteAnimationViewController.swift in Sources */,
 				B6733FD02152C8940008F997 /* BusinessTableViewCell.swift in Sources */,

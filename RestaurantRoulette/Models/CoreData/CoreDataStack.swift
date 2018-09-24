@@ -6,8 +6,8 @@
 //  Copyright © 2018 Zachary Frew. All rights reserved.
 //
 
-import Foundation
 import CoreData
+import Foundation
 
 enum CoreDataStack {
     
