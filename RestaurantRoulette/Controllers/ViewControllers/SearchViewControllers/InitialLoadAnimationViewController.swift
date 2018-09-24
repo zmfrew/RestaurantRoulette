@@ -16,12 +16,13 @@ class InitialLoadAnimationViewController: UIViewController {
     // MARK: - LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        rotateAnimation(view: iconImageView)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+            self.performSegue(withIdentifier: "animationLoadToSearch", sender: nil)
+        })
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        rotateAnimation(view: iconImageView)
-    }
+    
     
     // MARK: - Methods
     func rotateAnimation(view: UIView ,duration: CFTimeInterval = 2.0) {
