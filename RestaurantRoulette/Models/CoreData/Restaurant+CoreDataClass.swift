@@ -101,6 +101,7 @@ extension Restaurant {
     // MARK: - Constant Keys
     static let typeKey = "Restaurant"
     static let nameKey = "name"
+    static let titleKey = "title"
     static let imageURLAsStringKey = "imageURLAsString"
     static let ratingKey = "rating"
     static let categoriesKey = "categories"

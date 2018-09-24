@@ -6,7 +6,7 @@
 //  Copyright © 2018 Zachary Frew. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import CoreData
 import CloudKit
 
@@ -17,6 +17,7 @@ class CloudKitManager {
     
     // MARK: - Properties
     let privateDB = CKContainer.default().privateCloudDatabase
+    let privateZoneKey = "RestaurantZone"
     
     // MARK: - Methods
     func save(ckRecord: CKRecord, completion: @escaping (Restaurant?) -> Void) {
@@ -28,7 +29,9 @@ class CloudKitManager {
             }
             
             guard let record = record else { completion(nil); return }
+            
             let restaurant = Restaurant(record: record, context: NSManagedObjectContext())
+            
             print("Successfully saved to CloudKit.")
             completion(restaurant)
         }
@@ -48,27 +51,6 @@ class CloudKitManager {
             print("Deleted from CloudKit.")
             completion(true)
         }
-    }
-    
-    func createShare(with restaurant: Restaurant, completion: @escaping (CKShare?, CKContainer?, Error?) -> Void) {
-        let rootRecord = CKRecord(restaurant: restaurant)
-        let shareRecord = CKShare(rootRecord: rootRecord)
-        let operation = CKModifyRecordsOperation(recordsToSave: [shareRecord, rootRecord], recordIDsToDelete: nil)
-        operation.perRecordCompletionBlock = { (record, error) in
-            if let error = error {
-                print("Error occurred sharing: \(error.localizedDescription)")
-                completion(nil, nil, error)
-            }
-        }
-        operation.modifyRecordsCompletionBlock = { (savedRecords, deletedRecordIDs, error) in
-            if let error = error {
-                print("Error occurred sharing: \(error.localizedDescription)")
-                completion(nil, nil, error)
-            } else {
-                completion(shareRecord, CKContainer.default(), nil)
-            }
-        }
-        CKContainer.default().publicCloudDatabase.add(operation)
     }
     
 }
