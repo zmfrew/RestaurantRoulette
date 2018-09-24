@@ -23,7 +23,7 @@ class FavoriteDetailViewController: UIViewController {
     @IBOutlet weak var categoryOneLabel: UILabel!
     @IBOutlet weak var categoryTwoLabel: UILabel!
     @IBOutlet weak var categoryThreeLabel: UILabel!
-    @IBOutlet weak var phoneNumberLabel: UILabel!
+    @IBOutlet weak var phoneNumberButton: UIButton!
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var locationButton: UIButton!
     @IBOutlet weak var favoritesButton: UIButton!
@@ -48,56 +48,21 @@ class FavoriteDetailViewController: UIViewController {
     }
     
     // MARK: - Actions
-    @IBAction func shareButtonTapped(_ sender: UIBarButtonItem) {
-        guard let restaurant = restaurant else { return }
-        
-        // Create CloudKit record and save when the shareButton is tapped. Following sharing with another user, the record is deleted to clear out room in the user's iCloud.
-        let record = CKRecord(restaurant: restaurant)
-        
-        // Check if the user is signed into CloudKit. If they are, create the record and share it.
-        CKContainer.default().accountStatus { accountStatus, error in
-            if accountStatus == .noAccount {
-                self.presentNotLoggedInError()
-            } else {
-                
-                
-                CloudKitManager.shared.save(ckRecord: record) { (restaurant) in
-                    if let restaurant = restaurant {
-                        
-                        let shareContextualAction = UIContextualAction(style: .normal, title: "Share") { (action, view, nil) in
-                            // Create cloud sharing container.
-                            let cloudSharingContainer = UICloudSharingController { (controller, completion: @escaping (CKShare?, CKContainer?, Error?) -> Void) in
-                                
-                                CloudKitManager.shared.createShare(with: restaurant, completion: completion)
-                            }
-                            
-                            if let popover = cloudSharingContainer.popoverPresentationController {
-                                popover.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
-                            }
-                            DispatchQueue.main.async {
-                                self.present(cloudSharingContainer, animated: true)
-                            }
-                        }
-                        
-                        shareContextualAction.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
-//                        let configuration = UISwipeActionsConfiguration(actions: [shareContextualAction])
-//                        configuration.performsFirstActionWithFullSwipe = false
-                        
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 10, execute: {
-                            CloudKitManager.shared.delete(restaurant: restaurant, completion: { (success) in
-                                if success {
-                                    print("Deleted from CloudKit 10 after adding to allow time for CKShare.")
-                                }
-                            })
-                        })
-                    }
-                }
-            }
-        }
-    }
-    
     @IBAction func searchButtonTapped(_ sender: UIButton) {
         self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    @IBAction func phoneNumberButtonTapped(_ sender: UIButton) {
+        guard let restaurant = restaurant,
+            let phoneNumber = restaurant.phoneNumber else { return }
+        
+        if let url = URL(string: "tel://\(phoneNumber)") {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                print("This phone number doesn't work.")
+            }
+        }
     }
     
     // MARK: - Methods
@@ -116,7 +81,7 @@ class FavoriteDetailViewController: UIViewController {
                 print("Error occurred creating images.")
                 return
         }
-        // FIXME: - Update default image to show in favorites.
+        
         restaurantImageView.image = UIImage(data: imageData) ?? UIImage(named: "mockShannons")
         
         restaurantImageView.layer.cornerRadius = restaurantImageView.layer.frame.height / 2
@@ -124,7 +89,13 @@ class FavoriteDetailViewController: UIViewController {
         
         let categoryLabels = restaurant.categories?.components(separatedBy: " ") ?? ["No categories available."]
         updateCategoryLabels(categoryLabels)
-        phoneNumberLabel.text = PhoneNumberFormatter.formatPhoneNumber(restaurant.phoneNumber)
+    
+        let phoneNumber = PhoneNumberFormatter.formatPhoneNumber(restaurant.phoneNumber)
+        phoneNumberButton.setTitle(phoneNumber, for: UIControlState())
+    
+        let isPhoneNumberButtonEnabled = phoneNumber == "No phone number available" ? false : true
+        phoneNumberButton.isEnabled = isPhoneNumberButtonEnabled
+        phoneNumberButton.tintColor = isPhoneNumberButtonEnabled == true ? UIColor(red: 0/255.0, green: 122/255.0, blue: 255/255.0, alpha: 100) : UIColor(red: 115/255.0, green: 113/255.0, blue: 115/255.0, alpha: 100)
     }
     
     private func hideStarsIfNecessary(_ rating: Int) {
@@ -198,3 +169,4 @@ class FavoriteDetailViewController: UIViewController {
     }
     
 }
+

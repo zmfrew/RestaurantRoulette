@@ -15,6 +15,7 @@
 		B61FDAB8214F12EA00B536AD /* MapKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61FDAB7214F12EA00B536AD /* MapKitManager.swift */; };
 		B66135372156ECB20000A08E /* Restaurant+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66135352156ECB20000A08E /* Restaurant+CoreDataClass.swift */; };
 		B66135382156ECB20000A08E /* Restaurant+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66135362156ECB20000A08E /* Restaurant+CoreDataProperties.swift */; };
+		B66A15B42159815E00BBD09A /* InitialLoadAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66A15B32159815E00BBD09A /* InitialLoadAnimationViewController.swift */; };
 		B6733FC52152BC780008F997 /* CDYelpFusionKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6733FC42152BC780008F997 /* CDYelpFusionKitManager.swift */; };
 		B6733FD02152C8940008F997 /* BusinessTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6733FCF2152C8940008F997 /* BusinessTableViewCell.swift */; };
 		B6733FD52152E8530008F997 /* ButtonAnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6733FD42152E8530008F997 /* ButtonAnimationManager.swift */; };
@@ -70,6 +71,7 @@
 		B61FDAB7214F12EA00B536AD /* MapKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitManager.swift; sourceTree = "<group>"; };
 		B66135352156ECB20000A08E /* Restaurant+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Restaurant+CoreDataClass.swift"; path = "/Users/Zachary/Documents/devmountain/personalproject/RestaurantRoulette/RestaurantRoulette/Models/CoreData/Restaurant+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		B66135362156ECB20000A08E /* Restaurant+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Restaurant+CoreDataProperties.swift"; path = "/Users/Zachary/Documents/devmountain/personalproject/RestaurantRoulette/RestaurantRoulette/Models/CoreData/Restaurant+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		B66A15B32159815E00BBD09A /* InitialLoadAnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialLoadAnimationViewController.swift; sourceTree = "<group>"; };
 		B6733FC42152BC780008F997 /* CDYelpFusionKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDYelpFusionKitManager.swift; sourceTree = "<group>"; };
 		B6733FCF2152C8940008F997 /* BusinessTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessTableViewCell.swift; sourceTree = "<group>"; };
 		B6733FD42152E8530008F997 /* ButtonAnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonAnimationManager.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 				B6C934BA21506594003CE920 /* RestaurantsListViewController.swift */,
 				B69F733F2151E0E900F8956F /* RandomRestaurantMapViewController.swift */,
 				B69F733B2151BCB600F8956F /* RouletteAnimationViewController.swift */,
+				B66A15B32159815E00BBD09A /* InitialLoadAnimationViewController.swift */,
 			);
 			path = SearchViewControllers;
 			sourceTree = "<group>";
@@ -606,6 +609,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6E8A620215037AE003EB2E8 /* FavoritesListViewController.swift in Sources */,
+				B66A15B42159815E00BBD09A /* InitialLoadAnimationViewController.swift in Sources */,
 				B69F7335215157EA00F8956F /* FavoriteDetailViewController.swift in Sources */,
 				B61FDAB3214F12B000B536AD /* CoreDataManager.swift in Sources */,
 				B6E8A61E21503338003EB2E8 /* MetersUnitConverter.swift in Sources */,

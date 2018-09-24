@@ -41,6 +41,7 @@ class SearchViewController: UIViewController {
     // MARK: - LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        presentRouletteAnimationController()
         setupViews()
         checkLocationAndUpdate()
         // Fetch favorites here to allow for comparing in the RestaurantsList & update the star color if the restaurant is already a favorite.
@@ -108,6 +109,15 @@ class SearchViewController: UIViewController {
     }
     
     // MARK: - Methods
+    func presentRouletteAnimationController() {
+        let rouletteAnimationVC = self.storyboard?.instantiateViewController(withIdentifier: "InitialLoadAnimationViewController") as! UIViewController
+        present(rouletteAnimationVC, animated: true) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                self.dismiss(animated: true, completion: nil)
+            })
+        }
+    }
+    
     func setupViews() {
         setupTextFields()
         setupPickerViews()
@@ -137,7 +147,9 @@ class SearchViewController: UIViewController {
             locationManager.requestLocation()
             currentLatitude = locationManager.location?.coordinate.latitude
             currentLongitude = locationManager.location?.coordinate.longitude
+            currentLocationSwitch.isOn = true
         } else {
+            currentLocationSwitch.isOn = false
             currentLatitude = nil
             currentLongitude = nil
         }
