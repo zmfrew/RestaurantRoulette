@@ -33,7 +33,7 @@ class BusinessTableViewCell: UITableViewCell {
             }
         }
     }
-    var indexPath: IndexPath?
+    let imageCache = NSCache<AnyObject, AnyObject>()
     
     // MARK: - Actions
     @IBAction func favoriteButtonTapped(_ sender: UIButton) {
@@ -68,7 +68,7 @@ class BusinessTableViewCell: UITableViewCell {
         guard let business = business else { return }
         
         // FIXME: - Insert a new default image with the App Icon
-        businessImageView.image = UIImage(named: "mockShannons")
+        businessImageView.image = UIImage(named: "icon")
         nameLabel.text = business.name
         hideStarsIfNecessary(Int(business.rating ?? 0))
         setFavoriteButtonBackground()
@@ -80,7 +80,8 @@ class BusinessTableViewCell: UITableViewCell {
             let imageData = try? Data(contentsOf: imageURL)
             else { return }
         
-        businessImageView.image = UIImage(data: imageData) ?? UIImage(named: "mockShannons")
+        UIImageView().cacheImage(urlString: imageURL.absoluteString, to: imageCache)
+        businessImageView.image = UIImage(data: imageData) ?? UIImage(named: "icon")
     }
     
     private func hideStarsIfNecessary(_ rating: Int) {
@@ -126,3 +127,28 @@ class BusinessTableViewCell: UITableViewCell {
     
 }
 
+
+extension UIImageView {
+    
+    func cacheImage(urlString: String, to cache: NSCache<AnyObject, AnyObject>) {
+        let url = URL(string: urlString)
+        
+        image = nil
+        
+        if let imageFromCache = cache.object(forKey: urlString as AnyObject) as? UIImage {
+            self.image = imageFromCache
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url!) {
+            data, response, error in
+            if let response = data {
+                DispatchQueue.main.async {
+                    let imageToCache = UIImage(data: data!)
+                    cache.setObject(imageToCache!, forKey: urlString as AnyObject)
+                    self.image = imageToCache
+                }
+            }
+            }.resume()
+    }
+}

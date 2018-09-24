@@ -53,7 +53,7 @@ class RestaurantTableViewCell: UITableViewCell {
         }
         
         nameLabel.text = restaurant.name
-        restaurantImageView.image = UIImage(data: imageData) ?? UIImage(named: "mockShannons")
+        restaurantImageView.image = UIImage(data: imageData) ?? UIImage(named: "icon")
         hideStarsIfNecessary(Int(restaurant.rating?.count ?? 0) + 1)
         setFavoriteButtonBackground(restaurant)
     }

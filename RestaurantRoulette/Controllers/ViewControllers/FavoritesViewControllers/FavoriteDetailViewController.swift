@@ -45,6 +45,7 @@ class FavoriteDetailViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         ButtonAnimationManager.animateButtonOntoScreen(leftButton: searchButton, centerButton: locationButton, rightButton: favoritesButton)
+        StoreReviewManager.shared.showReview()
     }
     
     // MARK: - Actions
@@ -82,7 +83,7 @@ class FavoriteDetailViewController: UIViewController {
                 return
         }
         
-        restaurantImageView.image = UIImage(data: imageData) ?? UIImage(named: "mockShannons")
+        restaurantImageView.image = UIImage(data: imageData) ?? UIImage(named: "icon")
         
         restaurantImageView.layer.cornerRadius = restaurantImageView.layer.frame.height / 2
         hideStarsIfNecessary(restaurant.rating?.count ?? 0)

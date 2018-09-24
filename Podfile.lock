@@ -6,10 +6,12 @@ PODS:
   - CDYelpFusionKit (1.5.0):
     - AlamofireObjectMapper (= 5.0.0)
   - ObjectMapper (3.3.0)
+  - ViewAnimator (2.1.2)
   - YelpAPI (3.0.0)
 
 DEPENDENCIES:
   - CDYelpFusionKit (= 1.5.0)
+  - ViewAnimator
   - YelpAPI
 
 SPEC REPOS:
@@ -18,6 +20,7 @@ SPEC REPOS:
     - AlamofireObjectMapper
     - CDYelpFusionKit
     - ObjectMapper
+    - ViewAnimator
     - YelpAPI
 
 SPEC CHECKSUMS:
@@ -25,8 +28,9 @@ SPEC CHECKSUMS:
   AlamofireObjectMapper: 5fafc816351cbbc0d486611aaeba7461c0cbad49
   CDYelpFusionKit: 665cf3881bff25db3a47ca3a4e3497e3a1ea552a
   ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
+  ViewAnimator: 20df9a24a076c6ee78b77a4dbf1943808c94954e
   YelpAPI: 9ae0ee45b998d306c1aff9b2d966dc23121f191e
 
-PODFILE CHECKSUM: 9cc5ea5b79b5d896e04a09109ec733b86a76a8a8
+PODFILE CHECKSUM: d36eb2e392cfeba4d213a5f2b7d2e7b75dff48d6
 
 COCOAPODS: 1.5.3
