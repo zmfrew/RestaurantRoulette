@@ -121,6 +121,7 @@ class RestaurantsListViewController: UIViewController {
             destinationVC.navigationController?.navigationBar.prefersLargeTitles = true
             destinationVC.title = randomBusiness.name
             destinationVC.business = randomBusiness
+            destinationVC.businesses = businesses
             
             self.randomBusiness = nil
         }
