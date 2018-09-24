@@ -124,6 +124,13 @@ class RestaurantsListViewController: UIViewController {
             destinationVC.businesses = businesses
             
             self.randomBusiness = nil
+        } else if segue.identifier == "restaurantListToDetail" {
+            guard let destinationVC = segue.destination as? RestaurantDetailViewController,
+                let indexPath = tableView.indexPathForSelectedRow else { return }
+            
+            let business = businesses[indexPath.row]
+            destinationVC.title = business.name
+            destinationVC.business = business
         }
     }
     
