@@ -1,15 +1,15 @@
 //
-//  FavoriteDetailViewController.swift
+//  RestaurantDetailViewController.swift
 //  RestaurantRoulette
 //
-//  Created by Zachary Frew on 9/18/18.
+//  Created by Zachary Frew on 9/24/18.
 //  Copyright © 2018 Zachary Frew. All rights reserved.
 //
 
 import UIKit
-import CloudKit
+import CDYelpFusionKit
 
-class FavoriteDetailViewController: UIViewController {
+class RestaurantDetailViewController: UIViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var restaurantImageView: UIImageView!
@@ -25,10 +25,14 @@ class FavoriteDetailViewController: UIViewController {
     @IBOutlet weak var categoryThreeLabel: UILabel!
     @IBOutlet weak var phoneNumberButton: UIButton!
     @IBOutlet weak var searchButton: UIButton!
-    @IBOutlet weak var locationButton: UIButton!
     @IBOutlet weak var favoritesButton: UIButton!
     
     // MARK: - Properties
+    var business: CDYelpBusiness? {
+        didSet {
+            restaurant = RestaurantController.shared.addRestaurantFrom(business: business!)
+        }
+    }
     var restaurant: Restaurant? {
         didSet {
             DispatchQueue.main.async {
@@ -40,11 +44,11 @@ class FavoriteDetailViewController: UIViewController {
     // MARK: - LifeCycle Methods
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        ButtonAnimationManager.moveButtonsOffScreen(leftButton: searchButton, centerButton: locationButton, rightButton: favoritesButton)
+        ButtonAnimationManager.moveButtonsOffScreen(leftButton: searchButton, centerButton: nil, rightButton: favoritesButton)
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        ButtonAnimationManager.animateButtonOntoScreen(leftButton: searchButton, centerButton: locationButton, rightButton: favoritesButton)
+        ButtonAnimationManager.animateButtonOntoScreen(leftButton: searchButton, centerButton: nil, rightButton: favoritesButton)
         StoreReviewManager.shared.showReview()
     }
     
@@ -66,6 +70,13 @@ class FavoriteDetailViewController: UIViewController {
         }
     }
     
+    @IBAction func unwindToSearchFromMap(unwindSegue: UIStoryboardSegue) {
+    }
+    
+    @IBAction func unwindToSearchFromMapToBookmarks(unwindSegue: UIStoryboardSegue) {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    
     // MARK: - Methods
     private func updateViews() {
         guard let restaurant = restaurant else { return }
@@ -84,10 +95,10 @@ class FavoriteDetailViewController: UIViewController {
         
         let categoryLabels = restaurant.categories?.components(separatedBy: " ") ?? ["No categories available."]
         updateCategoryLabels(categoryLabels)
-    
+        
         let phoneNumber = PhoneNumberFormatter.formatPhoneNumber(restaurant.phoneNumber)
         phoneNumberButton.setTitle(phoneNumber, for: UIControlState())
-    
+        
         let isPhoneNumberButtonEnabled = phoneNumber == "No phone number available" ? false : true
         phoneNumberButton.isEnabled = isPhoneNumberButtonEnabled
         phoneNumberButton.tintColor = isPhoneNumberButtonEnabled == true ? UIColor(red: 0/255.0, green: 122/255.0, blue: 255/255.0, alpha: 100) : UIColor(red: 115/255.0, green: 113/255.0, blue: 115/255.0, alpha: 100)
@@ -158,10 +169,13 @@ class FavoriteDetailViewController: UIViewController {
             guard let destinationVC = segue.destination as? FavoriteMapViewController,
                 let restaurant = restaurant else { return }
             
+            destinationVC.title = restaurant.name
             destinationVC.restaurant = restaurant
         }
         
     }
     
-}
 
+
+
+}
