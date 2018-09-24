@@ -20,6 +20,7 @@ class RandomRestaurantMapViewController: UIViewController {
     
     // MARK: - Properties
     var business: CDYelpBusiness?
+    var businesses: [CDYelpBusiness?]?
     
     // MARK: - LifeCycle Methods
     override func viewDidLoad() {
@@ -38,11 +39,25 @@ class RandomRestaurantMapViewController: UIViewController {
     }
     
     // MARK: - Actions
+    @IBAction func randomizeButtonTapped(_ sender: UIButton) {
+        selectRandomBusiness()
+        self.title = business?.title
+        setupMapView()
+        tableView.reloadData()
+    }
+    
     @IBAction func unwindToSearchFromMap(unwindSegue: UIStoryboardSegue) {
     }
     
     @IBAction func unwindToSearchFromMapToBookmarks(unwindSegue: UIStoryboardSegue) {
         self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    // MARK: - Methods
+    func selectRandomBusiness() {
+        guard let businesses = businesses else { return }
+        let randomIndex = Int(arc4random_uniform(UInt32(businesses.count)))
+        business = businesses[randomIndex]
     }
     
 }

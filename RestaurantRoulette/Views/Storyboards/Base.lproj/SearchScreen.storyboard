@@ -1560,13 +1560,13 @@
                                 <rect key="frame" x="0.0" y="233" width="375" height="579"/>
                             </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Se6-Jl-ivQ">
-                                <rect key="frame" x="0.0" y="748" width="375" height="32"/>
+                                <rect key="frame" x="0.0" y="731" width="375" height="60"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="uf3-w0-Sp9">
-                                        <rect key="frame" x="32" y="0.0" width="311" height="32"/>
+                                        <rect key="frame" x="32" y="0.0" width="311" height="60"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lRZ-co-KK5" userLabel="search">
-                                                <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
+                                                <rect key="frame" x="0.0" y="14" width="32" height="32"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="32" id="1fT-fj-2Lt"/>
                                                     <constraint firstAttribute="width" constant="32" id="I7N-cD-OH6"/>
@@ -1576,8 +1576,19 @@
                                                     <segue destination="4YN-4X-E04" kind="unwind" identifier="unwindToSearchFromMap" unwindAction="unwindToSearchFromMapWithUnwindSegue:" id="KpY-nf-SbS"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v3y-db-9ME">
+                                                <rect key="frame" x="125.66666666666666" y="0.0" width="60" height="60"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="0NF-lL-5cP"/>
+                                                    <constraint firstAttribute="width" constant="60" id="bPa-NY-Jm8"/>
+                                                </constraints>
+                                                <state key="normal" backgroundImage="randomize"/>
+                                                <connections>
+                                                    <action selector="randomizeButtonTapped:" destination="Qi5-H6-4sZ" eventType="touchUpInside" id="hA4-0t-BoV"/>
+                                                </connections>
+                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e03-gf-1YT" userLabel="bookmarks">
-                                                <rect key="frame" x="279" y="0.0" width="32" height="32"/>
+                                                <rect key="frame" x="279" y="14" width="32" height="32"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="32" id="0Cd-R7-eVi"/>
                                                     <constraint firstAttribute="width" constant="32" id="tkj-3C-RKD"/>
@@ -1593,8 +1604,10 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="uf3-w0-Sp9" secondAttribute="trailing" constant="32" id="1Dv-Hn-QxP"/>
                                     <constraint firstItem="uf3-w0-Sp9" firstAttribute="leading" secondItem="Se6-Jl-ivQ" secondAttribute="leading" constant="32" id="1eo-nr-cTJ"/>
-                                    <constraint firstAttribute="height" constant="32" id="Z4X-ae-Tco"/>
-                                    <constraint firstItem="uf3-w0-Sp9" firstAttribute="top" secondItem="Se6-Jl-ivQ" secondAttribute="top" id="laV-ot-CrS"/>
+                                    <constraint firstAttribute="height" constant="60" id="8lA-OT-NTD"/>
+                                    <constraint firstAttribute="bottom" secondItem="uf3-w0-Sp9" secondAttribute="bottom" id="a8i-HS-wdy"/>
+                                    <constraint firstItem="uf3-w0-Sp9" firstAttribute="height" secondItem="Se6-Jl-ivQ" secondAttribute="height" id="mJr-Da-LzN"/>
+                                    <constraint firstItem="uf3-w0-Sp9" firstAttribute="top" secondItem="Se6-Jl-ivQ" secondAttribute="top" id="pis-ur-hKT"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1602,13 +1615,13 @@
                         <constraints>
                             <constraint firstItem="MHK-2W-1LW" firstAttribute="trailing" secondItem="0KR-2C-ktX" secondAttribute="trailing" id="0Zn-rc-x5K"/>
                             <constraint firstItem="0KR-2C-ktX" firstAttribute="leading" secondItem="MHK-2W-1LW" secondAttribute="leading" id="KU3-2m-SGi"/>
-                            <constraint firstAttribute="bottom" secondItem="Se6-Jl-ivQ" secondAttribute="bottom" constant="32" id="d3L-Ph-FiT"/>
+                            <constraint firstItem="MHK-2W-1LW" firstAttribute="trailing" secondItem="Se6-Jl-ivQ" secondAttribute="trailing" id="bfL-EH-7Jd"/>
                             <constraint firstAttribute="bottom" secondItem="0KR-2C-ktX" secondAttribute="bottom" id="eDs-G1-kTc"/>
-                            <constraint firstItem="Se6-Jl-ivQ" firstAttribute="leading" secondItem="H1n-7C-Tr6" secondAttribute="leading" id="gAj-Wx-ijf"/>
+                            <constraint firstAttribute="bottom" secondItem="Se6-Jl-ivQ" secondAttribute="bottom" constant="21" id="etL-tD-HGq"/>
+                            <constraint firstItem="Se6-Jl-ivQ" firstAttribute="leading" secondItem="MHK-2W-1LW" secondAttribute="leading" id="fnm-AG-d7p"/>
                             <constraint firstItem="qqs-7c-hyC" firstAttribute="top" secondItem="MHK-2W-1LW" secondAttribute="top" id="hMx-2n-XTP"/>
                             <constraint firstItem="qqs-7c-hyC" firstAttribute="leading" secondItem="MHK-2W-1LW" secondAttribute="leading" id="jqS-zx-wUE"/>
                             <constraint firstItem="MHK-2W-1LW" firstAttribute="trailing" secondItem="qqs-7c-hyC" secondAttribute="trailing" id="oUD-n6-ZL5"/>
-                            <constraint firstAttribute="trailing" secondItem="Se6-Jl-ivQ" secondAttribute="trailing" id="qb6-w8-Pgb"/>
                             <constraint firstItem="0KR-2C-ktX" firstAttribute="top" secondItem="qqs-7c-hyC" secondAttribute="bottom" id="sDX-zx-uaV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MHK-2W-1LW"/>
