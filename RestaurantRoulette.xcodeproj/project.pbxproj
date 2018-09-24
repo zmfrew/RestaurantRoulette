@@ -16,6 +16,7 @@
 		B66135372156ECB20000A08E /* Restaurant+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66135352156ECB20000A08E /* Restaurant+CoreDataClass.swift */; };
 		B66135382156ECB20000A08E /* Restaurant+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66135362156ECB20000A08E /* Restaurant+CoreDataProperties.swift */; };
 		B66A15B42159815E00BBD09A /* InitialLoadAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66A15B32159815E00BBD09A /* InitialLoadAnimationViewController.swift */; };
+		B66A15B92159948400BBD09A /* StoreReviewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66A15B82159948400BBD09A /* StoreReviewManager.swift */; };
 		B6733FC52152BC780008F997 /* CDYelpFusionKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6733FC42152BC780008F997 /* CDYelpFusionKitManager.swift */; };
 		B6733FD02152C8940008F997 /* BusinessTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6733FCF2152C8940008F997 /* BusinessTableViewCell.swift */; };
 		B6733FD52152E8530008F997 /* ButtonAnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6733FD42152E8530008F997 /* ButtonAnimationManager.swift */; };
@@ -72,6 +73,7 @@
 		B66135352156ECB20000A08E /* Restaurant+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Restaurant+CoreDataClass.swift"; path = "/Users/Zachary/Documents/devmountain/personalproject/RestaurantRoulette/RestaurantRoulette/Models/CoreData/Restaurant+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		B66135362156ECB20000A08E /* Restaurant+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Restaurant+CoreDataProperties.swift"; path = "/Users/Zachary/Documents/devmountain/personalproject/RestaurantRoulette/RestaurantRoulette/Models/CoreData/Restaurant+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		B66A15B32159815E00BBD09A /* InitialLoadAnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialLoadAnimationViewController.swift; sourceTree = "<group>"; };
+		B66A15B82159948400BBD09A /* StoreReviewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreReviewManager.swift; sourceTree = "<group>"; };
 		B6733FC42152BC780008F997 /* CDYelpFusionKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDYelpFusionKitManager.swift; sourceTree = "<group>"; };
 		B6733FCF2152C8940008F997 /* BusinessTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessTableViewCell.swift; sourceTree = "<group>"; };
 		B6733FD42152E8530008F997 /* ButtonAnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonAnimationManager.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 		B61FDAA1214F11EA00B536AD /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				B66A15B72159947100BBD09A /* StoreReviewManager */,
 				B6733FD32152E8460008F997 /* ButtonAnimationManager */,
 				B6733FC92152C4260008F997 /* CDYelpFusionKitManager */,
 				B61FDAAF214F129400B536AD /* CloudKit */,
@@ -232,6 +235,14 @@
 				B61FDAB5214F12E300B536AD /* CoreLocationManager.swift */,
 			);
 			path = CoreLocation;
+			sourceTree = "<group>";
+		};
+		B66A15B72159947100BBD09A /* StoreReviewManager */ = {
+			isa = PBXGroup;
+			children = (
+				B66A15B82159948400BBD09A /* StoreReviewManager.swift */,
+			);
+			path = StoreReviewManager;
 			sourceTree = "<group>";
 		};
 		B6733FC92152C4260008F997 /* CDYelpFusionKitManager */ = {
@@ -573,6 +584,7 @@
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/CDYelpFusionKit/CDYelpFusionKit.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/ViewAnimator/ViewAnimator.framework",
 				"${BUILT_PRODUCTS_DIR}/YelpAPI/YelpAPI.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -581,6 +593,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CDYelpFusionKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ViewAnimator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YelpAPI.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -629,6 +642,7 @@
 				B69132352156E7AA009342A8 /* CloudKitSyncable.swift in Sources */,
 				B69F73422151E2CE00F8956F /* CDYelpBusiness+MKAnnotation.swift in Sources */,
 				B69F733E2151C00400F8956F /* FavoriteMapViewController.swift in Sources */,
+				B66A15B92159948400BBD09A /* StoreReviewManager.swift in Sources */,
 				B61FDAB8214F12EA00B536AD /* MapKitManager.swift in Sources */,
 				B6C934B521504A8B003CE920 /* RestaurantTableViewCell.swift in Sources */,
 				B66135382156ECB20000A08E /* Restaurant+CoreDataProperties.swift in Sources */,

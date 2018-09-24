@@ -78,6 +78,7 @@ class RestaurantsListViewController: UIViewController {
         presentRouletteAnimationController()
         CDYelpFusionKitManager.shared.apiClient.searchBusinesses(byTerm: searchTerm, location: location, latitude: latitude, longitude: longitude, radius: locationRadius, categories: nil, locale: nil, limit: 25, offset: nil, sortBy: CDYelpBusinessSortType.bestMatch, priceTiers: priceTiers, openNow: openNow, openAt: nil, attributes: nil) { (response) in
             if let response = response, let businesses = response.businesses {
+                
                 self.businesses = businesses
                 self.tableView.reloadData()
                 self.selectRandomBusiness()
@@ -140,7 +141,6 @@ extension RestaurantsListViewController: UITableViewDelegate, UITableViewDataSou
         let business = businesses[indexPath.row]
         cell.selectionStyle = .none
         cell.business = business
-        cell.indexPath = indexPath
         return cell
     }
     

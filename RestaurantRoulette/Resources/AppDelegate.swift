@@ -18,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         CDYelpFusionKitManager.shared.configure()
 
+        StoreReviewManager.shared.incrementAppRuns()
+        
         return true
     }
     
