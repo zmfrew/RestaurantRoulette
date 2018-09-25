@@ -30,6 +30,9 @@
 		B67CD57E214F10A6005F755A /* RestaurantRouletteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67CD57D214F10A6005F755A /* RestaurantRouletteTests.swift */; };
 		B67CD589214F10A6005F755A /* RestaurantRouletteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67CD588214F10A6005F755A /* RestaurantRouletteUITests.swift */; };
 		B67CD59A214F11A5005F755A /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B67CD599214F11A5005F755A /* CloudKit.framework */; };
+		B68A782E215AB9F00029EACC /* InitialOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68A782D215AB9F00029EACC /* InitialOnboardingViewController.swift */; };
+		B68A7830215ABBDD0029EACC /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68A782F215ABBDD0029EACC /* OnboardingViewController.swift */; };
+		B68A7832215AC0500029EACC /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68A7831215AC0500029EACC /* CardView.swift */; };
 		B69132352156E7AA009342A8 /* CloudKitSyncable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69132342156E7AA009342A8 /* CloudKitSyncable.swift */; };
 		B69132372156EA4E009342A8 /* CKRecord+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69132362156EA4E009342A8 /* CKRecord+Convenience.swift */; };
 		B69F7335215157EA00F8956F /* FavoriteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69F7334215157EA00F8956F /* FavoriteDetailViewController.swift */; };
@@ -95,6 +98,9 @@
 		B67CD58A214F10A6005F755A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B67CD597214F11A2005F755A /* RestaurantRoulette.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RestaurantRoulette.entitlements; sourceTree = "<group>"; };
 		B67CD599214F11A5005F755A /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		B68A782D215AB9F00029EACC /* InitialOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialOnboardingViewController.swift; sourceTree = "<group>"; };
+		B68A782F215ABBDD0029EACC /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		B68A7831215AC0500029EACC /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		B69132342156E7AA009342A8 /* CloudKitSyncable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitSyncable.swift; sourceTree = "<group>"; };
 		B69132362156EA4E009342A8 /* CKRecord+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CKRecord+Convenience.swift"; sourceTree = "<group>"; };
 		B69F7334215157EA00F8956F /* FavoriteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDetailViewController.swift; sourceTree = "<group>"; };
@@ -193,6 +199,7 @@
 		B61FDAA7214F121B00B536AD /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				B68A782C215AB9200029EACC /* OnboardingViewControllers */,
 				B6733FD22152E6210008F997 /* FavoritesViewControllers */,
 				B6733FD12152E6140008F997 /* SearchViewControllers */,
 			);
@@ -368,6 +375,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B68A782C215AB9200029EACC /* OnboardingViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B68A782D215AB9F00029EACC /* InitialOnboardingViewController.swift */,
+				B68A782F215ABBDD0029EACC /* OnboardingViewController.swift */,
+			);
+			path = OnboardingViewControllers;
+			sourceTree = "<group>";
+		};
 		B69132332156E79F009342A8 /* CloudKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -399,6 +415,7 @@
 			children = (
 				B6C934B421504A8B003CE920 /* RestaurantTableViewCell.swift */,
 				B6733FCF2152C8940008F997 /* BusinessTableViewCell.swift */,
+				B68A7831215AC0500029EACC /* CardView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -630,6 +647,7 @@
 				B66A15BB2159A45800BBD09A /* RestaurantDetailViewController.swift in Sources */,
 				B61FDAB3214F12B000B536AD /* CoreDataManager.swift in Sources */,
 				B6E8A61E21503338003EB2E8 /* MetersUnitConverter.swift in Sources */,
+				B68A782E215AB9F00029EACC /* InitialOnboardingViewController.swift in Sources */,
 				B67CD569214F10A1005F755A /* AppDelegate.swift in Sources */,
 				B61FDAAC214F123F00B536AD /* SearchViewController.swift in Sources */,
 				B6C934BB21506594003CE920 /* RestaurantsListViewController.swift in Sources */,
@@ -646,12 +664,14 @@
 				B69132352156E7AA009342A8 /* CloudKitSyncable.swift in Sources */,
 				B69F73422151E2CE00F8956F /* CDYelpBusiness+MKAnnotation.swift in Sources */,
 				B69F733E2151C00400F8956F /* FavoriteMapViewController.swift in Sources */,
+				B68A7830215ABBDD0029EACC /* OnboardingViewController.swift in Sources */,
 				B66A15B92159948400BBD09A /* StoreReviewManager.swift in Sources */,
 				B61FDAB8214F12EA00B536AD /* MapKitManager.swift in Sources */,
 				B6C934B521504A8B003CE920 /* RestaurantTableViewCell.swift in Sources */,
 				B66135382156ECB20000A08E /* Restaurant+CoreDataProperties.swift in Sources */,
 				B69F73402151E0E900F8956F /* RandomRestaurantMapViewController.swift in Sources */,
 				B69F733C2151BCB600F8956F /* RouletteAnimationViewController.swift in Sources */,
+				B68A7832215AC0500029EACC /* CardView.swift in Sources */,
 				B6733FD02152C8940008F997 /* BusinessTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
