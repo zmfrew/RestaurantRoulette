@@ -1641,10 +1641,143 @@
             </objects>
             <point key="canvasLocation" x="4716" y="463"/>
         </scene>
+        <!--Initial Onboarding View Controller-->
+        <scene sceneID="Ahw-oz-urU">
+            <objects>
+                <viewController storyboardIdentifier="InitialOnboardingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fHl-uR-Jpo" customClass="InitialOnboardingViewController" customModule="RestaurantRoulette" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VkL-yW-lt6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cMn-aE-GhF">
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                            </imageView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D9B-aL-ucA">
+                                <rect key="frame" x="16" y="60" width="343" height="702"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <segue destination="ZKs-r6-Pmg" kind="embed" id="Bot-ow-Zae"/>
+                                </connections>
+                            </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bir-Ww-t9s">
+                                <rect key="frame" x="313" y="76" width="30" height="30"/>
+                                <state key="normal" title="Skip">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="skipButtonTapped:" destination="fHl-uR-Jpo" eventType="touchUpInside" id="uPK-jG-OGV"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="cMn-aE-GhF" firstAttribute="top" secondItem="q0n-cf-Fao" secondAttribute="top" id="0cu-sn-Eje"/>
+                            <constraint firstItem="D9B-aL-ucA" firstAttribute="top" secondItem="q0n-cf-Fao" secondAttribute="top" constant="16" id="8iO-XE-amx"/>
+                            <constraint firstItem="D9B-aL-ucA" firstAttribute="leading" secondItem="q0n-cf-Fao" secondAttribute="leading" constant="16" id="AKO-4X-1dG"/>
+                            <constraint firstItem="bir-Ww-t9s" firstAttribute="trailing" secondItem="D9B-aL-ucA" secondAttribute="trailing" constant="-16" id="Cil-yH-caU"/>
+                            <constraint firstItem="q0n-cf-Fao" firstAttribute="trailing" secondItem="cMn-aE-GhF" secondAttribute="trailing" id="IGA-Od-wNz"/>
+                            <constraint firstItem="q0n-cf-Fao" firstAttribute="bottom" secondItem="D9B-aL-ucA" secondAttribute="bottom" constant="16" id="MbG-Lc-hB0"/>
+                            <constraint firstItem="bir-Ww-t9s" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="q0n-cf-Fao" secondAttribute="leading" symbolic="YES" id="UH1-WD-hRf"/>
+                            <constraint firstItem="q0n-cf-Fao" firstAttribute="bottom" secondItem="cMn-aE-GhF" secondAttribute="bottom" id="ew5-yr-n9B"/>
+                            <constraint firstItem="bir-Ww-t9s" firstAttribute="top" secondItem="D9B-aL-ucA" secondAttribute="top" constant="16" id="g58-gt-yYe"/>
+                            <constraint firstItem="cMn-aE-GhF" firstAttribute="leading" secondItem="q0n-cf-Fao" secondAttribute="leading" id="sak-js-U5I"/>
+                            <constraint firstItem="q0n-cf-Fao" firstAttribute="trailing" secondItem="D9B-aL-ucA" secondAttribute="trailing" constant="16" id="yNF-u6-rPT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="q0n-cf-Fao"/>
+                    </view>
+                    <connections>
+                        <outlet property="onboardingContainer" destination="D9B-aL-ucA" id="y8v-cT-t5p"/>
+                        <outlet property="skipButton" destination="bir-Ww-t9s" id="Kxl-I2-ZTe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zhP-nK-60q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="822" y="-1374"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="rXl-l4-MmY">
+            <objects>
+                <viewController storyboardIdentifier="firstPageView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="twb-Xh-puw" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OJP-DS-kht">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TUk-Zh-PPN" customClass="CardView" customModule="RestaurantRoulette" customModuleProvider="target">
+                                <rect key="frame" x="8" y="52" width="359" height="718"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="detailScreenshot1" translatesAutoresizingMaskIntoConstraints="NO" id="hVk-Gg-01q">
+                                        <rect key="frame" x="-22.333333333333343" y="0.0" width="403.66666666666674" height="718"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="hVk-Gg-01q" secondAttribute="height" multiplier="1080:1920" id="Mkp-fu-ZrJ"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="hVk-Gg-01q" firstAttribute="top" secondItem="TUk-Zh-PPN" secondAttribute="top" id="ILO-s3-TIf"/>
+                                    <constraint firstItem="hVk-Gg-01q" firstAttribute="centerX" secondItem="TUk-Zh-PPN" secondAttribute="centerX" id="gNK-fE-vu9"/>
+                                    <constraint firstAttribute="bottom" secondItem="hVk-Gg-01q" secondAttribute="bottom" id="ydy-cc-vgy"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="TUk-Zh-PPN" firstAttribute="leading" secondItem="Wok-Qb-TtR" secondAttribute="leading" constant="8" id="515-YU-TMy"/>
+                            <constraint firstItem="TUk-Zh-PPN" firstAttribute="top" secondItem="Wok-Qb-TtR" secondAttribute="top" constant="8" id="AYI-Li-fN0"/>
+                            <constraint firstItem="Wok-Qb-TtR" firstAttribute="bottom" secondItem="TUk-Zh-PPN" secondAttribute="bottom" constant="8" id="lno-Vi-Zri"/>
+                            <constraint firstItem="Wok-Qb-TtR" firstAttribute="trailing" secondItem="TUk-Zh-PPN" secondAttribute="trailing" constant="8" id="yxm-pS-jEK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Wok-Qb-TtR"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cOX-OR-GEK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2360.8000000000002" y="-1014.5320197044335"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="QXK-So-85F">
+            <objects>
+                <viewController storyboardIdentifier="secondPageView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4eB-b3-URO" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5v0-vm-mKY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rUi-Mz-UJ2" customClass="CardView" customModule="RestaurantRoulette" customModuleProvider="target">
+                                <rect key="frame" x="8" y="52" width="359" height="718"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="detailScreenshot2" translatesAutoresizingMaskIntoConstraints="NO" id="Sa2-Cs-5sz">
+                                        <rect key="frame" x="-22.333333333333343" y="0.0" width="403.66666666666674" height="718"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Sa2-Cs-5sz" secondAttribute="height" multiplier="1080:1920" id="X4X-Vb-yyL"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Sa2-Cs-5sz" firstAttribute="centerX" secondItem="rUi-Mz-UJ2" secondAttribute="centerX" id="Fhw-2y-ANg"/>
+                                    <constraint firstItem="Sa2-Cs-5sz" firstAttribute="top" secondItem="rUi-Mz-UJ2" secondAttribute="top" id="Up1-fa-t8R"/>
+                                    <constraint firstAttribute="bottom" secondItem="Sa2-Cs-5sz" secondAttribute="bottom" id="iAB-4O-AQ3"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="rUi-Mz-UJ2" firstAttribute="leading" secondItem="yRr-vq-Ugp" secondAttribute="leading" constant="8" id="54d-W4-bQc"/>
+                            <constraint firstItem="rUi-Mz-UJ2" firstAttribute="top" secondItem="yRr-vq-Ugp" secondAttribute="top" constant="8" id="5Hi-OC-ATK"/>
+                            <constraint firstItem="yRr-vq-Ugp" firstAttribute="bottom" secondItem="rUi-Mz-UJ2" secondAttribute="bottom" constant="8" id="Yc2-wE-bgm"/>
+                            <constraint firstItem="yRr-vq-Ugp" firstAttribute="trailing" secondItem="rUi-Mz-UJ2" secondAttribute="trailing" constant="8" id="grP-Gk-R5A"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="yRr-vq-Ugp"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bKj-xw-PgK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3170" y="-1015"/>
+        </scene>
         <!--Initial Load Animation View Controller-->
         <scene sceneID="Rwy-DP-ktt">
             <objects>
-                <viewController storyboardIdentifier="InitialLoadAnimationViewController" id="HEL-q2-LqC" customClass="InitialLoadAnimationViewController" customModule="RestaurantRoulette" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InitialLoadAnimationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HEL-q2-LqC" customClass="InitialLoadAnimationViewController" customModule="RestaurantRoulette" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mKb-A6-cin">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1887,12 +2020,145 @@
             </objects>
             <point key="canvasLocation" x="4716" y="1153"/>
         </scene>
+        <!--Onboarding View Controller-->
+        <scene sceneID="g6I-3P-Dbq">
+            <objects>
+                <viewController id="ZKs-r6-Pmg" customClass="OnboardingViewController" customModule="RestaurantRoulette" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gp4-iW-tCT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2361" y="-1708"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="3GL-JS-Fmf">
+            <objects>
+                <viewController storyboardIdentifier="thirdPageView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KCL-Zi-Yq4" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wjF-vx-CfS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9lI-fw-rJ3" customClass="CardView" customModule="RestaurantRoulette" customModuleProvider="target">
+                                <rect key="frame" x="8" y="52" width="359" height="718"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="detailScreenshot3" translatesAutoresizingMaskIntoConstraints="NO" id="X12-zy-0gm">
+                                        <rect key="frame" x="-22.333333333333343" y="0.0" width="403.66666666666674" height="718"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="X12-zy-0gm" secondAttribute="height" multiplier="1080:1920" id="Lig-0U-Pub"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="X12-zy-0gm" firstAttribute="top" secondItem="9lI-fw-rJ3" secondAttribute="top" id="8J9-OE-utp"/>
+                                    <constraint firstAttribute="bottom" secondItem="X12-zy-0gm" secondAttribute="bottom" id="jah-Aq-Gwf"/>
+                                    <constraint firstItem="X12-zy-0gm" firstAttribute="centerX" secondItem="9lI-fw-rJ3" secondAttribute="centerX" id="wdg-d9-Nsa"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Djg-Hd-EZn" firstAttribute="bottom" secondItem="9lI-fw-rJ3" secondAttribute="bottom" constant="8" id="2dP-S0-36S"/>
+                            <constraint firstItem="9lI-fw-rJ3" firstAttribute="top" secondItem="Djg-Hd-EZn" secondAttribute="top" constant="8" id="Lia-6t-6LE"/>
+                            <constraint firstItem="9lI-fw-rJ3" firstAttribute="leading" secondItem="Djg-Hd-EZn" secondAttribute="leading" constant="8" id="p0y-kG-NFv"/>
+                            <constraint firstItem="Djg-Hd-EZn" firstAttribute="trailing" secondItem="9lI-fw-rJ3" secondAttribute="trailing" constant="8" id="uon-VH-WpC"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Djg-Hd-EZn"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mWq-1Z-cZI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3948" y="-1015"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="0kq-dP-6qE">
+            <objects>
+                <viewController storyboardIdentifier="fourthPageView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nKb-fb-nRr" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="o4v-Ci-mqa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mub-5p-tAm" customClass="CardView" customModule="RestaurantRoulette" customModuleProvider="target">
+                                <rect key="frame" x="8" y="52" width="359" height="718"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="detailScreenshot4" translatesAutoresizingMaskIntoConstraints="NO" id="Er6-7h-lMa">
+                                        <rect key="frame" x="-22.333333333333343" y="0.0" width="403.66666666666674" height="718"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Er6-7h-lMa" secondAttribute="height" multiplier="1080:1920" id="2py-5X-E0I"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Er6-7h-lMa" secondAttribute="bottom" id="FwU-2D-Q3f"/>
+                                    <constraint firstItem="Er6-7h-lMa" firstAttribute="top" secondItem="Mub-5p-tAm" secondAttribute="top" id="ftE-Q1-3ch"/>
+                                    <constraint firstItem="Er6-7h-lMa" firstAttribute="centerX" secondItem="Mub-5p-tAm" secondAttribute="centerX" id="lnH-cL-FAb"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="LGV-Pl-HtN" firstAttribute="bottom" secondItem="Mub-5p-tAm" secondAttribute="bottom" constant="8" id="Klt-zD-Zx9"/>
+                            <constraint firstItem="Mub-5p-tAm" firstAttribute="top" secondItem="LGV-Pl-HtN" secondAttribute="top" constant="8" id="ewL-WG-MHy"/>
+                            <constraint firstItem="LGV-Pl-HtN" firstAttribute="trailing" secondItem="Mub-5p-tAm" secondAttribute="trailing" constant="8" id="hde-wR-RZr"/>
+                            <constraint firstItem="Mub-5p-tAm" firstAttribute="leading" secondItem="LGV-Pl-HtN" secondAttribute="leading" constant="8" id="qBf-if-scT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="LGV-Pl-HtN"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EqV-p1-2sP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4742" y="-1015"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="pzn-xm-IKE">
+            <objects>
+                <viewController storyboardIdentifier="fifthPageView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ctc-Da-scS" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3GG-vx-yKk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OeP-Eh-mbd" customClass="CardView" customModule="RestaurantRoulette" customModuleProvider="target">
+                                <rect key="frame" x="8" y="52" width="359" height="718"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="detailScreenshot5" translatesAutoresizingMaskIntoConstraints="NO" id="rW6-8X-epQ">
+                                        <rect key="frame" x="-22.333333333333343" y="0.0" width="403.66666666666674" height="718"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="rW6-8X-epQ" secondAttribute="height" multiplier="1080:1920" id="q3I-zm-zlq"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="rW6-8X-epQ" firstAttribute="top" secondItem="OeP-Eh-mbd" secondAttribute="top" id="O5l-h1-FXL"/>
+                                    <constraint firstItem="rW6-8X-epQ" firstAttribute="centerX" secondItem="OeP-Eh-mbd" secondAttribute="centerX" id="WKh-hV-m6a"/>
+                                    <constraint firstAttribute="bottom" secondItem="rW6-8X-epQ" secondAttribute="bottom" id="cHP-PV-Tuc"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="8A1-73-YWd" firstAttribute="trailing" secondItem="OeP-Eh-mbd" secondAttribute="trailing" constant="8" id="RBt-Eo-89k"/>
+                            <constraint firstItem="8A1-73-YWd" firstAttribute="bottom" secondItem="OeP-Eh-mbd" secondAttribute="bottom" constant="8" id="UZG-Dn-0XO"/>
+                            <constraint firstItem="OeP-Eh-mbd" firstAttribute="top" secondItem="8A1-73-YWd" secondAttribute="top" constant="8" id="Wud-qc-QxR"/>
+                            <constraint firstItem="OeP-Eh-mbd" firstAttribute="leading" secondItem="8A1-73-YWd" secondAttribute="leading" constant="8" id="vv8-4f-SdP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8A1-73-YWd"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U8Q-3q-iNU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5513" y="-1015"/>
+        </scene>
     </scenes>
     <resources>
         <image name="bookmarksBlue" width="768" height="768"/>
         <image name="bookmarksGray" width="768" height="768"/>
         <image name="burger" width="595" height="595"/>
         <image name="chicken" width="599" height="599"/>
+        <image name="detailScreenshot1" width="1242" height="2208"/>
+        <image name="detailScreenshot2" width="1242" height="2208"/>
+        <image name="detailScreenshot3" width="1242" height="2208"/>
+        <image name="detailScreenshot4" width="1242" height="2208"/>
+        <image name="detailScreenshot5" width="1242" height="2208"/>
         <image name="donut" width="563" height="563"/>
         <image name="fries" width="614" height="614"/>
         <image name="hotdog" width="576" height="576"/>

@@ -14,8 +14,8 @@ class InitialLoadAnimationViewController: UIViewController {
     @IBOutlet weak var iconImageView: UIImageView!
     
     // MARK: - LifeCycle Methods
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         AnimationManager.rotate(iconImageView)
         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
             self.performSegue(withIdentifier: "animationLoadToSearch", sender: nil)
