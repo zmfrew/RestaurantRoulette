@@ -21,22 +21,12 @@ class RouletteAnimationViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        rotateAnimation(view: rouletteCircle)
+        AnimationManager.rotate(rouletteCircle)
     }
     
     // MARK: - Methods
     func setupRouletteCircle() {
         rouletteCircle.layer.cornerRadius = rouletteCircle.layer.frame.height / 2
-    }
-    
-    func rotateAnimation(view: UIView ,duration: CFTimeInterval = 2.0) {
-        let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
-        rotateAnimation.fromValue = 0.0
-        rotateAnimation.toValue = CGFloat(.pi * 2.0)
-        rotateAnimation.duration = duration
-        rotateAnimation.repeatCount = Float.greatestFiniteMagnitude;
-        
-        view.layer.add(rotateAnimation, forKey: nil)
     }
 
 }

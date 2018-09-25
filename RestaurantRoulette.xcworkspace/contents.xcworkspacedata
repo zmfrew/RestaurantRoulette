@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/Zachary/Documents/devmountain/personalproject/RestaurantRoulette/RestaurantRoulette/Models/CoreData/Restaurant+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/Zachary/Documents/devmountain/personalproject/RestaurantRoulette/RestaurantRoulette/Models/CoreData/Restaurant+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
       location = "group:RestaurantRoulette.xcodeproj">
    </FileRef>
    <FileRef

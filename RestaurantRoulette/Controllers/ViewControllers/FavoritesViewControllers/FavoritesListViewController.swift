@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import ViewAnimator
 
 class FavoritesListViewController: UIViewController {
 
@@ -18,19 +19,26 @@ class FavoritesListViewController: UIViewController {
     @IBOutlet weak var noFavoritesLabelView: UIView!
     @IBOutlet weak var noFavoritesLabel: UILabel!
     
+    // MARK: - Properties
+    private let animations = [AnimationType.from(direction: .right, offset: 120.0), AnimationType.zoom(scale: 0.5)]
+    
     // MARK: - LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshTable), for: .valueChanged)
+        tableView.refreshControl = refreshControl
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        ButtonAnimationManager.moveButtonsOffScreen(leftButton: searchButton, centerButton: nil, rightButton: favoritesButton)
+        AnimationManager.moveButtonsOffScreen(leftButton: searchButton, centerButton: nil, rightButton: favoritesButton)
+        refreshTable()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        ButtonAnimationManager.animateButtonOntoScreen(leftButton: searchButton, centerButton: nil, rightButton: favoritesButton)
+        AnimationManager.animateButtonOntoScreen(leftButton: searchButton, centerButton: nil, rightButton: favoritesButton)
     }
 
     // MARK: - Actions
@@ -43,6 +51,12 @@ class FavoritesListViewController: UIViewController {
     }
     
     // MARK: - Methods
+    @objc func refreshTable() {
+        self.tableView.reloadData()
+        UIView.animate(views: tableView.visibleCells, animations: animations)
+        tableView.refreshControl?.endRefreshing()
+    }
+    
     @objc func dismissToSearchVC() {
         self.dismiss(animated: true, completion: nil)
     }

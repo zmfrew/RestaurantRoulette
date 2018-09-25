@@ -15,11 +15,13 @@ class RandomRestaurantMapViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var randomButton: UIButton!
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var favoritesButton: UIButton!
     
     // MARK: - Properties
     var business: CDYelpBusiness?
+    var businesses: [CDYelpBusiness?]?
     
     // MARK: - LifeCycle Methods
     override func viewDidLoad() {
@@ -30,19 +32,34 @@ class RandomRestaurantMapViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupMapView()
-        ButtonAnimationManager.moveButtonsOffScreen(leftButton: searchButton, centerButton: nil, rightButton: favoritesButton)
+        AnimationManager.moveButtonsOffScreen(leftButton: searchButton, centerButton: randomButton, rightButton: favoritesButton)
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        ButtonAnimationManager.animateButtonOntoScreen(leftButton: searchButton, centerButton: nil, rightButton: favoritesButton)
+        AnimationManager.animateButtonOntoScreen(leftButton: searchButton, centerButton: randomButton, rightButton: favoritesButton)
+        AnimationManager.rotate(randomButton, duration: 6.0)
     }
     
     // MARK: - Actions
+    @IBAction func randomizeButtonTapped(_ sender: UIButton) {
+        selectRandomBusiness()
+        self.title = business?.title
+        setupMapView()
+        tableView.reloadData()
+    }
+    
     @IBAction func unwindToSearchFromMap(unwindSegue: UIStoryboardSegue) {
     }
     
     @IBAction func unwindToSearchFromMapToBookmarks(unwindSegue: UIStoryboardSegue) {
         self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    // MARK: - Methods
+    func selectRandomBusiness() {
+        guard let businesses = businesses else { return }
+        let randomIndex = Int(arc4random_uniform(UInt32(businesses.count)))
+        business = businesses[randomIndex]
     }
     
 }

@@ -44,11 +44,16 @@ class RestaurantsListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        ButtonAnimationManager.moveButtonsOffScreen(leftButton: searchButton, centerButton: randomButton, rightButton: favoritesButton)
+        AnimationManager.moveButtonsOffScreen(leftButton: searchButton, centerButton: randomButton, rightButton: favoritesButton)
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        ButtonAnimationManager.animateButtonOntoScreen(leftButton: searchButton, centerButton: randomButton, rightButton: favoritesButton)
+        AnimationManager.animateButtonOntoScreen(leftButton: searchButton, centerButton: randomButton, rightButton: favoritesButton)
+        AnimationManager.rotate(randomButton, duration: 6.0)
+        // Allows users to get a new random restaurant if they are not satisfied with the intial restaurant.
+        if randomBusiness == nil && businesses.count != 0 {
+            selectRandomBusiness()
+        }
     }
 
     // MARK: - Actions
@@ -78,6 +83,7 @@ class RestaurantsListViewController: UIViewController {
         presentRouletteAnimationController()
         CDYelpFusionKitManager.shared.apiClient.searchBusinesses(byTerm: searchTerm, location: location, latitude: latitude, longitude: longitude, radius: locationRadius, categories: nil, locale: nil, limit: 25, offset: nil, sortBy: CDYelpBusinessSortType.bestMatch, priceTiers: priceTiers, openNow: openNow, openAt: nil, attributes: nil) { (response) in
             if let response = response, let businesses = response.businesses {
+                
                 self.businesses = businesses
                 self.tableView.reloadData()
                 self.selectRandomBusiness()
@@ -116,6 +122,16 @@ class RestaurantsListViewController: UIViewController {
             destinationVC.navigationController?.navigationBar.prefersLargeTitles = true
             destinationVC.title = randomBusiness.name
             destinationVC.business = randomBusiness
+            destinationVC.businesses = businesses
+            
+            self.randomBusiness = nil
+        } else if segue.identifier == "restaurantListToDetail" {
+            guard let destinationVC = segue.destination as? RestaurantDetailViewController,
+                let indexPath = tableView.indexPathForSelectedRow else { return }
+            
+            let business = businesses[indexPath.row]
+            destinationVC.title = business.name
+            destinationVC.business = business
         }
     }
     
@@ -140,7 +156,6 @@ extension RestaurantsListViewController: UITableViewDelegate, UITableViewDataSou
         let business = businesses[indexPath.row]
         cell.selectionStyle = .none
         cell.business = business
-        cell.indexPath = indexPath
         return cell
     }
     

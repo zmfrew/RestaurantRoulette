@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import CloudKit
 
 class FavoriteDetailViewController: UIViewController {
-
+    
     // MARK: - Outlets
     @IBOutlet weak var restaurantImageView: UIImageView!
     @IBOutlet weak var noRatingAvailableLabel: UILabel!
@@ -22,7 +23,7 @@ class FavoriteDetailViewController: UIViewController {
     @IBOutlet weak var categoryOneLabel: UILabel!
     @IBOutlet weak var categoryTwoLabel: UILabel!
     @IBOutlet weak var categoryThreeLabel: UILabel!
-    @IBOutlet weak var phoneNumberLabel: UILabel!
+    @IBOutlet weak var phoneNumberButton: UIButton!
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var locationButton: UIButton!
     @IBOutlet weak var favoritesButton: UIButton!
@@ -39,16 +40,30 @@ class FavoriteDetailViewController: UIViewController {
     // MARK: - LifeCycle Methods
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        ButtonAnimationManager.moveButtonsOffScreen(leftButton: searchButton, centerButton: locationButton, rightButton: favoritesButton)
+        AnimationManager.moveButtonsOffScreen(leftButton: searchButton, centerButton: locationButton, rightButton: favoritesButton)
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        ButtonAnimationManager.animateButtonOntoScreen(leftButton: searchButton, centerButton: locationButton, rightButton: favoritesButton)
+        AnimationManager.animateButtonOntoScreen(leftButton: searchButton, centerButton: locationButton, rightButton: favoritesButton)
+        StoreReviewManager.shared.showReview()
     }
-
+    
     // MARK: - Actions
     @IBAction func searchButtonTapped(_ sender: UIButton) {
         self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    @IBAction func phoneNumberButtonTapped(_ sender: UIButton) {
+        guard let restaurant = restaurant,
+            let phoneNumber = restaurant.phoneNumber else { return }
+        
+        if let url = URL(string: "tel://\(phoneNumber)") {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                print("This phone number doesn't work.")
+            }
+        }
     }
     
     // MARK: - Methods
@@ -60,16 +75,22 @@ class FavoriteDetailViewController: UIViewController {
             else {
                 print("Error occurred creating images.")
                 return
-            }
-        // FIXME: - Update default image to show in favorites.
-        restaurantImageView.image = UIImage(data: imageData) ?? UIImage(named: "mockShannons")
+        }
+        
+        restaurantImageView.image = UIImage(data: imageData) ?? UIImage(named: "icon")
         
         restaurantImageView.layer.cornerRadius = restaurantImageView.layer.frame.height / 2
         hideStarsIfNecessary(restaurant.rating?.count ?? 0)
         
         let categoryLabels = restaurant.categories?.components(separatedBy: " ") ?? ["No categories available."]
         updateCategoryLabels(categoryLabels)
-        phoneNumberLabel.text = PhoneNumberFormatter.formatPhoneNumber(restaurant.phoneNumber)
+    
+        let phoneNumber = PhoneNumberFormatter.formatPhoneNumber(restaurant.phoneNumber)
+        phoneNumberButton.setTitle(phoneNumber, for: UIControlState())
+    
+        let isPhoneNumberButtonEnabled = phoneNumber == "No phone number available" ? false : true
+        phoneNumberButton.isEnabled = isPhoneNumberButtonEnabled
+        phoneNumberButton.tintColor = isPhoneNumberButtonEnabled == true ? UIColor(red: 0/255.0, green: 122/255.0, blue: 255/255.0, alpha: 100) : UIColor(red: 115/255.0, green: 113/255.0, blue: 115/255.0, alpha: 100)
     }
     
     private func hideStarsIfNecessary(_ rating: Int) {
@@ -141,5 +162,6 @@ class FavoriteDetailViewController: UIViewController {
         }
         
     }
-
+    
 }
+
