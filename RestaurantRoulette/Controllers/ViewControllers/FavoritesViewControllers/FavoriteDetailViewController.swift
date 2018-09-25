@@ -40,11 +40,11 @@ class FavoriteDetailViewController: UIViewController {
     // MARK: - LifeCycle Methods
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        ButtonAnimationManager.moveButtonsOffScreen(leftButton: searchButton, centerButton: locationButton, rightButton: favoritesButton)
+        AnimationManager.moveButtonsOffScreen(leftButton: searchButton, centerButton: locationButton, rightButton: favoritesButton)
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        ButtonAnimationManager.animateButtonOntoScreen(leftButton: searchButton, centerButton: locationButton, rightButton: favoritesButton)
+        AnimationManager.animateButtonOntoScreen(leftButton: searchButton, centerButton: locationButton, rightButton: favoritesButton)
         StoreReviewManager.shared.showReview()
     }
     

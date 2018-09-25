@@ -20,7 +20,7 @@
 		B66A15BB2159A45800BBD09A /* RestaurantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66A15BA2159A45800BBD09A /* RestaurantDetailViewController.swift */; };
 		B6733FC52152BC780008F997 /* CDYelpFusionKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6733FC42152BC780008F997 /* CDYelpFusionKitManager.swift */; };
 		B6733FD02152C8940008F997 /* BusinessTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6733FCF2152C8940008F997 /* BusinessTableViewCell.swift */; };
-		B6733FD52152E8530008F997 /* ButtonAnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6733FD42152E8530008F997 /* ButtonAnimationManager.swift */; };
+		B6733FD52152E8530008F997 /* AnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6733FD42152E8530008F997 /* AnimationManager.swift */; };
 		B6733FD8215318870008F997 /* RestaurantRoulette.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B6733FD6215318870008F997 /* RestaurantRoulette.xcdatamodeld */; };
 		B6733FDD21531A140008F997 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6733FDC21531A140008F997 /* CoreDataStack.swift */; };
 		B67CD569214F10A1005F755A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67CD568214F10A1005F755A /* AppDelegate.swift */; };
@@ -78,7 +78,7 @@
 		B66A15BA2159A45800BBD09A /* RestaurantDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailViewController.swift; sourceTree = "<group>"; };
 		B6733FC42152BC780008F997 /* CDYelpFusionKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDYelpFusionKitManager.swift; sourceTree = "<group>"; };
 		B6733FCF2152C8940008F997 /* BusinessTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessTableViewCell.swift; sourceTree = "<group>"; };
-		B6733FD42152E8530008F997 /* ButtonAnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonAnimationManager.swift; sourceTree = "<group>"; };
+		B6733FD42152E8530008F997 /* AnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationManager.swift; sourceTree = "<group>"; };
 		B6733FD7215318870008F997 /* RestaurantRoulette.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RestaurantRoulette.xcdatamodel; sourceTree = "<group>"; };
 		B6733FDC21531A140008F997 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		B67CD565214F10A1005F755A /* RestaurantRoulette.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RestaurantRoulette.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,7 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				B66A15B72159947100BBD09A /* StoreReviewManager */,
-				B6733FD32152E8460008F997 /* ButtonAnimationManager */,
+				B6733FD32152E8460008F997 /* AnimationManager */,
 				B6733FC92152C4260008F997 /* CDYelpFusionKitManager */,
 				B61FDAAF214F129400B536AD /* CloudKit */,
 				B61FDAAE214F129200B536AD /* CoreData */,
@@ -278,12 +278,12 @@
 			path = FavoritesViewControllers;
 			sourceTree = "<group>";
 		};
-		B6733FD32152E8460008F997 /* ButtonAnimationManager */ = {
+		B6733FD32152E8460008F997 /* AnimationManager */ = {
 			isa = PBXGroup;
 			children = (
-				B6733FD42152E8530008F997 /* ButtonAnimationManager.swift */,
+				B6733FD42152E8530008F997 /* AnimationManager.swift */,
 			);
-			path = ButtonAnimationManager;
+			path = AnimationManager;
 			sourceTree = "<group>";
 		};
 		B6733FD9215319CC0008F997 /* CoreData */ = {
@@ -640,7 +640,7 @@
 				B69F7338215185E600F8956F /* PhoneNumberFormatter.swift in Sources */,
 				B66135372156ECB20000A08E /* Restaurant+CoreDataClass.swift in Sources */,
 				B6733FD8215318870008F997 /* RestaurantRoulette.xcdatamodeld in Sources */,
-				B6733FD52152E8530008F997 /* ButtonAnimationManager.swift in Sources */,
+				B6733FD52152E8530008F997 /* AnimationManager.swift in Sources */,
 				B69132372156EA4E009342A8 /* CKRecord+Convenience.swift in Sources */,
 				B6733FDD21531A140008F997 /* CoreDataStack.swift in Sources */,
 				B69132352156E7AA009342A8 /* CloudKitSyncable.swift in Sources */,

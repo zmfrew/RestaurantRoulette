@@ -322,7 +322,7 @@
                                                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="dXh-kN-TYG">
                                                                                     <rect key="frame" x="58" y="42" width="81" height="13"/>
                                                                                     <subviews>
-                                                                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q9J-CV-cVe">
+                                                                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q9J-CV-cVe">
                                                                                             <rect key="frame" x="0.0" y="0.0" width="0.0" height="13"/>
                                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                             <nil key="textColor"/>
@@ -948,7 +948,7 @@
                                                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Zes-VS-PaE">
                                                                                     <rect key="frame" x="58" y="42" width="81" height="13"/>
                                                                                     <subviews>
-                                                                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sgg-39-nUX">
+                                                                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sgg-39-nUX">
                                                                                             <rect key="frame" x="0.0" y="0.0" width="0.0" height="13"/>
                                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                             <nil key="textColor"/>
@@ -1200,7 +1200,7 @@
                                                     <constraint firstAttribute="width" constant="60" id="PiV-X9-qPG"/>
                                                     <constraint firstAttribute="height" constant="60" id="xLu-ks-jkp"/>
                                                 </constraints>
-                                                <state key="normal" backgroundImage="randomize"/>
+                                                <state key="normal" backgroundImage="iconSmall"/>
                                                 <connections>
                                                     <segue destination="Qi5-H6-4sZ" kind="show" identifier="toRandomRestaurantMap" id="N1r-te-75A"/>
                                                 </connections>
@@ -1460,7 +1460,7 @@
                                                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="scX-b9-1zD">
                                                                                     <rect key="frame" x="58" y="42" width="81" height="13"/>
                                                                                     <subviews>
-                                                                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WGe-xk-k8h">
+                                                                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WGe-xk-k8h">
                                                                                             <rect key="frame" x="0.0" y="0.0" width="0.0" height="13"/>
                                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                             <nil key="textColor"/>
@@ -1583,7 +1583,7 @@
                                                     <constraint firstAttribute="height" constant="60" id="0NF-lL-5cP"/>
                                                     <constraint firstAttribute="width" constant="60" id="bPa-NY-Jm8"/>
                                                 </constraints>
-                                                <state key="normal" backgroundImage="randomize"/>
+                                                <state key="normal" backgroundImage="iconSmall"/>
                                                 <connections>
                                                     <action selector="randomizeButtonTapped:" destination="Qi5-H6-4sZ" eventType="touchUpInside" id="hA4-0t-BoV"/>
                                                 </connections>
@@ -1889,22 +1889,22 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bookmarksBlue" width="341" height="341"/>
-        <image name="bookmarksGray" width="341" height="341"/>
+        <image name="bookmarksBlue" width="768" height="768"/>
+        <image name="bookmarksGray" width="768" height="768"/>
         <image name="burger" width="595" height="595"/>
         <image name="chicken" width="599" height="599"/>
         <image name="donut" width="563" height="563"/>
         <image name="fries" width="614" height="614"/>
         <image name="hotdog" width="576" height="576"/>
-        <image name="icon" width="1024" height="1024"/>
-        <image name="locationPinColor" width="341" height="341"/>
+        <image name="icon" width="512" height="512"/>
+        <image name="iconSmall" width="245.75999450683594" height="245.75999450683594"/>
+        <image name="locationPinColor" width="768" height="768"/>
         <image name="pizza" width="560" height="560"/>
-        <image name="randomize" width="341" height="341"/>
         <image name="sandwich" width="587" height="587"/>
-        <image name="searchBlue" width="341" height="341"/>
-        <image name="searchGray" width="341" height="341"/>
-        <image name="starBlue" width="341" height="341"/>
-        <image name="starGray" width="341" height="341"/>
+        <image name="searchBlue" width="768" height="768"/>
+        <image name="searchGray" width="768" height="768"/>
+        <image name="starBlue" width="768" height="768"/>
+        <image name="starGray" width="768" height="768"/>
         <image name="starOrange" width="28" height="26"/>
         <image name="taco" width="604" height="604"/>
     </resources>

@@ -44,11 +44,11 @@ class RestaurantDetailViewController: UIViewController {
     // MARK: - LifeCycle Methods
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        ButtonAnimationManager.moveButtonsOffScreen(leftButton: searchButton, centerButton: nil, rightButton: favoritesButton)
+        AnimationManager.moveButtonsOffScreen(leftButton: searchButton, centerButton: nil, rightButton: favoritesButton)
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        ButtonAnimationManager.animateButtonOntoScreen(leftButton: searchButton, centerButton: nil, rightButton: favoritesButton)
+        AnimationManager.animateButtonOntoScreen(leftButton: searchButton, centerButton: nil, rightButton: favoritesButton)
         StoreReviewManager.shared.showReview()
     }
     

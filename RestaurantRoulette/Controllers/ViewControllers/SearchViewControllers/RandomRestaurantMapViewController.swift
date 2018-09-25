@@ -32,11 +32,12 @@ class RandomRestaurantMapViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupMapView()
-        ButtonAnimationManager.moveButtonsOffScreen(leftButton: searchButton, centerButton: randomButton, rightButton: favoritesButton)
+        AnimationManager.moveButtonsOffScreen(leftButton: searchButton, centerButton: randomButton, rightButton: favoritesButton)
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        ButtonAnimationManager.animateButtonOntoScreen(leftButton: searchButton, centerButton: randomButton, rightButton: favoritesButton)
+        AnimationManager.animateButtonOntoScreen(leftButton: searchButton, centerButton: randomButton, rightButton: favoritesButton)
+        AnimationManager.rotate(randomButton, duration: 6.0)
     }
     
     // MARK: - Actions

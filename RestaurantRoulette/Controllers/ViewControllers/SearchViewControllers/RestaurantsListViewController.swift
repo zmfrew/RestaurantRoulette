@@ -44,11 +44,12 @@ class RestaurantsListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        ButtonAnimationManager.moveButtonsOffScreen(leftButton: searchButton, centerButton: randomButton, rightButton: favoritesButton)
+        AnimationManager.moveButtonsOffScreen(leftButton: searchButton, centerButton: randomButton, rightButton: favoritesButton)
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        ButtonAnimationManager.animateButtonOntoScreen(leftButton: searchButton, centerButton: randomButton, rightButton: favoritesButton)
+        AnimationManager.animateButtonOntoScreen(leftButton: searchButton, centerButton: randomButton, rightButton: favoritesButton)
+        AnimationManager.rotate(randomButton, duration: 6.0)
         // Allows users to get a new random restaurant if they are not satisfied with the intial restaurant.
         if randomBusiness == nil && businesses.count != 0 {
             selectRandomBusiness()
