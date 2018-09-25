@@ -1672,14 +1672,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="cMn-aE-GhF" firstAttribute="top" secondItem="q0n-cf-Fao" secondAttribute="top" id="0cu-sn-Eje"/>
-                            <constraint firstItem="q0n-cf-Fao" firstAttribute="trailing" secondItem="bir-Ww-t9s" secondAttribute="trailing" constant="32" id="2Ul-FN-ltA"/>
                             <constraint firstItem="D9B-aL-ucA" firstAttribute="top" secondItem="q0n-cf-Fao" secondAttribute="top" constant="16" id="8iO-XE-amx"/>
                             <constraint firstItem="D9B-aL-ucA" firstAttribute="leading" secondItem="q0n-cf-Fao" secondAttribute="leading" constant="16" id="AKO-4X-1dG"/>
+                            <constraint firstItem="bir-Ww-t9s" firstAttribute="trailing" secondItem="D9B-aL-ucA" secondAttribute="trailing" constant="-16" id="Cil-yH-caU"/>
                             <constraint firstItem="q0n-cf-Fao" firstAttribute="trailing" secondItem="cMn-aE-GhF" secondAttribute="trailing" id="IGA-Od-wNz"/>
                             <constraint firstItem="q0n-cf-Fao" firstAttribute="bottom" secondItem="D9B-aL-ucA" secondAttribute="bottom" constant="16" id="MbG-Lc-hB0"/>
-                            <constraint firstItem="bir-Ww-t9s" firstAttribute="top" secondItem="q0n-cf-Fao" secondAttribute="top" constant="32" id="ROr-OQ-xqt"/>
                             <constraint firstItem="bir-Ww-t9s" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="q0n-cf-Fao" secondAttribute="leading" symbolic="YES" id="UH1-WD-hRf"/>
                             <constraint firstItem="q0n-cf-Fao" firstAttribute="bottom" secondItem="cMn-aE-GhF" secondAttribute="bottom" id="ew5-yr-n9B"/>
+                            <constraint firstItem="bir-Ww-t9s" firstAttribute="top" secondItem="D9B-aL-ucA" secondAttribute="top" constant="16" id="g58-gt-yYe"/>
                             <constraint firstItem="cMn-aE-GhF" firstAttribute="leading" secondItem="q0n-cf-Fao" secondAttribute="leading" id="sak-js-U5I"/>
                             <constraint firstItem="q0n-cf-Fao" firstAttribute="trailing" secondItem="D9B-aL-ucA" secondAttribute="trailing" constant="16" id="yNF-u6-rPT"/>
                         </constraints>
