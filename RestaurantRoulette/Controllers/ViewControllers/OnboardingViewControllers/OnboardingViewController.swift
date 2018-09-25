@@ -8,6 +8,15 @@
 
 import UIKit
 
+// MARK: - PageViews Enum
+enum PageViews: String {
+    case firstPageView
+    case secondPageView
+    case thirdPageView
+    case fourthPageView
+    case fifthPageView
+}
+
 class OnboardingViewController: UIPageViewController {
 
     // MARK: - Properties
@@ -72,14 +81,6 @@ extension OnboardingViewController: UIPageViewControllerDataSource, UIPageViewCo
     
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {
         return 0
-    }
-    
-    // MARK: - Enums
-    enum PageViews: String {
-        case firstPageView
-        case secondPageView
-        case thirdPageView
-        case fourthPageView
     }
     
 }
