@@ -18,6 +18,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         CDYelpFusionKitManager.shared.configure()
 
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let storyboard = UIStoryboard(name: "SearchScreen", bundle: nil)
+        var initialViewController: UIViewController
+        
+        if StoreReviewManager.shared.getRunCounts() == 0 {
+            initialViewController = storyboard.instantiateViewController(withIdentifier: "InitialOnboardingViewController")
+        } else {
+            initialViewController = storyboard.instantiateViewController(withIdentifier: "InitialLoadAnimationViewController")
+        }
+        
+        self.window?.rootViewController = initialViewController
+        self.window?.makeKeyAndVisible()
+        
         StoreReviewManager.shared.incrementAppRuns()
         
         return true

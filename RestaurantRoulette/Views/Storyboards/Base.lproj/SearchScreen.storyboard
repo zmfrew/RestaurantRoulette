@@ -1641,10 +1641,195 @@
             </objects>
             <point key="canvasLocation" x="4716" y="463"/>
         </scene>
+        <!--Initial Onboarding View Controller-->
+        <scene sceneID="Ahw-oz-urU">
+            <objects>
+                <viewController storyboardIdentifier="InitialOnboardingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fHl-uR-Jpo" customClass="InitialOnboardingViewController" customModule="RestaurantRoulette" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VkL-yW-lt6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cMn-aE-GhF">
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                            </imageView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D9B-aL-ucA">
+                                <rect key="frame" x="16" y="60" width="343" height="702"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <segue destination="ZKs-r6-Pmg" kind="embed" id="Bot-ow-Zae"/>
+                                </connections>
+                            </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bir-Ww-t9s">
+                                <rect key="frame" x="313" y="76" width="30" height="30"/>
+                                <state key="normal" title="Skip">
+                                    <color key="titleColor" red="0.45098039220000002" green="0.4431372549" blue="0.45098039220000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="skipButtonTapped:" destination="fHl-uR-Jpo" eventType="touchUpInside" id="uPK-jG-OGV"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="cMn-aE-GhF" firstAttribute="top" secondItem="q0n-cf-Fao" secondAttribute="top" id="0cu-sn-Eje"/>
+                            <constraint firstItem="D9B-aL-ucA" firstAttribute="top" secondItem="q0n-cf-Fao" secondAttribute="top" constant="16" id="8iO-XE-amx"/>
+                            <constraint firstItem="D9B-aL-ucA" firstAttribute="leading" secondItem="q0n-cf-Fao" secondAttribute="leading" constant="16" id="AKO-4X-1dG"/>
+                            <constraint firstItem="q0n-cf-Fao" firstAttribute="trailing" secondItem="bir-Ww-t9s" secondAttribute="trailing" constant="32" id="DPg-iE-cOm"/>
+                            <constraint firstItem="q0n-cf-Fao" firstAttribute="trailing" secondItem="cMn-aE-GhF" secondAttribute="trailing" id="IGA-Od-wNz"/>
+                            <constraint firstItem="q0n-cf-Fao" firstAttribute="bottom" secondItem="D9B-aL-ucA" secondAttribute="bottom" constant="16" id="MbG-Lc-hB0"/>
+                            <constraint firstItem="bir-Ww-t9s" firstAttribute="top" secondItem="q0n-cf-Fao" secondAttribute="top" constant="32" id="V55-je-zxJ"/>
+                            <constraint firstItem="q0n-cf-Fao" firstAttribute="bottom" secondItem="cMn-aE-GhF" secondAttribute="bottom" id="ew5-yr-n9B"/>
+                            <constraint firstItem="cMn-aE-GhF" firstAttribute="leading" secondItem="q0n-cf-Fao" secondAttribute="leading" id="sak-js-U5I"/>
+                            <constraint firstItem="q0n-cf-Fao" firstAttribute="trailing" secondItem="D9B-aL-ucA" secondAttribute="trailing" constant="16" id="yNF-u6-rPT"/>
+                            <constraint firstItem="bir-Ww-t9s" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="q0n-cf-Fao" secondAttribute="leading" symbolic="YES" id="zRC-YH-L0i"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="q0n-cf-Fao"/>
+                    </view>
+                    <connections>
+                        <outlet property="onboardingContainer" destination="D9B-aL-ucA" id="y8v-cT-t5p"/>
+                        <outlet property="skipButton" destination="bir-Ww-t9s" id="Kxl-I2-ZTe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zhP-nK-60q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="822" y="-1374"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="rXl-l4-MmY">
+            <objects>
+                <viewController storyboardIdentifier="firstPageView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="twb-Xh-puw" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OJP-DS-kht">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TUk-Zh-PPN" customClass="CardView" customModule="RestaurantRoulette" customModuleProvider="target">
+                                <rect key="frame" x="8" y="52" width="359" height="718"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fries" translatesAutoresizingMaskIntoConstraints="NO" id="hVk-Gg-01q">
+                                        <rect key="frame" x="59" y="295" width="240" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="TUk-Zh-PPN" firstAttribute="leading" secondItem="Wok-Qb-TtR" secondAttribute="leading" constant="8" id="515-YU-TMy"/>
+                            <constraint firstItem="TUk-Zh-PPN" firstAttribute="top" secondItem="Wok-Qb-TtR" secondAttribute="top" constant="8" id="AYI-Li-fN0"/>
+                            <constraint firstItem="Wok-Qb-TtR" firstAttribute="bottom" secondItem="TUk-Zh-PPN" secondAttribute="bottom" constant="8" id="lno-Vi-Zri"/>
+                            <constraint firstItem="Wok-Qb-TtR" firstAttribute="trailing" secondItem="TUk-Zh-PPN" secondAttribute="trailing" constant="8" id="yxm-pS-jEK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Wok-Qb-TtR"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cOX-OR-GEK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2360.8000000000002" y="-1014.5320197044335"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="sqF-oO-kCT">
+            <objects>
+                <viewController storyboardIdentifier="secondPageView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DOd-mU-VH7" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="79J-IZ-28P">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vw6-5I-Umc" customClass="CardView" customModule="RestaurantRoulette" customModuleProvider="target">
+                                <rect key="frame" x="8" y="52" width="359" height="718"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hotdog" translatesAutoresizingMaskIntoConstraints="NO" id="70P-vB-7Em">
+                                        <rect key="frame" x="59" y="295" width="240" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="CtT-6u-3Ql" firstAttribute="bottom" secondItem="vw6-5I-Umc" secondAttribute="bottom" constant="8" id="2zE-Jy-Q1g"/>
+                            <constraint firstItem="vw6-5I-Umc" firstAttribute="leading" secondItem="CtT-6u-3Ql" secondAttribute="leading" constant="8" id="Y0P-GL-EEP"/>
+                            <constraint firstItem="CtT-6u-3Ql" firstAttribute="trailing" secondItem="vw6-5I-Umc" secondAttribute="trailing" constant="8" id="g5K-qp-Gme"/>
+                            <constraint firstItem="vw6-5I-Umc" firstAttribute="top" secondItem="CtT-6u-3Ql" secondAttribute="top" constant="8" id="xER-iX-6l8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="CtT-6u-3Ql"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="02y-Wb-G69" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3204" y="-1015"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ui1-02-oYH">
+            <objects>
+                <viewController storyboardIdentifier="thirdPageView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Hi8-9S-CHO" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Xbv-sg-HOu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lJg-4J-IFi" customClass="CardView" customModule="RestaurantRoulette" customModuleProvider="target">
+                                <rect key="frame" x="8" y="52" width="359" height="718"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="burger" translatesAutoresizingMaskIntoConstraints="NO" id="bVe-rN-2Qg">
+                                        <rect key="frame" x="59" y="295" width="240" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="lJg-4J-IFi" firstAttribute="top" secondItem="4gt-DS-6D4" secondAttribute="top" constant="8" id="UJQ-ad-HNL"/>
+                            <constraint firstItem="4gt-DS-6D4" firstAttribute="trailing" secondItem="lJg-4J-IFi" secondAttribute="trailing" constant="8" id="XGA-eF-pNn"/>
+                            <constraint firstItem="4gt-DS-6D4" firstAttribute="bottom" secondItem="lJg-4J-IFi" secondAttribute="bottom" constant="8" id="cTJ-hd-tip"/>
+                            <constraint firstItem="lJg-4J-IFi" firstAttribute="leading" secondItem="4gt-DS-6D4" secondAttribute="leading" constant="8" id="kfK-UL-E52"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4gt-DS-6D4"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nm2-ZX-db8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3948" y="-1015"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ZVd-hx-z88">
+            <objects>
+                <viewController storyboardIdentifier="fourthPageView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2oi-H5-jbJ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="P7f-lz-oel">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RyR-ul-fUl" customClass="CardView" customModule="RestaurantRoulette" customModuleProvider="target">
+                                <rect key="frame" x="8" y="52" width="359" height="718"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pizza" translatesAutoresizingMaskIntoConstraints="NO" id="nB9-Nw-9Bi">
+                                        <rect key="frame" x="59" y="295" width="240" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="RyR-ul-fUl" firstAttribute="top" secondItem="lKE-DA-bFQ" secondAttribute="top" constant="8" id="CwC-f7-Zcf"/>
+                            <constraint firstItem="RyR-ul-fUl" firstAttribute="leading" secondItem="lKE-DA-bFQ" secondAttribute="leading" constant="8" id="Lvm-4A-G15"/>
+                            <constraint firstItem="lKE-DA-bFQ" firstAttribute="trailing" secondItem="RyR-ul-fUl" secondAttribute="trailing" constant="8" id="bWY-au-HgN"/>
+                            <constraint firstItem="lKE-DA-bFQ" firstAttribute="bottom" secondItem="RyR-ul-fUl" secondAttribute="bottom" constant="8" id="i0h-t8-lPm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="lKE-DA-bFQ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Irp-wb-FS2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4742" y="-1015"/>
+        </scene>
         <!--Initial Load Animation View Controller-->
         <scene sceneID="Rwy-DP-ktt">
             <objects>
-                <viewController storyboardIdentifier="InitialLoadAnimationViewController" id="HEL-q2-LqC" customClass="InitialLoadAnimationViewController" customModule="RestaurantRoulette" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InitialLoadAnimationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HEL-q2-LqC" customClass="InitialLoadAnimationViewController" customModule="RestaurantRoulette" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mKb-A6-cin">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1886,6 +2071,14 @@
                 <exit id="HG2-U7-UIy" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4716" y="1153"/>
+        </scene>
+        <!--Onboarding View Controller-->
+        <scene sceneID="g6I-3P-Dbq">
+            <objects>
+                <viewController id="ZKs-r6-Pmg" customClass="OnboardingViewController" customModule="RestaurantRoulette" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gp4-iW-tCT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2361" y="-1708"/>
         </scene>
     </scenes>
     <resources>
