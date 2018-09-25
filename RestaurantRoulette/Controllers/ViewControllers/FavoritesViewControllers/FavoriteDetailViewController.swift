@@ -40,11 +40,12 @@ class FavoriteDetailViewController: UIViewController {
     // MARK: - LifeCycle Methods
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        ButtonAnimationManager.moveButtonsOffScreen(leftButton: searchButton, centerButton: locationButton, rightButton: favoritesButton)
+        AnimationManager.moveButtonsOffScreen(leftButton: searchButton, centerButton: locationButton, rightButton: favoritesButton)
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        ButtonAnimationManager.animateButtonOntoScreen(leftButton: searchButton, centerButton: locationButton, rightButton: favoritesButton)
+        AnimationManager.animateButtonOntoScreen(leftButton: searchButton, centerButton: locationButton, rightButton: favoritesButton)
+        StoreReviewManager.shared.showReview()
     }
     
     // MARK: - Actions
@@ -66,12 +67,6 @@ class FavoriteDetailViewController: UIViewController {
     }
     
     // MARK: - Methods
-    func presentNotLoggedInError() {
-        let alert = UIAlertController(title: "Oh no!", message: "You need to be signed in to iCloud to share restaurants. Please sign in and try again!", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
     private func updateViews() {
         guard let restaurant = restaurant else { return }
         guard let imageURLAsString = restaurant.imageURLAsString,
@@ -82,7 +77,7 @@ class FavoriteDetailViewController: UIViewController {
                 return
         }
         
-        restaurantImageView.image = UIImage(data: imageData) ?? UIImage(named: "mockShannons")
+        restaurantImageView.image = UIImage(data: imageData) ?? UIImage(named: "icon")
         
         restaurantImageView.layer.cornerRadius = restaurantImageView.layer.frame.height / 2
         hideStarsIfNecessary(restaurant.rating?.count ?? 0)

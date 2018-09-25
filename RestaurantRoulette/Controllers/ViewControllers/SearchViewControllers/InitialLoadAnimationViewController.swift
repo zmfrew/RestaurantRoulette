@@ -16,22 +16,10 @@ class InitialLoadAnimationViewController: UIViewController {
     // MARK: - LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        rotateAnimation(view: iconImageView)
-    }
-    
-    // MARK: - Methods
-    func rotateAnimation(view: UIView ,duration: CFTimeInterval = 2.0) {
-        let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
-        rotateAnimation.fromValue = 0.0
-        rotateAnimation.toValue = CGFloat(.pi * 2.0)
-        rotateAnimation.duration = duration
-        rotateAnimation.repeatCount = Float.greatestFiniteMagnitude;
-        
-        view.layer.add(rotateAnimation, forKey: nil)
+        AnimationManager.rotate(iconImageView)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+            self.performSegue(withIdentifier: "animationLoadToSearch", sender: nil)
+        })
     }
 
 }
