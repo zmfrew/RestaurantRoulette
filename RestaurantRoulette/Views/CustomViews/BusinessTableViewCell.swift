@@ -67,7 +67,6 @@ class BusinessTableViewCell: UITableViewCell {
         
         guard let business = business else { return }
         
-        // FIXME: - Insert a new default image with the App Icon
         businessImageView.image = UIImage(named: "icon")
         nameLabel.text = business.name
         hideStarsIfNecessary(Int(business.rating ?? 0))

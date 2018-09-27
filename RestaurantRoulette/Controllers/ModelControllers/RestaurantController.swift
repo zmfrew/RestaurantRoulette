@@ -49,9 +49,6 @@ class RestaurantController {
     
     func delete(_ restaurant: Restaurant) {
         CoreDataManager.delete(restaurant)
-        CloudKitManager.shared.delete(restaurant: restaurant) { (_) in
-        }
-        CoreDataManager.save()
     }
     
     func fetchAllRestaurants() {
