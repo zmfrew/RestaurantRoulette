@@ -19,7 +19,6 @@ extension CDYelpBusiness: MKAnnotation {
         guard let latitude = self.coordinates?.latitude,
             let longitude = self.coordinates?.longitude
             else {
-                // FIXME: - return user's location with error
                 return CLLocationCoordinate2D(latitude: 38.627003, longitude: -90.199402)
         }
         return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
