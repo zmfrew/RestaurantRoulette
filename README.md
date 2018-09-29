@@ -21,12 +21,10 @@ Restaurant Roulette is an iOS application currently in development that randomly
 
 ## Screenshots
 
-<div style="display=inline-block;">
-<img width=47% src="https://user-images.githubusercontent.com/27315950/45912722-494fea00-bde3-11e8-9f6c-71e57c82e11a.jpg"/>
-<img width=47% src="https://user-images.githubusercontent.com/27315950/45912723-494fea00-bde3-11e8-84a4-a09991ffb791.jpg"/>
+<img width=49% src="https://user-images.githubusercontent.com/27315950/46247476-316efc00-c3c9-11e8-85ba-0809b628c1da.jpg"/>
+<img width=49% src="https://user-images.githubusercontent.com/27315950/46247477-316efc00-c3c9-11e8-80f0-450bff72713a.jpg"/>
 
-<img width=47% src="https://user-images.githubusercontent.com/27315950/45912724-494fea00-bde3-11e8-9687-94a7c7914884.jpg"/>
-<img width=47% src="https://user-images.githubusercontent.com/27315950/45912725-49e88080-bde3-11e8-8d95-b68982e1d0fb.jpg"/>
-</div>
+<img width=49% src="https://user-images.githubusercontent.com/27315950/46247478-316efc00-c3c9-11e8-9129-21dbde7817cc.jpg"/>
+<img width=49% src="https://user-images.githubusercontent.com/27315950/46247480-32079280-c3c9-11e8-84dd-4606a0ef65e2.jpg"/>
 
-<img src="https://user-images.githubusercontent.com/27315950/45912726-49e88080-bde3-11e8-8014-868128017699.jpg"/>
+![5](https://user-images.githubusercontent.com/27315950/46247481-32079280-c3c9-11e8-883e-613f7215c749.jpg)
