@@ -12,8 +12,6 @@ Restaurant Roulette is an iOS application currently in development that randomly
 * Provides driving directions to restaurants via AppleMaps. 
 
 ## Tech Stack
-
-* CloudKit 
 * CoreData 
 * CoreLocation 
 * MapKit 
