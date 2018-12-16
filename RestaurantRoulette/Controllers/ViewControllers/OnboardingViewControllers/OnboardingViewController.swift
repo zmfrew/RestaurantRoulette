@@ -31,7 +31,6 @@ class OnboardingViewController: UIPageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupPageViewController()
-        
         if let firstViewController = orderedViewController.first {
             setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
         }
@@ -53,25 +52,17 @@ extension OnboardingViewController: UIPageViewControllerDataSource, UIPageViewCo
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let viewControllerIndex = orderedViewController.index(of: viewController) else { return nil }
-        
         let previousIndex = viewControllerIndex - 1
-        
         guard previousIndex >= 0 else { return orderedViewController.last }
-        
         guard orderedViewController.count > previousIndex else { return nil }
-        
         return orderedViewController[previousIndex]
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let viewControllerIndex = orderedViewController.index(of: viewController) else { return nil }
-        
         let nextIndex = viewControllerIndex + 1
-        
         guard nextIndex < orderedViewController.count else { return orderedViewController.first }
-        
         guard orderedViewController.count > nextIndex else { return nil }
-        
         return orderedViewController[nextIndex]
     }
     

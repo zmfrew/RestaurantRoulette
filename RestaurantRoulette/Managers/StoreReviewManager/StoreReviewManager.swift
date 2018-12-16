@@ -12,12 +12,13 @@ import StoreKit
 class StoreReviewManager {
     
     // MARK: - Singleton
-    static let shared = StoreReviewManager()
+    static let shared = StoreReviewManager(); private init() { }
     
     // MARK: - Properties
     let runIncrementerSetting = "numberOfRuns"
     let minimumRunCount = 7
     
+    // MARK: - Methods
     func incrementAppRuns() {                   
         let usD = UserDefaults()
         let runs = getRunCounts() + 1

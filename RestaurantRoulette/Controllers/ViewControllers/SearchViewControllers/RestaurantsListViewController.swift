@@ -35,7 +35,7 @@ class RestaurantsListViewController: UIViewController {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         randomButton.isHidden = true
         randomBusiness = nil
-        DispatchQueue.main.async {
+        DispatchQueue.global(qos: .background).async {
             self.searchForBusinessesBy(searchTerm: self.searchTerm, location: self.locationDescription, latitude: self.currentLatitude, longitude: self.currentLongitude, locationRadius: self.locationRadius, price: self.price, openNow: self.openNow)
         }
         UIApplication.shared.isNetworkActivityIndicatorVisible = false

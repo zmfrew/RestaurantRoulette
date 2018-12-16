@@ -66,7 +66,7 @@ class FavoritesListViewController: UIViewController {
         if segue.identifier == "toFavoriteDetail" {
             guard let destinationVC = segue.destination as? FavoriteDetailViewController,
                 let indexPath = tableView.indexPathForSelectedRow else { return }
-            
+
             let restaurant = RestaurantController.shared.fetchedResultsController.object(at: indexPath)
             destinationVC.title = restaurant.name
             destinationVC.restaurant = restaurant

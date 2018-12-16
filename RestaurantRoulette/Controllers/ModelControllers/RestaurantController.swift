@@ -30,7 +30,6 @@ class RestaurantController {
     
     func addRestaurantFrom(business: CDYelpBusiness) -> Restaurant? {
         guard let name = business.name else { return nil }
-        
         guard let imageURLAsString = business.imageUrl?.absoluteString,
             let rating = business.rating?.description,
             let yelpCategories = business.categories,
@@ -40,10 +39,8 @@ class RestaurantController {
             else { return nil }
         
         let categories = yelpCategories.map { "\($0.title ?? "")" }.joined(separator: " ")
-        
         let restaurant = Restaurant(name: name, imageURLAsString: imageURLAsString, rating: rating, categories: categories, phoneNumber: phoneNumber, latitude: latitude, longitude: longitude)
         CoreDataManager.save()
-        
         return restaurant
     }
     
@@ -62,13 +59,9 @@ class RestaurantController {
     func isBusinessAFavorite(business: CDYelpBusiness?) -> Bool {
         guard let business = business else { return false }
         guard let restaurants = fetchedResultsController.fetchedObjects else { return false }
-        
         for restaurant in restaurants {
-            if isBusinessARestaurant(business: business, restaurant: restaurant) {
-                return true
-            }
+            if isBusinessARestaurant(business: business, restaurant: restaurant) { return true }
         }
-        
         return false
     }
     
@@ -79,9 +72,7 @@ class RestaurantController {
     func getRestaurantCorrespondingToBusinees(business: CDYelpBusiness) -> Restaurant? {
         guard let restaurants = fetchedResultsController.fetchedObjects else { return nil }
         for restaurant in restaurants {
-            if isBusinessARestaurant(business: business, restaurant: restaurant) {
-                return restaurant
-            }
+            if isBusinessARestaurant(business: business, restaurant: restaurant) { return restaurant }
         }
         return nil
     }

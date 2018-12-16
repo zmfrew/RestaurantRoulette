@@ -18,7 +18,6 @@ class InitialOnboardingViewController: UIViewController {
     @IBAction func skipButtonTapped(_ sender: UIButton) {
         sender.removeFromSuperview()
         onboardingContainer.removeFromSuperview()
-        
         if let initialLoadAnimationViewController = storyboard?.instantiateViewController(withIdentifier: "InitialLoadAnimationViewController") {
             present(initialLoadAnimationViewController, animated: true, completion: nil)
         }

@@ -22,7 +22,6 @@ extension Restaurant: MKAnnotation {
         self.rating = rating
         self.categories = categories
         self.phoneNumber = phoneNumber
-        
         guard let latitude = latitude,
             let longitude = longitude
             else { return }

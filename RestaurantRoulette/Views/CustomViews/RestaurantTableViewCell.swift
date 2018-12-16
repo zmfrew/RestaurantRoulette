@@ -25,9 +25,7 @@ class RestaurantTableViewCell: UITableViewCell {
     // MARK: - Properties
     var restaurant: Restaurant? {
         didSet {
-            DispatchQueue.main.async {
-                self.updateCell()
-            }
+            DispatchQueue.main.async { self.updateCell() }
         }
     }
     
@@ -42,7 +40,6 @@ class RestaurantTableViewCell: UITableViewCell {
     private func updateCell() {
         favoriteCellView.layer.cornerRadius = 16
         restaurantImageView.layer.cornerRadius = restaurantImageView.layer.frame.height / 2
-    
         guard let restaurant = restaurant else { return }
         guard let imageURLAsString = restaurant.imageURLAsString,
             let imageURL = URL(string: imageURLAsString),
@@ -50,7 +47,7 @@ class RestaurantTableViewCell: UITableViewCell {
             else {
                 print("Error occurred creating images.")
                 return
-        }
+            }
         
         nameLabel.text = restaurant.name
         restaurantImageView.image = UIImage(data: imageData) ?? UIImage(named: "icon")

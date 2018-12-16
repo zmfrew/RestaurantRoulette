@@ -22,7 +22,6 @@ final class CDYelpFusionKitManager: NSObject {
     
     func setPriceTierForSearch(_ price: String?) -> [CDYelpPriceTier]? {
         guard let price = price else { return nil }
-        
         switch price {
         case "$":
             return [CDYelpPriceTier.oneDollarSign]
